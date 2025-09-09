@@ -77,13 +77,12 @@
                     const contentResponse = await fetch(file.download_url);
                     const content = await contentResponse.text();
                     
-                    // Parse frontmatter and content
+                    // Only parse frontmatter for title and date - stop after frontmatter ends
                     const lines = content.split('\n');
                     let title = file.name.replace('.md', '').replace(/-/g, ' ');
                     let date = '';
-                    let preview = '';
                     
-                    // Simple frontmatter parsing
+                    // Simple frontmatter parsing - only extract title and date
                     if (lines[0] === '---') {
                         let i = 1;
                         while (i < lines.length && lines[i] !== '---') {
@@ -97,20 +96,20 @@
                                 });
                             }
                             i++;
+                            // Stop parsing once we have both title and date
+                            if (title !== file.name.replace('.md', '').replace(/-/g, ' ') && date !== '') {
+                                break;
+                            }
                         }
-                        // Get preview from content after frontmatter
-                        const contentStart = lines.slice(i + 1).join('\n');
-                        preview = contentStart.replace(/#.*\n/g, '').substring(0, 150).trim() + '...';
                     }
                     
-                    // Create entry element
+                    // Create entry element with just title and date
                     const entryDiv = document.createElement('div');
                     entryDiv.className = 'entry';
-                    entryDiv.style.marginBottom = '30px';
+                    entryDiv.style.marginBottom = '20px';
                     entryDiv.innerHTML = `
-                        <h3><a href="notebook-viewer.html?entry=notebooks/${file.name}" style="color: #333; text-decoration: none;">${title}</a></h3>
+                        <h3 style="margin-bottom: 5px;"><a href="notebook-viewer.html?entry=notebooks/${file.name}" style="color: #333; text-decoration: none;">${title}</a></h3>
                         <p class="date" style="color: #888; font-size: 14px; margin: 5px 0;">${date}</p>
-                        <p style="color: #555; margin: 10px 0;">${preview}</p>
                     `;
                     entriesContainer.appendChild(entryDiv);
                 }
