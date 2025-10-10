@@ -3,3 +3,6 @@ notebooks/drafts/
 
 # macOS system files
 .DS_Store
+
+# Claude Code dump folder
+claude_dump/
