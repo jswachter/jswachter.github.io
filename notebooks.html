@@ -114,22 +114,11 @@
                 entriesContainer.innerHTML = '';
 
                 for (const entry of entries) {
-                    const entryDate = entry.date ? new Date(entry.date) : null;
-                    const displayDate = entryDate && !Number.isNaN(entryDate.valueOf())
-                        ? entryDate.toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        })
-                        : '';
-
                     const entryDiv = document.createElement('div');
                     entryDiv.className = 'entry';
                     entryDiv.style.marginBottom = '20px';
                     entryDiv.innerHTML = `
-                        <h3 style="margin-bottom: 5px;"><a href="notebook-viewer.html?entry=${entry.path}" style="color: #333; text-decoration: none;">${entry.title}</a></h3>
-                        <p class="date" style="color: #888; font-size: 14px; margin: 5px 0;">${displayDate}</p>
-                        ${entry.summary ? `<p style="color: #555; margin: 0;">${entry.summary}</p>` : ''}
+                        <h3 style="margin: 0;"><a href="notebook-viewer.html?entry=${entry.path}" style="color: #333; text-decoration: none;">${entry.title}</a></h3>
                     `;
                     entriesContainer.appendChild(entryDiv);
                 }
