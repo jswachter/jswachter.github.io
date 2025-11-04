@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notebook Entry</title>
+    <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         html {
@@ -101,9 +102,15 @@
             <a href="notebooks.html">← All notebooks</a>
         </div>
         <div id="entry-metadata"></div>
-        <div id="content">
+        <div id="content" aria-live="polite">
             <p style="color: #888;">Loading...</p>
         </div>
+        <noscript>
+            <section aria-label="Notebook access for non-JavaScript agents" style="margin-top: 24px; color: #555;">
+                <p>JavaScript is required to render the notebook in this viewer. You can still access every entry by opening the Markdown files directly.</p>
+                <p>The <a href="notebooks/notebook-index.json">machine-readable notebook index</a> lists all available entries. Copy the <code>path</code> value into the browser address bar, for example <code>notebooks/2025-10-02-autoformalization-agents.md</code>, to read the raw Markdown.</p>
+            </section>
+        </noscript>
     </div>
     
     <script>
