@@ -3,139 +3,518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Jonatan S. Wächter — Portfolio</title>
     <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
-    <link rel="stylesheet" href="styles.css">
     <style>
-        html {
-            background-color: #ffffff;
+        :root {
+            color-scheme: light;
+            --bg: #f6f7fb;
+            --bg-strong: #edf0f9;
+            --surface: rgba(255, 255, 255, 0.92);
+            --surface-strong: #ffffff;
+            --accent: #3b5bfd;
+            --accent-soft: rgba(59, 91, 253, 0.12);
+            --text: #1c1e26;
+            --text-muted: #555a66;
+            --border: rgba(28, 30, 38, 0.08);
+            font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * {
             box-sizing: border-box;
         }
-        *, *::before, *::after {
-            box-sizing: inherit;
-        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, rgba(59, 91, 253, 0.16), transparent 55%),
+                        radial-gradient(circle at top right, rgba(123, 200, 255, 0.25), transparent 65%),
+                        var(--bg);
+            color: var(--text);
+            font-size: 16px;
             line-height: 1.6;
-            background-color: #ffffff;
-            color: #333;
             overflow-x: hidden;
         }
-        h1, h2 { 
-            color: #333; 
-            font-weight: 400;
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 48px clamp(20px, 6vw, 40px) 96px;
+
+        a:hover {
+            text-decoration: underline;
         }
-        .section { margin-bottom: 40px; }
-        .contact a { color: #0077cc; text-decoration: none; }
-        .contact a:hover { text-decoration: underline; }
+
         header {
-            text-align: center;
-            margin-bottom: 30px;
+            padding: clamp(24px, 8vw, 64px) clamp(20px, 9vw, 120px) clamp(32px, 8vw, 96px);
+            position: relative;
         }
-        header h1 {
-            margin-bottom: 5px;
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: clamp(32px, 6vw, 64px);
         }
-        header p {
-            margin-top: 0;
-            color: #666;
+
+        .nav a {
+            font-weight: 600;
+            color: var(--text);
         }
-        .profile-image {
+
+        .nav-links {
+            display: flex;
+            gap: clamp(12px, 3vw, 32px);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: clamp(32px, 6vw, 80px);
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6));
+            border-radius: clamp(20px, 3vw, 32px);
+            padding: clamp(32px, 7vw, 80px);
+            box-shadow: 0 30px 60px rgba(18, 27, 70, 0.12);
+        }
+
+        .hero-text .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin: 0 0 12px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+            margin: 0 0 20px;
+            line-height: 1.1;
+            color: var(--text);
+        }
+
+        .hero-text p {
+            margin: 0 0 24px;
+            color: var(--text-muted);
+            max-width: 40ch;
+            font-size: 1.05rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 12px 22px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .button.primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 15px 30px rgba(59, 91, 253, 0.25);
+        }
+
+        .button.ghost {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            text-decoration: none;
+            box-shadow: 0 18px 36px rgba(18, 27, 70, 0.18);
+        }
+
+        .hero-figure {
+            position: relative;
+            margin: 0;
+            justify-self: center;
+        }
+
+        .hero-figure::after {
+            content: "";
+            position: absolute;
+            inset: 14% -12% -14% -12%;
+            background: linear-gradient(180deg, rgba(59, 91, 253, 0.3), rgba(255, 255, 255, 0));
+            filter: blur(30px);
+            z-index: -1;
+        }
+
+        .hero-figure img {
+            width: clamp(220px, 32vw, 320px);
+            border-radius: 22px;
+            border: 1px solid rgba(59, 91, 253, 0.18);
             display: block;
-            margin: 0 auto 30px auto;
-            border-radius: 8px;
         }
-        ul {
-            padding-left: 20px;
+
+        main {
+            padding: 0 clamp(20px, 9vw, 120px) clamp(72px, 12vw, 128px);
         }
-        li {
-            margin-bottom: 8px;
+
+        section {
+            margin-top: clamp(56px, 10vw, 96px);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: clamp(24px, 5vw, 40px);
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--text-muted);
+            max-width: 40ch;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .cards {
+            display: grid;
+            gap: clamp(18px, 3vw, 32px);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px clamp(20px, 4vw, 32px);
+            box-shadow: 0 18px 40px rgba(18, 27, 70, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .timeline {
+            display: grid;
+            gap: clamp(24px, 4vw, 40px);
+        }
+
+        .timeline-item {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: auto 1fr;
+            align-items: start;
+        }
+
+        .timeline-item time {
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .timeline-card {
+            background: var(--surface-strong);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            padding: 20px clamp(18px, 3.5vw, 28px);
+            box-shadow: 0 18px 30px rgba(18, 27, 70, 0.08);
+        }
+
+        .timeline-card h3 {
+            margin: 0 0 6px;
+            font-size: 1.05rem;
+        }
+
+        .timeline-card ul {
+            margin: 10px 0 0;
+            padding-left: 18px;
+            color: var(--text-muted);
+        }
+
+        .reading-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .reading-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 18px clamp(20px, 4vw, 28px);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .reading-item span:last-child {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: clamp(48px, 10vw, 96px) clamp(20px, 9vw, 120px) 80px;
+        }
+
+        .footer-inner {
+            border-top: 1px solid rgba(28, 30, 38, 0.12);
+            padding-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 24px 20px 56px;
+            }
+
+            main {
+                padding: 0 20px 80px;
+            }
+
+            footer {
+                padding: 48px 20px 72px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Jonatan S. Wächter</h1>
-        </header>
-        <img src="images/DGFF1.png" alt="DGFF" width="200" class="profile-image">
-        <section class="section education">
-            <h2>Education</h2>
-            <ul>
-                <li>M.Sc. Mathematics, ETH Zurich, 2023-2025</li>
-                <li>B.Sc Engineering Mathematics, KTH Stockholm, 2020-2023</li>
-                <li>B.Sc Exchange Mathematics, ETH Zurich, 2022-2023</li>
-                <li>Business & Economics, Stockholm School of Economics, 2019-2021</li>
-                <li>German Abitur & Svensk Studentexamen, Deutsche Schule Stockholm, 2007-2019</li>
-            </ul>
-        </section>
-        <section class="section publications">
-            <h2>Projects</h2>
-            <ul>
+    <header>
+        <nav class="nav">
+            <a class="logo" href="#top">JSW</a>
+            <div class="nav-links">
+                <a href="#focus">Focus</a>
+                <a href="#projects">Projects</a>
+                <a href="#journey">Journey</a>
+                <a href="#reading">Reading</a>
+                <a href="notebooks.html">Notebooks</a>
+            </div>
+        </nav>
+        <div class="hero" id="top">
+            <div class="hero-text">
+                <p class="eyebrow">Mathematics • Probability • Geometry</p>
+                <h1>Jonatan S. Wächter</h1>
+                <p>Mathematics graduate student at ETH Zürich exploring probability, random fields, and the geometry of complex systems. I enjoy translating intricate theory into visual intuition and share notes, talks, and curiosities along the way.</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="notebooks.html">Browse notebooks</a>
+                    <a class="button ghost" href="pdfs/CircleAverageDGFF.pdf" target="_blank" rel="noopener">Recent paper</a>
+                </div>
+            </div>
+            <figure class="hero-figure">
+                <img src="images/DGFF1.png" alt="Visualization related to discrete Gaussian free field">
+            </figure>
+        </div>
+    </header>
 
-                <li>Quasiconformal deformation and Loewner energy optimization (ongoing) - 2025
-                </li>
-
-                <li>Circle average and delocalization of random fields - 2025
-                <a href="pdfs/CircleAverageDGFF.pdf" target="_blank">[PDF]</a></li>
-
-                <li>ZUCCMAP presentation - 2024
-                <a href="https://www.youtube.com/watch?v=WAPKSkEmrtg" target="_blank">[YouTube]</a></li>
-
-                <li>"Random regular graphs", student seminar presentation with N. Hotton - 2024
-                </li>
-
-                <li>Random curves and their scaling limits - 2023
-                 <a href="pdfs/Kandidatuppsats_JW_final.pdf" target="_blank">[PDF]</a></li>
-
-
-            </ul>
-        </section>
-        <section class="section work">
-            <h2>Work experience</h2>
-            <ul>
-                <li>Apotea AB, Consultant ML, 2025</li>
-                <li>Elypta AB, Data Science Intern, 2022</li>
-                <li>KTH Royal Institute of Technology, TA Analysis I and Linear Algebra I, 2021-2022</li>
-                <li>Simon och Ekarna (2011), Child actor "Young Simon", 2010-2011</li>
-            </ul>
-        </section>
-        <section class="section interests">
-            <h2>Interests</h2>
-            <ul>
-                <li>Random Conformal Geometry</li>
-                <li>Statistical Physics</li>
-                <li>Biology, evolution</li>
-            </ul>
-            <p style="margin-top: 20px; padding-left: 20px;">
-                Since September 2025 I share some random thoughts in <a href="notebooks.html" style="color: #0077cc; text-decoration: none;">notebooks →</a>
-            </p>
-        </section>
-        <section class="Notes">
-            <h2>Lecture Notes - ETHZ courses </h2>
-            <ul>
-                <li>Mathematical Finance - 2025 
-                <a href="pdfs/MF_HS24_full.pdf" target="_blank">[PDF]</a></li>
-            </ul>
+    <main>
+        <section id="focus">
+            <div class="section-heading">
+                <h2>Areas of focus</h2>
+                <p>Rigorous probability, random conformal geometry, and the bridges between mathematics and the sciences.</p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <span class="pill">Research</span>
+                    <h3>Random conformal geometry</h3>
+                    <p>Currently examining quasiconformal deformations and Loewner energy optimization with an eye on analytic structures and computation.</p>
+                </article>
+                <article class="card">
+                    <span class="pill">Theory</span>
+                    <h3>Statistical physics & fields</h3>
+                    <p>Studying delocalization phenomena and circle averages in random fields, connecting probabilistic tools with physical intuition.</p>
+                </article>
+                <article class="card">
+                    <span class="pill">Curiosity</span>
+                    <h3>Biology & complex systems</h3>
+                    <p>Long-term fascination with evolution, systems biology, and how mathematical perspectives can inform living systems.</p>
+                </article>
+            </div>
         </section>
 
-        <section class="Reading">
-            <h2>Currently reading </h2>
-            <ul>
-                <li>Der Mann ohne Eigenschaften (The Man Without Qualities) - Robert Musil 
-                </li>
-                <li>Nostromo - Joseph Conrad 
-                </li>
-            </ul>
+        <section id="projects">
+            <div class="section-heading">
+                <h2>Selected projects</h2>
+                <p>A snapshot of ongoing research, talks, and notes. Most items include links to slides, papers, or video recordings.</p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <h3>Quasiconformal deformation and Loewner energy optimization</h3>
+                    <p>Exploring deformation techniques and energy minimization problems in complex analysis (in progress, 2025).</p>
+                </article>
+                <article class="card">
+                    <h3>Circle average and delocalization of random fields</h3>
+                    <p>Investigating delocalization in discrete Gaussian free fields via circle averages and probabilistic arguments (2025).</p>
+                    <a href="pdfs/CircleAverageDGFF.pdf" target="_blank" rel="noopener">Read the PDF →</a>
+                </article>
+                <article class="card">
+                    <h3>Zürich Undergraduate Colloquium (ZUCCMAP)</h3>
+                    <p>Presentation on random conformal geometry and probabilistic models during the 2024 colloquium.</p>
+                    <a href="https://www.youtube.com/watch?v=WAPKSkEmrtg" target="_blank" rel="noopener">Watch the talk →</a>
+                </article>
+                <article class="card">
+                    <h3>Random regular graphs — student seminar</h3>
+                    <p>Seminar collaboration with N. Hotton covering probabilistic models on random regular graphs (2024).</p>
+                </article>
+                <article class="card">
+                    <h3>Random curves and their scaling limits</h3>
+                    <p>Bachelor thesis on scaling limits and stochastic interfaces with focus on Schramm–Loewner evolution (2023).</p>
+                    <a href="pdfs/Kandidatuppsats_JW_final.pdf" target="_blank" rel="noopener">Read the thesis →</a>
+                </article>
+                <article class="card">
+                    <h3>Lecture notes: Mathematical Finance</h3>
+                    <p>ETH Zürich lecture notes capturing stochastic calculus techniques and pricing theory (2025).</p>
+                    <a href="pdfs/MF_HS24_full.pdf" target="_blank" rel="noopener">Download notes →</a>
+                </article>
+            </div>
         </section>
-        
-    </div>
+
+        <section id="journey">
+            <div class="section-heading">
+                <h2>Academic & professional journey</h2>
+                <p>Moments that shaped my perspective, from academia to industry collaborations and early creative projects.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <time>2023 — 2025</time>
+                    <div class="timeline-card">
+                        <h3>M.Sc. Mathematics, ETH Zürich</h3>
+                        <p>Graduate studies specializing in probability and analysis.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <time>2020 — 2023</time>
+                    <div class="timeline-card">
+                        <h3>B.Sc. Engineering Mathematics, KTH Stockholm</h3>
+                        <ul>
+                            <li>Exchange year at ETH Zürich (2022–2023)</li>
+                            <li>Seminars and research projects in probability</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <time>2019 — 2021</time>
+                    <div class="timeline-card">
+                        <h3>Business & Economics, Stockholm School of Economics</h3>
+                        <p>Developed interest in interdisciplinary models and data-driven decision making.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <time>2025</time>
+                    <div class="timeline-card">
+                        <h3>Consultant, Machine Learning — Apotea AB</h3>
+                        <p>Collaborated on data-driven solutions to logistics challenges.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <time>2022</time>
+                    <div class="timeline-card">
+                        <h3>Data Science Intern — Elypta AB</h3>
+                        <p>Worked on biomarker discovery pipelines and model evaluation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <time>2021 — 2022</time>
+                    <div class="timeline-card">
+                        <h3>Teaching Assistant — KTH Royal Institute of Technology</h3>
+                        <p>Led tutorials for Analysis I and Linear Algebra I.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <time>2010 — 2011</time>
+                    <div class="timeline-card">
+                        <h3>Young Simon — film "Simon och Ekarna"</h3>
+                        <p>Early acting experience sparking a love for storytelling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reading">
+            <div class="section-heading">
+                <h2>Currently reading</h2>
+                <p>Texts that inspire questions about humanity, structure, and perception.</p>
+            </div>
+            <div class="reading-list">
+                <div class="reading-item">
+                    <span>Der Mann ohne Eigenschaften</span>
+                    <span>Robert Musil</span>
+                </div>
+                <div class="reading-item">
+                    <span>Nostromo</span>
+                    <span>Joseph Conrad</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>Notebook updates since September 2025. Explore musings, working notes, and experiments in the <a href="notebooks.html">digital notebook</a>.</p>
+            <div class="footer-links">
+                <span>© <script>document.write(new Date().getFullYear());</script> Jonatan S. Wächter</span>
+                <a href="mailto:jonatan@wachter.se">jonatan@wachter.se</a>
+                <a href="#top">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
