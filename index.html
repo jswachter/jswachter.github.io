@@ -65,6 +65,23 @@
             width: auto;
             object-fit: cover;
         }
+        @media (max-width: 600px) {
+            .image-row {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            .image-row::-webkit-scrollbar {
+                display: none;
+            }
+            .image-row img {
+                min-width: 80%;
+                flex-shrink: 0;
+                scroll-snap-align: center;
+            }
+        }
         ul {
             padding-left: 20px;
         }
