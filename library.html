@@ -186,6 +186,17 @@
                 .toLowerCase();
         }
 
+        function normalizeExternalUrl(raw) {
+            const trimmed = String(raw || '').trim();
+            if (!trimmed) {
+                return '';
+            }
+            if (/^https?:\/\//i.test(trimmed)) {
+                return trimmed;
+            }
+            return '';
+        }
+
         function doiToUrl(raw) {
             const doi = normalizeDoi(raw);
             if (!doi) {
@@ -270,6 +281,7 @@
                 extractCreatorText(data),
                 extractTagText(data),
                 normalizeDoi(data.DOI || data.doi || ''),
+                normalizeExternalUrl(data.url || ''),
                 item.key || ''
             ];
             return parts.join(' ').toLowerCase();
@@ -554,7 +566,7 @@
 
                     const linkA = document.createElement('a');
                     linkA.href = `#z-${item.key}`;
-                    linkA.textContent = 'Link';
+                    linkA.textContent = 'Library link';
                     linksDiv.appendChild(linkA);
 
                     const zoteroHref = item.links && item.links.alternate && item.links.alternate.href ? item.links.alternate.href : '';
@@ -567,8 +579,19 @@
                         linksDiv.appendChild(zoteroA);
                     }
 
+                    const paperUrl = normalizeExternalUrl(data.url || '');
                     const doiUrl = doiToUrl(data.DOI || data.doi || '');
-                    if (doiUrl) {
+                    const paperHref = paperUrl || doiUrl;
+                    if (paperHref) {
+                        const paperA = document.createElement('a');
+                        paperA.href = paperHref;
+                        paperA.target = '_blank';
+                        paperA.rel = 'noopener noreferrer';
+                        paperA.textContent = 'Paper';
+                        linksDiv.appendChild(paperA);
+                    }
+
+                    if (doiUrl && doiUrl !== paperHref) {
                         const doiA = document.createElement('a');
                         doiA.href = doiUrl;
                         doiA.target = '_blank';
@@ -627,4 +650,3 @@
     </script>
 </body>
 </html>
-
