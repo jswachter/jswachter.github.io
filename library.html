@@ -579,19 +579,19 @@
                         linksDiv.appendChild(zoteroA);
                     }
 
-                    const paperUrl = normalizeExternalUrl(data.url || '');
+                    const externalUrl = normalizeExternalUrl(data.url || '');
                     const doiUrl = doiToUrl(data.DOI || data.doi || '');
-                    const paperHref = paperUrl || doiUrl;
-                    if (paperHref) {
-                        const paperA = document.createElement('a');
-                        paperA.href = paperHref;
-                        paperA.target = '_blank';
-                        paperA.rel = 'noopener noreferrer';
-                        paperA.textContent = 'Paper';
-                        linksDiv.appendChild(paperA);
+
+                    if (externalUrl && externalUrl !== doiUrl) {
+                        const urlA = document.createElement('a');
+                        urlA.href = externalUrl;
+                        urlA.target = '_blank';
+                        urlA.rel = 'noopener noreferrer';
+                        urlA.textContent = 'URL';
+                        linksDiv.appendChild(urlA);
                     }
 
-                    if (doiUrl && doiUrl !== paperHref) {
+                    if (doiUrl) {
                         const doiA = document.createElement('a');
                         doiA.href = doiUrl;
                         doiA.target = '_blank';

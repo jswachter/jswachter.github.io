@@ -164,6 +164,17 @@
             return `https://doi.org/${encoded}`;
         }
 
+        function normalizeExternalUrl(raw) {
+            const trimmed = String(raw || '').trim();
+            if (!trimmed) {
+                return '';
+            }
+            if (/^https?:\/\//i.test(trimmed)) {
+                return trimmed;
+            }
+            return '';
+        }
+
         function getZoteroConfig() {
             const base = window.ZOTERO_SITE_CONFIG || {};
             const params = new URLSearchParams(window.location.search);
@@ -349,7 +360,16 @@
                         linksDiv.appendChild(a);
                     }
                 } else if (item && item.data) {
+                    const urlHref = normalizeExternalUrl(item.data.url || '');
                     const doiHref = doiToUrl(item.data.DOI || item.data.doi || '');
+                    if (urlHref && urlHref !== doiHref) {
+                        const a = document.createElement('a');
+                        a.href = urlHref;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.textContent = 'URL';
+                        linksDiv.appendChild(a);
+                    }
                     if (doiHref) {
                         const a = document.createElement('a');
                         a.href = doiHref;
