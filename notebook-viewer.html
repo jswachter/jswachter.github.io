@@ -6,6 +6,7 @@
     <title>Notebook Entry</title>
     <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="zotero-config.js"></script>
     <style>
         html {
             background-color: #ffffff;
@@ -94,6 +95,36 @@
         #content li {
             margin: 8px 0;
         }
+        .references {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+        }
+        .references h2 {
+            margin: 0 0 14px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .references ol {
+            margin: 0;
+            padding-left: 22px;
+        }
+        .references li {
+            margin: 10px 0;
+        }
+        .references .ref-links {
+            margin-top: 6px;
+            font-size: 14px;
+            color: #666;
+        }
+        .references .ref-links a {
+            color: #0077cc;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .references .ref-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -112,17 +143,243 @@
             </section>
         </noscript>
     </div>
-    
+
     <script>
+        function normalizeDoi(raw) {
+            const trimmed = String(raw || '').trim();
+            if (!trimmed) {
+                return '';
+            }
+            return trimmed
+                .replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
+                .toLowerCase();
+        }
+
+        function doiToUrl(raw) {
+            const doi = normalizeDoi(raw);
+            if (!doi) {
+                return '';
+            }
+            const encoded = encodeURIComponent(doi).replace(/%2F/g, '/');
+            return `https://doi.org/${encoded}`;
+        }
+
+        function getZoteroConfig() {
+            const base = window.ZOTERO_SITE_CONFIG || {};
+            const params = new URLSearchParams(window.location.search);
+            return {
+                groupId: params.get('group') || base.groupId || '',
+                collectionKey: params.get('collection') || base.collectionKey || '',
+                style: params.get('style') || base.style || 'apa'
+            };
+        }
+
+        function isZoteroConfigured(config) {
+            return /^\d+$/.test(String(config.groupId || '')) && /^[A-Za-z0-9]{8}$/.test(String(config.collectionKey || ''));
+        }
+
+        async function fetchZoteroItems(config) {
+            const items = [];
+            const pageSize = 100;
+            let start = 0;
+
+            while (true) {
+                const url = new URL(`https://api.zotero.org/groups/${config.groupId}/collections/${config.collectionKey}/items/top`);
+                url.search = new URLSearchParams({
+                    v: '3',
+                    format: 'json',
+                    include: 'data,bib',
+                    style: config.style,
+                    linkwrap: '1',
+                    limit: String(pageSize),
+                    start: String(start)
+                }).toString();
+
+                const response = await fetch(url.toString(), { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Zotero API error (${response.status})`);
+                }
+                const batch = await response.json();
+                if (!Array.isArray(batch) || batch.length === 0) {
+                    break;
+                }
+                items.push(...batch);
+                if (batch.length < pageSize) {
+                    break;
+                }
+                start += batch.length;
+            }
+
+            return items;
+        }
+
+        function clearReferences() {
+            const existing = document.getElementById('references');
+            if (existing) {
+                existing.remove();
+            }
+        }
+
+        function extractCitationsAndRewriteLinks(contentEl) {
+            const citations = [];
+            const seen = new Set();
+
+            const links = contentEl.querySelectorAll('a[href]');
+            for (const a of links) {
+                const rawHref = String(a.getAttribute('href') || '').trim();
+                const doiMatch = rawHref.match(/^doi:(.+)$/i);
+                const zoteroMatch = rawHref.match(/^zotero:([A-Za-z0-9]+)$/i);
+
+                if (doiMatch) {
+                    const doi = normalizeDoi(doiMatch[1]);
+                    if (!doi) {
+                        continue;
+                    }
+                    const key = `doi:${doi}`;
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        citations.push({ type: 'doi', id: doi });
+                    }
+                    const href = doiToUrl(doi);
+                    if (href) {
+                        a.setAttribute('href', href);
+                        a.setAttribute('target', '_blank');
+                        a.setAttribute('rel', 'noopener noreferrer');
+                    }
+                } else if (zoteroMatch) {
+                    const zoteroKey = String(zoteroMatch[1] || '').trim();
+                    if (!zoteroKey) {
+                        continue;
+                    }
+                    const key = `zotero:${zoteroKey}`;
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        citations.push({ type: 'zotero', id: zoteroKey });
+                    }
+                    a.setAttribute('href', `library.html#z-${zoteroKey}`);
+                    a.setAttribute('target', '_blank');
+                    a.setAttribute('rel', 'noopener noreferrer');
+                }
+            }
+
+            return citations;
+        }
+
+        async function renderReferences(citations) {
+            clearReferences();
+            if (!Array.isArray(citations) || citations.length === 0) {
+                return;
+            }
+
+            const contentEl = document.getElementById('content');
+            const section = document.createElement('section');
+            section.id = 'references';
+            section.className = 'references';
+            section.innerHTML = '<h2>References</h2><p style="color: #888;">Loading...</p>';
+            contentEl.insertAdjacentElement('afterend', section);
+
+            const config = getZoteroConfig();
+            const zoteroByKey = new Map();
+            const zoteroByDoi = new Map();
+
+            if (isZoteroConfigured(config)) {
+                try {
+                    const items = await fetchZoteroItems(config);
+                    for (const item of items) {
+                        if (!item) {
+                            continue;
+                        }
+                        if (item.key) {
+                            zoteroByKey.set(item.key, item);
+                        }
+                        const doi = normalizeDoi(item.data && (item.data.DOI || item.data.doi));
+                        if (doi) {
+                            zoteroByDoi.set(doi, item);
+                        }
+                    }
+                } catch (error) {
+                    console.warn('Unable to fetch Zotero items for references:', error);
+                }
+            }
+
+            section.innerHTML = '<h2>References</h2>';
+            const ol = document.createElement('ol');
+
+            for (const ref of citations) {
+                const li = document.createElement('li');
+
+                let item = null;
+                if (ref.type === 'zotero') {
+                    item = zoteroByKey.get(ref.id) || null;
+                } else if (ref.type === 'doi') {
+                    item = zoteroByDoi.get(ref.id) || null;
+                }
+
+                if (item && typeof item.bib === 'string' && item.bib.trim()) {
+                    li.innerHTML = item.bib;
+                } else if (ref.type === 'doi') {
+                    const href = doiToUrl(ref.id);
+                    li.innerHTML = href ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${ref.id}</a>` : ref.id;
+                } else if (ref.type === 'zotero') {
+                    li.innerHTML = `<a href="library.html#z-${ref.id}" target="_blank" rel="noopener noreferrer">${ref.id}</a>`;
+                } else {
+                    li.textContent = String(ref.id || '');
+                }
+
+                const linksDiv = document.createElement('div');
+                linksDiv.className = 'ref-links';
+
+                if (ref.type === 'zotero') {
+                    const a = document.createElement('a');
+                    a.href = `library.html#z-${ref.id}`;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = 'Library';
+                    linksDiv.appendChild(a);
+                }
+
+                if (ref.type === 'doi') {
+                    const href = doiToUrl(ref.id);
+                    if (href) {
+                        const a = document.createElement('a');
+                        a.href = href;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.textContent = 'DOI';
+                        linksDiv.appendChild(a);
+                    }
+                } else if (item && item.data) {
+                    const doiHref = doiToUrl(item.data.DOI || item.data.doi || '');
+                    if (doiHref) {
+                        const a = document.createElement('a');
+                        a.href = doiHref;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.textContent = 'DOI';
+                        linksDiv.appendChild(a);
+                    }
+                }
+
+                if (linksDiv.childNodes.length > 0) {
+                    li.appendChild(linksDiv);
+                }
+
+                ol.appendChild(li);
+            }
+
+            section.appendChild(ol);
+        }
+
         async function loadEntry() {
             const params = new URLSearchParams(window.location.search);
             const entryPath = params.get('entry');
-            
+
             if (!entryPath) {
                 document.getElementById('content').innerHTML = '<p style="color: #888;">No entry specified.</p>';
+                clearReferences();
                 return;
             }
-            
+
             try {
                 // For GitHub Pages, we need to fetch from raw.githubusercontent.com
                 let fetchUrl = entryPath;
@@ -131,55 +388,62 @@
                     const filename = entryPath.split('/').pop();
                     fetchUrl = `https://raw.githubusercontent.com/jswachter/jswachter.github.io/main/notebooks/${filename}`;
                 }
-                
+
                 const response = await fetch(fetchUrl);
+                if (!response.ok) {
+                    throw new Error(`Fetch failed (${response.status})`);
+                }
                 const text = await response.text();
-                
+
                 // Parse frontmatter
                 const lines = text.split('\n');
                 let title = '';
                 let date = '';
                 let contentStart = 0;
-                
+
                 if (lines[0] === '---') {
                     let i = 1;
                     while (i < lines.length && lines[i] !== '---') {
                         if (lines[i].startsWith('title:')) {
                             title = lines[i].substring(6).trim();
                         } else if (lines[i].startsWith('date:')) {
-                            date = new Date(lines[i].substring(5).trim()).toLocaleDateString('en-US', { 
-                                year: 'numeric', 
-                                month: 'long', 
-                                day: 'numeric' 
+                            date = new Date(lines[i].substring(5).trim()).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
                             });
                         }
                         i++;
                     }
                     contentStart = i + 1;
                 }
-                
+
                 // Update page title
                 if (title) {
                     document.title = title + ' - Notebook';
                 }
-                
+
                 // Show metadata
                 const metadataDiv = document.getElementById('entry-metadata');
                 if (date) {
                     metadataDiv.innerHTML = `<p class="entry-date">${date}</p>`;
                 }
-                
+
                 // Render markdown content
                 const markdownContent = lines.slice(contentStart).join('\n');
                 const htmlContent = marked.parse(markdownContent);
-                document.getElementById('content').innerHTML = htmlContent;
-                
+                const contentEl = document.getElementById('content');
+                contentEl.innerHTML = htmlContent;
+
+                const citations = extractCitationsAndRewriteLinks(contentEl);
+                renderReferences(citations);
             } catch (error) {
                 console.error('Error loading entry:', error);
                 document.getElementById('content').innerHTML = '<p style="color: #888;">Unable to load entry.</p>';
+                clearReferences();
             }
         }
-        
+
         // Load entry when page loads
         loadEntry();
     </script>

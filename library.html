@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        html {
+            background-color: #ffffff;
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        h1, h2 {
+            color: #333;
+            font-weight: 400;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px clamp(20px, 6vw, 40px) 96px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            margin: 0;
+            color: #666;
+        }
+        .back-link {
+            margin-bottom: 20px;
+        }
+        .back-link a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            margin: 20px 0 28px;
+        }
+        .controls input[type="search"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+        .controls input[type="search"]:focus {
+            border-color: #0077cc;
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
+        }
+        .status {
+            margin-top: 10px;
+            color: #888;
+            font-size: 14px;
+            min-height: 18px;
+        }
+        details.library-item {
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+        }
+        details.library-item:last-child {
+            border-bottom: 1px solid #eee;
+        }
+        summary.item-summary {
+            cursor: pointer;
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            justify-content: space-between;
+            list-style: none;
+        }
+        summary.item-summary::-webkit-details-marker {
+            display: none;
+        }
+        .item-title {
+            font-weight: 500;
+        }
+        .item-meta {
+            color: #888;
+            font-size: 14px;
+            flex: 0 0 auto;
+            text-align: right;
+        }
+        .item-body {
+            margin-top: 10px;
+            padding-left: 2px;
+        }
+        .item-bib {
+            color: #444;
+        }
+        .item-bib a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .item-bib a:hover {
+            text-decoration: underline;
+        }
+        .item-links {
+            margin-top: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+        .item-links a {
+            color: #0077cc;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .item-links a:hover {
+            text-decoration: underline;
+        }
+        .item-mentions {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f1f1f1;
+            color: #666;
+            font-size: 14px;
+        }
+        .item-mentions a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .item-mentions a:hover {
+            text-decoration: underline;
+        }
+        .item-mentions ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+        .item-mentions li {
+            margin: 6px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html">← Main page</a>
+        </div>
+        <header>
+            <h1>Library</h1>
+            <p class="subtitle">A curated reading list.</p>
+        </header>
+
+        <div class="controls">
+            <input id="search" type="search" placeholder="Search by title, author, year, tag, DOI..." autocomplete="off" aria-label="Search library">
+            <div id="status" class="status" aria-live="polite"></div>
+        </div>
+
+        <section id="library-entries" aria-live="polite"></section>
+
+        <noscript>
+            <section aria-label="Library access for non-JavaScript agents" style="margin-top: 24px; color: #555;">
+                <p>JavaScript is required to load this library view from Zotero.</p>
+            </section>
+        </noscript>
+    </div>
+
+    <script src="zotero-config.js"></script>
+    <script>
+        function normalizeDoi(raw) {
+            const trimmed = String(raw || '').trim();
+            if (!trimmed) {
+                return '';
+            }
+            return trimmed
+                .replace(/^https?:\/\/(dx\.)?doi\.org\//i, '')
+                .toLowerCase();
+        }
+
+        function doiToUrl(raw) {
+            const doi = normalizeDoi(raw);
+            if (!doi) {
+                return '';
+            }
+            // Keep "/" intact for readability/compatibility.
+            const encoded = encodeURIComponent(doi).replace(/%2F/g, '/');
+            return `https://doi.org/${encoded}`;
+        }
+
+        function getZoteroConfig() {
+            const base = window.ZOTERO_SITE_CONFIG || {};
+            const params = new URLSearchParams(window.location.search);
+            return {
+                groupId: params.get('group') || base.groupId || '',
+                collectionKey: params.get('collection') || base.collectionKey || '',
+                style: params.get('style') || base.style || 'apa'
+            };
+        }
+
+        function isConfigured(config) {
+            return /^\d+$/.test(String(config.groupId || '')) && /^[A-Za-z0-9]{8}$/.test(String(config.collectionKey || ''));
+        }
+
+        function extractYear(data) {
+            const date = String((data && data.date) || '').trim();
+            const match = date.match(/\b(\d{4})\b/);
+            return match ? match[1] : '';
+        }
+
+        function extractFirstCreator(data) {
+            const creators = Array.isArray(data && data.creators) ? data.creators : [];
+            const preferred = creators.find((c) => c && c.creatorType === 'author') || creators[0];
+            if (!preferred) {
+                return '';
+            }
+            if (preferred.lastName) {
+                return preferred.lastName;
+            }
+            return preferred.name || '';
+        }
+
+        function extractCreatorText(data) {
+            const creators = Array.isArray(data && data.creators) ? data.creators : [];
+            return creators
+                .map((c) => {
+                    if (!c) {
+                        return '';
+                    }
+                    if (c.name) {
+                        return c.name;
+                    }
+                    const first = c.firstName || '';
+                    const last = c.lastName || '';
+                    return `${first} ${last}`.trim();
+                })
+                .filter(Boolean)
+                .join(' ');
+        }
+
+        function extractTagText(data) {
+            const tags = Array.isArray(data && data.tags) ? data.tags : [];
+            return tags
+                .map((t) => {
+                    if (!t) {
+                        return '';
+                    }
+                    if (typeof t === 'string') {
+                        return t;
+                    }
+                    return t.tag || '';
+                })
+                .filter(Boolean)
+                .join(' ');
+        }
+
+        function buildSearchText(item) {
+            const data = item && item.data ? item.data : {};
+            const parts = [
+                data.title || '',
+                extractYear(data),
+                extractCreatorText(data),
+                extractTagText(data),
+                normalizeDoi(data.DOI || data.doi || ''),
+                item.key || ''
+            ];
+            return parts.join(' ').toLowerCase();
+        }
+
+        async function fetchZoteroItems(config) {
+            const items = [];
+            const pageSize = 100;
+            let start = 0;
+
+            while (true) {
+                const url = new URL(`https://api.zotero.org/groups/${config.groupId}/collections/${config.collectionKey}/items/top`);
+                url.search = new URLSearchParams({
+                    v: '3',
+                    format: 'json',
+                    include: 'data,bib',
+                    style: config.style,
+                    linkwrap: '1',
+                    limit: String(pageSize),
+                    start: String(start)
+                }).toString();
+
+                const response = await fetch(url.toString(), { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Zotero API error (${response.status})`);
+                }
+                const batch = await response.json();
+                if (!Array.isArray(batch) || batch.length === 0) {
+                    break;
+                }
+                items.push(...batch);
+                if (batch.length < pageSize) {
+                    break;
+                }
+                start += batch.length;
+            }
+
+            return items;
+        }
+
+        function resolveNotebookFetchUrl(entryPath) {
+            if (window.location.hostname === 'jswachter.github.io') {
+                const filename = String(entryPath || '').split('/').pop();
+                return `https://raw.githubusercontent.com/jswachter/jswachter.github.io/main/notebooks/${filename}`;
+            }
+            return entryPath;
+        }
+
+        let notebookCitationIndex = null;
+        let notebookCitationIndexPromise = null;
+
+        async function buildNotebookCitationIndex() {
+            const response = await fetch('notebooks/notebook-index.json', { cache: 'no-store' });
+            const data = await response.json();
+            const entries = Array.isArray(data && data.entries) ? data.entries : [];
+
+            const byDoi = new Map();
+            const byKey = new Map();
+
+            function add(map, key, entry) {
+                if (!key) {
+                    return;
+                }
+                const existing = map.get(key);
+                if (!existing) {
+                    map.set(key, [entry]);
+                    return;
+                }
+                if (!existing.some((e) => e && e.path === entry.path)) {
+                    existing.push(entry);
+                }
+            }
+
+            for (const entry of entries) {
+                if (!entry || !entry.path) {
+                    continue;
+                }
+                const fetchUrl = resolveNotebookFetchUrl(entry.path);
+                try {
+                    const mdResponse = await fetch(fetchUrl, { cache: 'no-store' });
+                    if (!mdResponse.ok) {
+                        continue;
+                    }
+                    const text = await mdResponse.text();
+
+                    const doiPattern = /\]\(\s*doi:([^\s)]+)\s*\)/gi;
+                    const zoteroPattern = /\]\(\s*zotero:([A-Za-z0-9]+)\s*\)/gi;
+
+                    let match;
+                    while ((match = doiPattern.exec(text)) !== null) {
+                        const doi = normalizeDoi(match[1]);
+                        add(byDoi, doi, entry);
+                    }
+                    while ((match = zoteroPattern.exec(text)) !== null) {
+                        const key = String(match[1] || '').trim();
+                        add(byKey, key, entry);
+                    }
+                } catch (error) {
+                    // Ignore individual notebook failures.
+                }
+            }
+
+            return { byDoi, byKey };
+        }
+
+        function ensureNotebookCitationIndex() {
+            if (notebookCitationIndex) {
+                return Promise.resolve(notebookCitationIndex);
+            }
+            if (!notebookCitationIndexPromise) {
+                notebookCitationIndexPromise = buildNotebookCitationIndex()
+                    .then((index) => {
+                        notebookCitationIndex = index;
+                        return index;
+                    })
+                    .catch((error) => {
+                        console.warn('Unable to build notebook citation index:', error);
+                        notebookCitationIndex = { byDoi: new Map(), byKey: new Map() };
+                        return notebookCitationIndex;
+                    });
+            }
+            return notebookCitationIndexPromise;
+        }
+
+        function renderNotebookMentions(container, item) {
+            const data = item && item.data ? item.data : {};
+            const doi = normalizeDoi(data.DOI || data.doi || '');
+            const key = String(item && item.key ? item.key : '').trim();
+
+            if (!doi && !key) {
+                container.textContent = '';
+                return;
+            }
+
+            container.textContent = 'Checking notebooks...';
+
+            ensureNotebookCitationIndex().then((index) => {
+                const hits = [];
+                if (doi && index.byDoi.has(doi)) {
+                    hits.push(...index.byDoi.get(doi));
+                }
+                if (key && index.byKey.has(key)) {
+                    hits.push(...index.byKey.get(key));
+                }
+
+                const unique = [];
+                const seen = new Set();
+                for (const entry of hits) {
+                    if (!entry || !entry.path) {
+                        continue;
+                    }
+                    if (seen.has(entry.path)) {
+                        continue;
+                    }
+                    seen.add(entry.path);
+                    unique.push(entry);
+                }
+
+                if (unique.length === 0) {
+                    container.textContent = 'Not referenced in notebooks (yet).';
+                    return;
+                }
+
+                container.innerHTML = '';
+                const label = document.createElement('div');
+                label.textContent = 'Mentioned in notebooks:';
+                container.appendChild(label);
+
+                const list = document.createElement('ul');
+                for (const entry of unique) {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `notebook-viewer.html?entry=${encodeURIComponent(entry.path)}`;
+                    a.textContent = entry.title || entry.path;
+                    li.appendChild(a);
+                    list.appendChild(li);
+                }
+                container.appendChild(list);
+            });
+        }
+
+        function openFromHash() {
+            const hash = String(window.location.hash || '').trim();
+            if (!hash.startsWith('#z-')) {
+                return;
+            }
+            const el = document.getElementById(hash.substring(1));
+            if (el && el.tagName === 'DETAILS') {
+                el.open = true;
+                el.scrollIntoView({ block: 'start' });
+            }
+        }
+
+        async function loadLibrary() {
+            const entriesContainer = document.getElementById('library-entries');
+            const statusEl = document.getElementById('status');
+            const searchInput = document.getElementById('search');
+            const config = getZoteroConfig();
+
+            if (!isConfigured(config)) {
+                statusEl.innerHTML = 'Set <code>groupId</code> and <code>collectionKey</code> in <code>zotero-config.js</code>.';
+                entriesContainer.innerHTML = '<p style="color: #888;">Library not configured.</p>';
+                return;
+            }
+
+            statusEl.textContent = 'Loading...';
+            entriesContainer.innerHTML = '';
+
+            try {
+                const items = await fetchZoteroItems(config);
+
+                items.sort((a, b) => {
+                    const yearA = extractYear(a && a.data ? a.data : {});
+                    const yearB = extractYear(b && b.data ? b.data : {});
+                    if (yearA && yearB && yearA !== yearB) {
+                        return yearB.localeCompare(yearA);
+                    }
+                    const titleA = String(a && a.data && a.data.title ? a.data.title : '');
+                    const titleB = String(b && b.data && b.data.title ? b.data.title : '');
+                    return titleA.localeCompare(titleB);
+                });
+
+                if (items.length === 0) {
+                    statusEl.textContent = '';
+                    entriesContainer.innerHTML = '<p style="color: #888;">No items found.</p>';
+                    return;
+                }
+
+                statusEl.textContent = `${items.length} items`;
+
+                const itemEls = [];
+                for (const item of items) {
+                    if (!item || !item.key) {
+                        continue;
+                    }
+                    const data = item.data || {};
+                    const title = String(data.title || '(untitled)');
+                    const year = extractYear(data);
+                    const firstCreator = extractFirstCreator(data);
+                    const metaParts = [];
+                    if (year) {
+                        metaParts.push(year);
+                    }
+                    if (firstCreator) {
+                        metaParts.push(firstCreator);
+                    }
+
+                    const details = document.createElement('details');
+                    details.className = 'library-item';
+                    details.id = `z-${item.key}`;
+                    details.dataset.search = buildSearchText(item);
+
+                    const summary = document.createElement('summary');
+                    summary.className = 'item-summary';
+
+                    const titleSpan = document.createElement('span');
+                    titleSpan.className = 'item-title';
+                    titleSpan.textContent = title;
+
+                    const metaSpan = document.createElement('span');
+                    metaSpan.className = 'item-meta';
+                    metaSpan.textContent = metaParts.join(' - ');
+
+                    summary.appendChild(titleSpan);
+                    summary.appendChild(metaSpan);
+                    details.appendChild(summary);
+
+                    const body = document.createElement('div');
+                    body.className = 'item-body';
+
+                    const bibDiv = document.createElement('div');
+                    bibDiv.className = 'item-bib';
+                    if (typeof item.bib === 'string' && item.bib.trim()) {
+                        bibDiv.innerHTML = item.bib;
+                    } else {
+                        bibDiv.textContent = 'No formatted citation available.';
+                    }
+                    body.appendChild(bibDiv);
+
+                    const linksDiv = document.createElement('div');
+                    linksDiv.className = 'item-links';
+
+                    const linkA = document.createElement('a');
+                    linkA.href = `#z-${item.key}`;
+                    linkA.textContent = 'Link';
+                    linksDiv.appendChild(linkA);
+
+                    const zoteroHref = item.links && item.links.alternate && item.links.alternate.href ? item.links.alternate.href : '';
+                    if (zoteroHref) {
+                        const zoteroA = document.createElement('a');
+                        zoteroA.href = zoteroHref;
+                        zoteroA.target = '_blank';
+                        zoteroA.rel = 'noopener noreferrer';
+                        zoteroA.textContent = 'Zotero';
+                        linksDiv.appendChild(zoteroA);
+                    }
+
+                    const doiUrl = doiToUrl(data.DOI || data.doi || '');
+                    if (doiUrl) {
+                        const doiA = document.createElement('a');
+                        doiA.href = doiUrl;
+                        doiA.target = '_blank';
+                        doiA.rel = 'noopener noreferrer';
+                        doiA.textContent = 'DOI';
+                        linksDiv.appendChild(doiA);
+                    }
+
+                    body.appendChild(linksDiv);
+
+                    const mentions = document.createElement('div');
+                    mentions.className = 'item-mentions';
+                    mentions.textContent = '';
+                    body.appendChild(mentions);
+
+                    details.appendChild(body);
+
+                    details.addEventListener('toggle', () => {
+                        if (!details.open) {
+                            return;
+                        }
+                        // Build the notebook citation index lazily on first open.
+                        renderNotebookMentions(mentions, item);
+                    });
+
+                    entriesContainer.appendChild(details);
+                    itemEls.push(details);
+                }
+
+                function applyFilter() {
+                    const q = String(searchInput.value || '').trim().toLowerCase();
+                    let shown = 0;
+                    for (const el of itemEls) {
+                        const text = el.dataset.search || '';
+                        const match = !q || text.includes(q);
+                        el.style.display = match ? '' : 'none';
+                        if (match) {
+                            shown++;
+                        }
+                    }
+                    statusEl.textContent = q ? `${shown} of ${items.length} items` : `${items.length} items`;
+                }
+
+                searchInput.addEventListener('input', applyFilter);
+
+                openFromHash();
+                window.addEventListener('hashchange', openFromHash);
+            } catch (error) {
+                console.error('Error loading Zotero library:', error);
+                statusEl.textContent = '';
+                entriesContainer.innerHTML = '<p style="color: #888;">Unable to load library.</p>';
+            }
+        }
+
+        loadLibrary();
+    </script>
+</body>
+</html>
+
