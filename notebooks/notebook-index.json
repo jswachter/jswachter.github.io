@@ -5,37 +5,71 @@
             "title": "Confluence of browsers, agents and apps",
             "date": "2025-10-30",
             "path": "notebooks/2025-10-30-confluence-browser-agents.md",
-            "summary": "Notes on how browsers, autonomous agents and embedded apps are converging and what this enables."
+            "summary": "Notes on how browsers, autonomous agents and embedded apps are converging and what this enables.",
+            "tags": [
+                "AI",
+                "browsers"
+            ],
+            "collection": "General"
         },
         {
             "title": "Autoformalization agents",
             "date": "2025-10-02",
             "path": "notebooks/2025-10-02-autoformalization-agents.md",
-            "summary": "Thoughts on building agents that can translate informal mathematics into formal proofs."
+            "summary": "Thoughts on building agents that can translate informal mathematics into formal proofs.",
+            "tags": [
+                "math",
+                "AI",
+                "autoformalization"
+            ],
+            "collection": "General"
         },
         {
             "title": "New tasks and what matters",
             "date": "2025-10-01",
             "path": "notebooks/2025-10-01-new-tasks.md",
-            "summary": "Reflecting on emerging kinds of work and which problems are meaningful to pursue."
+            "summary": "Reflecting on emerging kinds of work and which problems are meaningful to pursue.",
+            "tags": [
+                "future",
+                "AI",
+                "work"
+            ],
+            "collection": "General"
         },
         {
             "title": "Stablecoins and new units of account",
             "date": "2025-09-08",
             "path": "notebooks/2025-09-stablecoins.md",
-            "summary": "Exploring how stablecoins might evolve into new monetary units and the implications for finance."
+            "summary": "Exploring how stablecoins might evolve into new monetary units and the implications for finance.",
+            "tags": [
+                "banking",
+                "money",
+                "finance",
+                "crypto"
+            ],
+            "collection": "General"
         },
         {
             "title": "Riding the displacement wave",
             "date": "2025-09-08",
             "path": "notebooks/2025-09-08-riding-displacement.md",
-            "summary": "Considering the wave of job displacement from AI systems and strategies to respond."
+            "summary": "Considering the wave of job displacement from AI systems and strategies to respond.",
+            "tags": [
+                "ai",
+                "startups"
+            ],
+            "collection": "General"
         },
         {
             "title": "RiskON 2025 design",
             "date": "2025-09-07",
             "path": "notebooks/2025-09-07-risk-on.md",
-            "summary": "Design notes for the RiskON 2025 project and its goals."
+            "summary": "Design notes for the RiskON 2025 project and its goals.",
+            "tags": [
+                "risk",
+                "hackathon"
+            ],
+            "collection": "General"
         }
     ]
 }
