@@ -1,9 +1,18 @@
 {
-    "generated_at": "1970-01-01T00:00:00Z",
+    "generated_at": "2026-02-07T12:36:29Z",
     "user": {
         "id": "98490343",
         "slug": "jonatan",
         "profile_slug": "98490343-jonatan"
     },
-    "quotes": []
+    "quotes": [
+        {
+            "text": "“One does what one is; one becomes what one does.”",
+            "attribution": "Robert Musil"
+        },
+        {
+            "text": "“Charisma is the numinous aura around a narcissistic personality. It flows outward from a simplicity or unity of being and a composure and controlled vitality. There is gracious accommodation, yet commanding impersonality. Charisma is the radiance produced by the interaction of male and female elements in a gifted personality. The charismatic woman has a masculine force and severity. The charismatic man has an entrancing female beauty. Both are hot and cold, glowing with presexual self love.”",
+            "attribution": "Camille Paglia"
+        }
+    ]
 }
