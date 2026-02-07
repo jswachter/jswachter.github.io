@@ -1,0 +1,38 @@
+name: update goodreads snapshots
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 6 * * 0"
+
+permissions:
+    contents: write
+
+jobs:
+    update:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: "3.x"
+
+            - name: update snapshots
+              env:
+                  GOODREADS_USER_ID: "98490343"
+                  GOODREADS_USER_SLUG: "jonatan"
+                  GOODREADS_RSS_KEY: ${{ secrets.GOODREADS_RSS_KEY }}
+              run: python3 scripts/update_goodreads.py
+
+            - name: commit changes
+              run: |
+                  if [[ -z "$(git status --porcelain)" ]]; then
+                      echo "no changes"
+                      exit 0
+                  fi
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add goodreads/shelves/*.json
+                  git commit -m "update goodreads snapshots"
+                  git push
