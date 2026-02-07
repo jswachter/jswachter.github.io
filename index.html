@@ -166,14 +166,77 @@
 
         <section class="Reading">
             <h2>Currently reading </h2>
-            <ul>
-                <li>Der Mann ohne Eigenschaften (The Man Without Qualities) - Robert Musil 
-                </li>
-                <li>Nostromo - Joseph Conrad 
-                </li>
+            <ul id="goodreads-currently-reading" aria-live="polite">
+                <li style="color: #888;">Loading...</li>
             </ul>
+            <p style="margin-top: 8px; padding-left: 20px;">
+                <a href="goodreads.html" style="color: #0077cc; text-decoration: none;">Goodreads →</a>
+            </p>
         </section>
         
     </div>
+    <script>
+        (function () {
+            const listEl = document.getElementById('goodreads-currently-reading');
+            if (!listEl) {
+                return;
+            }
+
+            function clearList() {
+                listEl.innerHTML = '';
+            }
+
+            function renderMessage(message) {
+                clearList();
+                const li = document.createElement('li');
+                li.style.color = '#888';
+                li.textContent = message;
+                listEl.appendChild(li);
+            }
+
+            fetch('goodreads/shelves/currently-reading.json', { cache: 'no-store' })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Fetch failed (${response.status})`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    const items = Array.isArray(data && data.items) ? data.items : [];
+                    if (items.length === 0) {
+                        renderMessage('No books listed.');
+                        return;
+                    }
+
+                    clearList();
+                    for (const item of items) {
+                        const li = document.createElement('li');
+                        const title = item && item.title ? String(item.title) : '(untitled)';
+                        const author = item && item.author_name ? String(item.author_name) : '';
+                        const href = item && item.link ? String(item.link) : '';
+                        const label = author ? `${title} - ${author}` : title;
+
+                        if (href) {
+                            const a = document.createElement('a');
+                            a.href = href;
+                            a.target = '_blank';
+                            a.rel = 'noopener noreferrer';
+                            a.style.color = '#0077cc';
+                            a.style.textDecoration = 'none';
+                            a.textContent = label;
+                            li.appendChild(a);
+                        } else {
+                            li.textContent = label;
+                        }
+
+                        listEl.appendChild(li);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Unable to load Goodreads currently-reading shelf:', error);
+                    renderMessage('Unable to load Goodreads.');
+                });
+        })();
+    </script>
 </body>
 </html>
