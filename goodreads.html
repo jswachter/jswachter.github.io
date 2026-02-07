@@ -162,40 +162,33 @@
             padding-top: 24px;
             border-top: 1px solid #eee;
         }
-	        .quotes h2 {
-	            margin: 0 0 12px;
-	            font-size: 18px;
-	            font-weight: 500;
-	        }
-	        .gr-quotes-widget {
-	            border: 1px solid #eee;
-	            border-radius: 10px;
-	            padding: 12px 14px;
-	            background: #fff;
-	        }
-	        .gr-quotes-title {
-	            margin: 0 0 10px;
-	            font-size: 16px;
-	            font-weight: 500;
-	        }
-	        .gr-quotes-title a,
-	        .gr-quotes-footer a {
-	            color: #0077cc;
-	            text-decoration: none;
-	        }
-	        .gr-quotes-title a:hover,
-	        .gr-quotes-footer a:hover {
-	            text-decoration: underline;
-	        }
-	        #gr_quote_body {
-	            color: #444;
-	        }
-	        .gr-quotes-footer {
-	            margin-top: 10px;
-	            text-align: right;
-	            font-size: 12px;
-	            color: #666;
-	        }
+        .quotes h2 {
+            margin: 0 0 12px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .gr-quotes-widget {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 12px 14px;
+            background: #fff;
+        }
+        .gr-quotes-footer a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .gr-quotes-footer a:hover {
+            text-decoration: underline;
+        }
+        #gr_quote_body {
+            color: #444;
+        }
+        .gr-quotes-footer {
+            margin-top: 10px;
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+        }
 	    </style>
 </head>
 <body>
@@ -217,22 +210,19 @@
 
         <section id="book-entries" aria-live="polite"></section>
 
-	        <section class="quotes" aria-label="Saved quotes">
-	            <h2>Quotes</h2>
-	            <div class="gr-quotes-widget">
-	                <h3 class="gr-quotes-title">
-	                    <a href="https://www.goodreads.com/user/show/98490343-jonatan" target="_blank" rel="noopener noreferrer">Jonatan's quotes</a>
-	                </h3>
-	                <div id="gr_quote_body">Loading...</div>
-	                <script src="https://www.goodreads.com/quotes/widget/98490343-jonatan?v=2" type="text/javascript"></script>
-	                <div class="gr-quotes-footer">
-	                    <a href="https://www.goodreads.com/quotes" target="_blank" rel="noopener noreferrer">Goodreads Quotes</a>
-	                </div>
-	            </div>
-	            <noscript>
-	                <p style="color: #888;">JavaScript is required to load the Goodreads quotes widget.</p>
-	            </noscript>
-	        </section>
+        <section class="quotes" aria-label="Saved quotes">
+            <h2>Quotes</h2>
+            <div class="gr-quotes-widget">
+                <div id="gr_quote_body">Loading...</div>
+                <script src="https://www.goodreads.com/quotes/widget/98490343-jonatan?v=2" type="text/javascript"></script>
+                <div class="gr-quotes-footer">
+                    <a href="https://www.goodreads.com/quotes" target="_blank" rel="noopener noreferrer">Goodreads Quotes</a>
+                </div>
+            </div>
+            <noscript>
+                <p style="color: #888;">JavaScript is required to load the Goodreads quotes widget.</p>
+            </noscript>
+        </section>
     </div>
 
     <script src="goodreads-config.js"></script>
