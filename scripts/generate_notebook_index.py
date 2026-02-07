@@ -217,12 +217,12 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     title = str(entry.get("title") or "(untitled)")
     date_str = str(entry.get("date") or "").strip()
     path = str(entry.get("path") or "")
-    summary = str(entry.get("summary") or "").strip()
     tags = entry.get("tags") if isinstance(entry.get("tags"), list) else []
     tags = [str(t).strip() for t in tags if str(t).strip()]
     collection = str(entry.get("collection") or "General").strip() or "General"
 
     tags_lower = ",".join([t.lower() for t in tags])
+    summary = str(entry.get("summary") or "").strip()
     search_text = " ".join([title, date_str, collection, " ".join(tags), summary]).strip()
 
     tag_links = ""
@@ -245,8 +245,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     meta_parts.append(f'<a href="{escape(path)}">md</a>')
 
     meta_html = " · ".join(meta_parts)
-    summary_html = f'<p class="entry-summary">{escape(summary)}</p>' if summary else ""
-    summary_block = ("    " + summary_html + "\n") if summary_html else ""
 
     return (
         f'<div class="entry" data-title="{escape(title)}" data-date="{escape(date_str)}" '
@@ -254,7 +252,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
         f'data-search="{escape(safe_data_attr(search_text))}">\n'
         f'    <h3 class="entry-title"><a href="notebook-viewer.html?entry={url_quote(path)}">{escape(title)}</a></h3>\n'
         f'    <p class="entry-meta">{meta_html}</p>\n'
-        f"{summary_block}"
         f"</div>"
     )
 
