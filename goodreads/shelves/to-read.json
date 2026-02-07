@@ -1,10 +1,90 @@
 {
-    "generated_at": "1970-01-01T00:00:00Z",
+    "generated_at": "2026-02-07T10:30:52Z",
     "user": {
         "id": "98490343",
         "slug": "jonatan"
     },
     "shelf": "to-read",
-    "items": []
+    "items": [
+        {
+            "book_id": "115476",
+            "title": "Nostromo",
+            "author_name": "Joseph Conrad",
+            "link": "https://www.goodreads.com/review/show/8337514118?utm_medium=api&utm_source=rss",
+            "book_small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328865264l/115476._SY75_.jpg",
+            "book_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328865264l/115476._SY75_.jpg",
+            "book_medium_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328865264l/115476._SX98_.jpg",
+            "book_large_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328865264l/115476.jpg",
+            "isbn": "0486424529",
+            "user_rating": "0",
+            "user_read_at": "",
+            "user_date_added": "Fri, 06 Feb 2026 16:09:58 -0800",
+            "user_shelves": "to-read",
+            "user_review": "",
+            "average_rating": "3.81",
+            "book_published": "1904",
+            "pubDate": "Fri, 06 Feb 2026 16:09:58 -0800",
+            "guid": "https://www.goodreads.com/review/show/8337514118?utm_medium=api&utm_source=rss"
+        },
+        {
+            "book_id": "88077",
+            "title": "The Magic Mountain",
+            "author_name": "Thomas Mann",
+            "link": "https://www.goodreads.com/review/show/8121255800?utm_medium=api&utm_source=rss",
+            "book_small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1645738968l/88077._SY75_.jpg",
+            "book_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1645738968l/88077._SY75_.jpg",
+            "book_medium_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1645738968l/88077._SX98_.jpg",
+            "book_large_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1645738968l/88077.jpg",
+            "isbn": "",
+            "user_rating": "0",
+            "user_read_at": "",
+            "user_date_added": "Thu, 04 Dec 2025 10:32:15 -0800",
+            "user_shelves": "to-read",
+            "user_review": "",
+            "average_rating": "4.12",
+            "book_published": "1924",
+            "pubDate": "Thu, 04 Dec 2025 10:32:15 -0800",
+            "guid": "https://www.goodreads.com/review/show/8121255800?utm_medium=api&utm_source=rss"
+        },
+        {
+            "book_id": "642209",
+            "title": "The Master of the Day of Judgment",
+            "author_name": "Leo Perutz",
+            "link": "https://www.goodreads.com/review/show/8078270519?utm_medium=api&utm_source=rss",
+            "book_small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348325268l/642209._SX50_.jpg",
+            "book_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348325268l/642209._SX50_.jpg",
+            "book_medium_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348325268l/642209._SX98_.jpg",
+            "book_large_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348325268l/642209.jpg",
+            "isbn": "1417925280",
+            "user_rating": "0",
+            "user_read_at": "",
+            "user_date_added": "Mon, 17 Nov 2025 05:58:44 -0800",
+            "user_shelves": "to-read",
+            "user_review": "",
+            "average_rating": "3.95",
+            "book_published": "1923",
+            "pubDate": "Mon, 17 Nov 2025 05:58:44 -0800",
+            "guid": "https://www.goodreads.com/review/show/8078270519?utm_medium=api&utm_source=rss"
+        },
+        {
+            "book_id": "220266242",
+            "title": "Air",
+            "author_name": "Christian Kracht",
+            "link": "https://www.goodreads.com/review/show/8078269952?utm_medium=api&utm_source=rss",
+            "book_small_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1728519770l/220266242._SX50_.jpg",
+            "book_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1728519770l/220266242._SX50_.jpg",
+            "book_medium_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1728519770l/220266242._SX98_.jpg",
+            "book_large_image_url": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1728519770l/220266242._SX318_.jpg",
+            "isbn": "3462313207",
+            "user_rating": "0",
+            "user_read_at": "",
+            "user_date_added": "Mon, 17 Nov 2025 05:58:26 -0800",
+            "user_shelves": "to-read",
+            "user_review": "",
+            "average_rating": "3.63",
+            "book_published": "2025",
+            "pubDate": "Mon, 17 Nov 2025 05:58:26 -0800",
+            "guid": "https://www.goodreads.com/review/show/8078269952?utm_medium=api&utm_source=rss"
+        }
+    ]
 }
-
