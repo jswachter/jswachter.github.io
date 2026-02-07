@@ -34,14 +34,34 @@
             margin: 0 auto;
             padding: 48px clamp(20px, 6vw, 40px) 96px;
         }
+        .nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
         .back-link {
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
         .back-link a {
             color: #0077cc;
             text-decoration: none;
         }
         .back-link a:hover {
+            text-decoration: underline;
+        }
+        .entry-nav {
+            display: flex;
+            gap: 12px;
+            flex: 0 0 auto;
+        }
+        .entry-nav a {
+            color: #0077cc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .entry-nav a:hover {
             text-decoration: underline;
         }
         .entry-date {
@@ -129,8 +149,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="back-link">
-            <a href="notebooks.html">← All notebooks</a>
+        <div class="nav-row">
+            <div class="back-link">
+                <a href="notebooks.html">← All notebooks</a>
+            </div>
+            <div class="entry-nav" aria-label="Notebook navigation">
+                <a id="nav-newer" href="notebooks.html" style="display: none;">← Newer</a>
+                <a id="nav-older" href="notebooks.html" style="display: none;">Older →</a>
+            </div>
         </div>
         <div id="entry-metadata"></div>
         <div id="content" aria-live="polite">
@@ -173,6 +199,165 @@
                 return trimmed;
             }
             return '';
+        }
+
+        function formatDateIso(isoDate) {
+            const raw = String(isoDate || '').trim();
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+                return raw;
+            }
+            return new Date(raw).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        let notebookIndexPromise = null;
+
+        function fetchNotebookIndex() {
+            if (notebookIndexPromise) {
+                return notebookIndexPromise;
+            }
+
+            notebookIndexPromise = fetch('notebooks/notebook-index.json', { cache: 'no-store' })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Notebook index fetch failed (${response.status})`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    const entries = Array.isArray(data && data.entries) ? data.entries.slice() : [];
+                    entries.sort((a, b) => {
+                        const dateA = a.date || '';
+                        const dateB = b.date || '';
+                        if (dateA && dateB && dateA !== dateB) {
+                            return dateB.localeCompare(dateA);
+                        }
+                        if (dateA && !dateB) {
+                            return -1;
+                        }
+                        if (!dateA && dateB) {
+                            return 1;
+                        }
+                        const titleA = a.title || '';
+                        const titleB = b.title || '';
+                        return titleA.localeCompare(titleB);
+                    });
+                    return entries;
+                });
+
+            return notebookIndexPromise;
+        }
+
+        function findNotebookIndexEntry(entries, entryPath) {
+            const normalized = String(entryPath || '').replace(/^\/+/, '');
+            let index = entries.findIndex((e) => e && e.path === normalized);
+            if (index !== -1) {
+                return index;
+            }
+            const filename = normalized.split('/').pop();
+            index = entries.findIndex((e) => e && typeof e.path === 'string' && e.path.split('/').pop() === filename);
+            return index;
+        }
+
+        function setNavLink(el, entry, label) {
+            if (!el) {
+                return;
+            }
+            if (!entry || !entry.path) {
+                el.style.display = 'none';
+                el.removeAttribute('href');
+                return;
+            }
+            el.style.display = '';
+            el.href = `notebook-viewer.html?entry=${encodeURIComponent(entry.path)}`;
+            el.textContent = label;
+            el.title = entry.title || '';
+        }
+
+        function renderNotebookMetadata(entry, fallbackDateText) {
+            const metadataDiv = document.getElementById('entry-metadata');
+            if (!metadataDiv) {
+                return;
+            }
+
+            metadataDiv.innerHTML = '';
+            const p = document.createElement('p');
+            p.className = 'entry-date';
+
+            function addSep() {
+                p.appendChild(document.createTextNode(' · '));
+            }
+
+            const dateText = entry && entry.date ? formatDateIso(entry.date) : String(fallbackDateText || '').trim();
+            if (dateText) {
+                p.appendChild(document.createTextNode(dateText));
+            }
+
+            if (entry && entry.collection) {
+                if (p.childNodes.length > 0) {
+                    addSep();
+                }
+                const a = document.createElement('a');
+                a.href = `notebooks.html?collection=${encodeURIComponent(entry.collection)}`;
+                a.textContent = entry.collection;
+                p.appendChild(a);
+            }
+
+            if (entry && Array.isArray(entry.tags) && entry.tags.length > 0) {
+                if (p.childNodes.length > 0) {
+                    addSep();
+                }
+                const span = document.createElement('span');
+                for (let i = 0; i < entry.tags.length; i++) {
+                    const tag = String(entry.tags[i] || '').trim();
+                    if (!tag) {
+                        continue;
+                    }
+                    if (span.childNodes.length > 0) {
+                        span.appendChild(document.createTextNode(', '));
+                    }
+                    const a = document.createElement('a');
+                    a.href = `notebooks.html?tag=${encodeURIComponent(tag)}`;
+                    a.textContent = tag;
+                    span.appendChild(a);
+                }
+                p.appendChild(span);
+            }
+
+            if (entry && entry.path) {
+                addSep();
+                const a = document.createElement('a');
+                a.href = entry.path;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'md';
+                p.appendChild(a);
+            }
+
+            metadataDiv.appendChild(p);
+        }
+
+        function enhanceNotebookContext(entryPath, fallbackDateText) {
+            fetchNotebookIndex()
+                .then((entries) => {
+                    const idx = findNotebookIndexEntry(entries, entryPath);
+                    if (idx === -1) {
+                        return;
+                    }
+                    const entry = entries[idx];
+                    const newer = idx > 0 ? entries[idx - 1] : null;
+                    const older = idx + 1 < entries.length ? entries[idx + 1] : null;
+
+                    renderNotebookMetadata(entry, fallbackDateText);
+                    setNavLink(document.getElementById('nav-newer'), newer, '← Newer');
+                    setNavLink(document.getElementById('nav-older'), older, 'Older →');
+                })
+                .catch((error) => {
+                    console.warn('Unable to enhance notebook context:', error);
+                });
         }
 
         function getZoteroConfig() {
@@ -401,24 +586,38 @@
             }
 
             try {
-                // For GitHub Pages, we need to fetch from raw.githubusercontent.com
-                let fetchUrl = entryPath;
+                const candidates = [];
+                candidates.push(entryPath);
                 if (window.location.hostname === 'jswachter.github.io') {
-                    // Extract just the filename from the path
                     const filename = entryPath.split('/').pop();
-                    fetchUrl = `https://raw.githubusercontent.com/jswachter/jswachter.github.io/main/notebooks/${filename}`;
+                    candidates.push(`https://raw.githubusercontent.com/jswachter/jswachter.github.io/main/notebooks/${filename}`);
                 }
 
-                const response = await fetch(fetchUrl);
-                if (!response.ok) {
-                    throw new Error(`Fetch failed (${response.status})`);
+                let text = '';
+                let lastError = null;
+                for (const url of candidates) {
+                    try {
+                        const response = await fetch(url, { cache: 'no-store' });
+                        if (!response.ok) {
+                            lastError = new Error(`Fetch failed (${response.status})`);
+                            continue;
+                        }
+                        text = await response.text();
+                        lastError = null;
+                        break;
+                    } catch (error) {
+                        lastError = error;
+                    }
                 }
-                const text = await response.text();
+                if (lastError) {
+                    throw lastError;
+                }
 
                 // Parse frontmatter
                 const lines = text.split('\n');
                 let title = '';
                 let date = '';
+                let rawDate = '';
                 let contentStart = 0;
 
                 if (lines[0] === '---') {
@@ -427,11 +626,8 @@
                         if (lines[i].startsWith('title:')) {
                             title = lines[i].substring(6).trim();
                         } else if (lines[i].startsWith('date:')) {
-                            date = new Date(lines[i].substring(5).trim()).toLocaleDateString('en-US', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                            });
+                            rawDate = lines[i].substring(5).trim();
+                            date = formatDateIso(rawDate);
                         }
                         i++;
                     }
@@ -457,6 +653,8 @@
 
                 const citations = extractCitationsAndRewriteLinks(contentEl);
                 renderReferences(citations);
+
+                enhanceNotebookContext(entryPath, date || rawDate);
             } catch (error) {
                 console.error('Error loading entry:', error);
                 document.getElementById('content').innerHTML = '<p style="color: #888;">Unable to load entry.</p>';
