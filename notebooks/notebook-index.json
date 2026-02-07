@@ -5,71 +5,71 @@
             "title": "Confluence of browsers, agents and apps",
             "date": "2025-10-30",
             "path": "notebooks/2025-10-30-confluence-browser-agents.md",
-            "summary": "Notes on how browsers, autonomous agents and embedded apps are converging and what this enables.",
+            "summary": "There have been some new AI native browsers launches recently, most notably that of OpenAI's Atlas. There are a lot of players in this field, it's very crowded: Based on my circ...",
             "tags": [
                 "AI",
                 "browsers"
             ],
-            "collection": "General"
+            "collection": "AI Systems"
         },
         {
             "title": "Autoformalization agents",
             "date": "2025-10-02",
             "path": "notebooks/2025-10-02-autoformalization-agents.md",
-            "summary": "Thoughts on building agents that can translate informal mathematics into formal proofs.",
+            "summary": "Autoformalization in the context of mathematics is about taking more or less free flowing natural language and LaTeX renderings of statements or proofs and turning them into for...",
             "tags": [
                 "math",
                 "AI",
                 "autoformalization"
             ],
-            "collection": "General"
+            "collection": "Math & Formal Methods"
         },
         {
             "title": "New tasks and what matters",
             "date": "2025-10-01",
             "path": "notebooks/2025-10-01-new-tasks.md",
-            "summary": "Reflecting on emerging kinds of work and which problems are meaningful to pursue.",
+            "summary": "I remember being invited to a series of loose Zoom meetings during the first or second semester of math undergrad in Stockholm; the organizer was this very creative and somewhat...",
             "tags": [
                 "future",
                 "AI",
                 "work"
             ],
-            "collection": "General"
+            "collection": "AI & Society"
         },
         {
             "title": "Stablecoins and new units of account",
             "date": "2025-09-08",
             "path": "notebooks/2025-09-stablecoins.md",
-            "summary": "Exploring how stablecoins might evolve into new monetary units and the implications for finance.",
+            "summary": "Listened to a podcast (Hidden forces with Demetri Kofinas) with Charles Calomiris on stablecoins and found some aspects really intriguing:",
             "tags": [
                 "banking",
                 "money",
                 "finance",
                 "crypto"
             ],
-            "collection": "General"
+            "collection": "Finance"
         },
         {
             "title": "Riding the displacement wave",
             "date": "2025-09-08",
             "path": "notebooks/2025-09-08-riding-displacement.md",
-            "summary": "Considering the wave of job displacement from AI systems and strategies to respond.",
+            "summary": "There is a lot of talk about displacement in relation to recent AI advances, especially when it comes to certain skill sets and employment opportunities. What seems to be less t...",
             "tags": [
                 "ai",
                 "startups"
             ],
-            "collection": "General"
+            "collection": "AI & Society"
         },
         {
             "title": "RiskON 2025 design",
             "date": "2025-09-07",
             "path": "notebooks/2025-09-07-risk-on.md",
-            "summary": "Design notes for the RiskON 2025 project and its goals.",
+            "summary": "Large financial institutions need to understand the nature of their clients, they need to know their customer.",
             "tags": [
                 "risk",
                 "hackathon"
             ],
-            "collection": "General"
+            "collection": "Projects"
         }
     ]
 }

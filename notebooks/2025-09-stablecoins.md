@@ -1,6 +1,7 @@
 ---
 title: Stablecoins and new units of account 
 date: 2025-09-08
+collection: Finance
 tags: banking, money, finance, crypto  
 ---
 

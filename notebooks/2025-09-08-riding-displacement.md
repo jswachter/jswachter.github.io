@@ -1,6 +1,7 @@
 ---
 title: Riding the displacement wave 
 date: 2025-09-08
+collection: AI & Society
 tags: ai, startups
 ---
 

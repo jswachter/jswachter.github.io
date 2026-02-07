@@ -36,29 +36,6 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def load_existing_summaries() -> dict[str, str]:
-    if not INDEX_PATH.exists():
-        return {}
-    try:
-        data = json.loads(read_text(INDEX_PATH))
-    except Exception:
-        return {}
-
-    entries = data.get("entries") if isinstance(data, dict) else None
-    if not isinstance(entries, list):
-        return {}
-
-    summaries: dict[str, str] = {}
-    for entry in entries:
-        if not isinstance(entry, dict):
-            continue
-        path = entry.get("path")
-        summary = entry.get("summary")
-        if isinstance(path, str) and isinstance(summary, str) and summary.strip():
-            summaries[path] = summary.strip()
-    return summaries
-
-
 def parse_frontmatter(text: str) -> tuple[dict[str, Any], list[str]]:
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
@@ -157,6 +134,7 @@ def derive_summary(content_lines: list[str]) -> str:
 
         cleaned = re.sub(r"^[-*]\s+", "", stripped)
         cleaned = re.sub(r"^\d+\.\s+", "", cleaned)
+        cleaned = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", cleaned)
         parts.append(cleaned)
 
         if len(" ".join(parts)) > 220:
@@ -180,8 +158,6 @@ def url_quote(value: str) -> str:
 
 
 def build_index_entries() -> list[dict[str, Any]]:
-    existing_summaries = load_existing_summaries()
-
     entries: list[dict[str, Any]] = []
     for path in NOTEBOOKS_DIR.rglob("*.md"):
         rel = path.relative_to(ROOT).as_posix()
@@ -199,8 +175,6 @@ def build_index_entries() -> list[dict[str, Any]]:
         collection = str(meta.get("collection") or "").strip() or "General"
 
         summary = str(meta.get("summary") or "").strip()
-        if not summary:
-            summary = existing_summaries.get(rel, "").strip()
         if not summary:
             summary = derive_summary(content_lines)
 
