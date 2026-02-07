@@ -167,29 +167,48 @@
             font-size: 18px;
             font-weight: 500;
         }
-        .gr-quotes-widget {
+        .quotes-status {
+            color: #888;
+            font-size: 14px;
+            min-height: 18px;
+            margin: 0 0 12px;
+        }
+        .quote-list {
+            display: grid;
+            gap: 12px;
+        }
+        .quote-entry {
             border: 1px solid #eee;
             border-radius: 10px;
-            padding: 12px 14px;
+            padding: 14px 16px;
             background: #fff;
         }
-        .gr-quotes-footer a {
-            color: #0077cc;
-            text-decoration: none;
-        }
-        .gr-quotes-footer a:hover {
-            text-decoration: underline;
-        }
-        #gr_quote_body {
+        .quote-entry blockquote {
+            margin: 0;
             color: #444;
+            white-space: pre-wrap;
         }
-        .gr-quotes-footer {
+        .quote-attribution {
             margin-top: 10px;
-            text-align: right;
-            font-size: 12px;
             color: #666;
+            font-size: 14px;
         }
-	    </style>
+        .quotes-more {
+            margin-top: 4px;
+            appearance: none;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            justify-self: start;
+        }
+        .quotes-more:hover {
+            border-color: #0077cc;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -212,15 +231,12 @@
 
         <section class="quotes" aria-label="Saved quotes">
             <h2>Quotes</h2>
-            <div class="gr-quotes-widget">
-                <div id="gr_quote_body">Loading...</div>
-                <script src="https://www.goodreads.com/quotes/widget/98490343-jonatan?v=2" type="text/javascript"></script>
-                <div class="gr-quotes-footer">
-                    <a href="https://www.goodreads.com/quotes" target="_blank" rel="noopener noreferrer">Goodreads Quotes</a>
-                </div>
+            <div id="quotes-status" class="quotes-status" aria-live="polite"></div>
+            <div id="quotes-list" class="quote-list" aria-live="polite">
+                <p style="color: #888; margin: 0;">Loading quotes...</p>
             </div>
             <noscript>
-                <p style="color: #888;">JavaScript is required to load the Goodreads quotes widget.</p>
+                <p style="color: #888;">JavaScript is required to load the Goodreads quotes list.</p>
             </noscript>
         </section>
     </div>
@@ -488,18 +504,142 @@
             }
         }
 
-	        (function init() {
-	            const config = getConfig();
-	            renderTabs(config);
+        function quotesUrl(config) {
+            if (config && config.profileSlug) {
+                return `https://www.goodreads.com/quotes/list/${encodeURIComponent(config.profileSlug)}`;
+            }
+            return 'https://www.goodreads.com/quotes';
+        }
+
+        function renderQuotesEmpty(config) {
+            const statusEl = document.getElementById('quotes-status');
+            const listEl = document.getElementById('quotes-list');
+            statusEl.textContent = '';
+            listEl.innerHTML = '';
+
+            const p = document.createElement('p');
+            p.style.color = '#888';
+            p.style.margin = '0';
+            p.textContent = 'No quotes found.';
+            listEl.appendChild(p);
+
+            const a = document.createElement('a');
+            a.href = quotesUrl(config);
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = 'View on Goodreads';
+            a.style.display = 'inline-block';
+            a.style.marginTop = '8px';
+            a.style.color = '#0077cc';
+            a.style.textDecoration = 'none';
+            listEl.appendChild(a);
+        }
+
+        function appendQuoteElements(fragment, quotes) {
+            for (const quote of quotes) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'quote-entry';
+
+                const block = document.createElement('blockquote');
+                block.textContent = quote && quote.text ? String(quote.text) : '';
+                wrapper.appendChild(block);
+
+                if (quote && quote.attribution) {
+                    const attr = document.createElement('div');
+                    attr.className = 'quote-attribution';
+                    attr.textContent = `- ${quote.attribution}`;
+                    wrapper.appendChild(attr);
+                }
+
+                fragment.appendChild(wrapper);
+            }
+        }
+
+        async function loadQuotes(config) {
+            const statusEl = document.getElementById('quotes-status');
+            const listEl = document.getElementById('quotes-list');
+
+            try {
+                const response = await fetch('goodreads/quotes.json', { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Fetch failed (${response.status})`);
+                }
+                const data = await response.json();
+                if (!data || !Array.isArray(data.quotes)) {
+                    throw new Error('Invalid quotes data');
+                }
+
+                const quotes = data.quotes.slice();
+                if (quotes.length === 0) {
+                    renderQuotesEmpty(config);
+                    return;
+                }
+
+                const generatedAt = data.generated_at ? String(data.generated_at) : '';
+                const label = quotes.length === 1 ? '1 quote' : `${quotes.length} quotes`;
+                statusEl.textContent = generatedAt && generatedAt !== '1970-01-01T00:00:00Z'
+                    ? `${label} · last synced ${generatedAt}`
+                    : label;
+
+                listEl.innerHTML = '';
+                const initialLimit = 40;
+                const initialQuotes = quotes.slice(0, initialLimit);
+
+                const fragment = document.createDocumentFragment();
+                appendQuoteElements(fragment, initialQuotes);
+                listEl.appendChild(fragment);
+
+                if (quotes.length > initialLimit) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'quotes-more';
+                    btn.textContent = `Show ${quotes.length - initialLimit} more`;
+                    btn.addEventListener('click', () => {
+                        btn.remove();
+                        const more = document.createDocumentFragment();
+                        appendQuoteElements(more, quotes.slice(initialLimit));
+                        listEl.appendChild(more);
+                    });
+                    listEl.appendChild(btn);
+                }
+            } catch (error) {
+                console.error('Error loading Goodreads quotes:', error);
+                statusEl.textContent = '';
+                listEl.innerHTML = '';
+
+                const p = document.createElement('p');
+                p.style.color = '#888';
+                p.style.margin = '0';
+                p.textContent = 'Unable to load quotes.';
+                listEl.appendChild(p);
+
+                const a = document.createElement('a');
+                a.href = quotesUrl(config);
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'View on Goodreads';
+                a.style.display = 'inline-block';
+                a.style.marginTop = '8px';
+                a.style.color = '#0077cc';
+                a.style.textDecoration = 'none';
+                listEl.appendChild(a);
+            }
+        }
+
+        (function init() {
+            const config = getConfig();
+            renderTabs(config);
 
             const search = document.getElementById('search');
             search.addEventListener('input', applyFilter);
 
             const params = new URLSearchParams(window.location.search);
-	            const desired = params.get('shelf');
-	            const initial = config.shelves.includes(desired) ? desired : config.shelves[0];
-	            setActiveShelf(initial);
-	        })();
-	    </script>
+            const desired = params.get('shelf');
+            const initial = config.shelves.includes(desired) ? desired : config.shelves[0];
+            setActiveShelf(initial);
+
+            loadQuotes(config);
+        })();
+    </script>
 </body>
 </html>
