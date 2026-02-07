@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodreads</title>
+    <style>
+        html {
+            background-color: #ffffff;
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        h1, h2 {
+            color: #333;
+            font-weight: 400;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px clamp(20px, 6vw, 40px) 96px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            margin: 0;
+            color: #666;
+        }
+        .back-link {
+            margin-bottom: 20px;
+        }
+        .back-link a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        .controls {
+            margin: 20px 0 18px;
+        }
+        .controls input[type="search"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+        .controls input[type="search"]:focus {
+            border-color: #0077cc;
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0 10px;
+        }
+        .tab-button {
+            appearance: none;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .tab-button[aria-selected="true"] {
+            border-color: #0077cc;
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
+        }
+        .status {
+            margin-top: 10px;
+            color: #888;
+            font-size: 14px;
+            min-height: 18px;
+        }
+        details.book {
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+        }
+        details.book:last-child {
+            border-bottom: 1px solid #eee;
+        }
+        summary.book-summary {
+            cursor: pointer;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            list-style: none;
+        }
+        summary.book-summary::-webkit-details-marker {
+            display: none;
+        }
+        .book-cover {
+            width: 44px;
+            height: 66px;
+            flex: 0 0 auto;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #f4f4f4;
+            border: 1px solid #eee;
+        }
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .book-main {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .book-title {
+            font-weight: 500;
+        }
+        .book-title a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .book-title a:hover {
+            text-decoration: underline;
+        }
+        .book-author {
+            color: #666;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        .book-meta {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .book-meta a {
+            color: #0077cc;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .book-meta a:hover {
+            text-decoration: underline;
+        }
+        .quotes {
+            margin-top: 56px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+        }
+        .quotes h2 {
+            margin: 0 0 12px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html">← Main page</a>
+        </div>
+        <header>
+            <h1>Goodreads</h1>
+            <p class="subtitle">My shelves and saved quotes.</p>
+        </header>
+
+        <div class="controls">
+            <input id="search" type="search" placeholder="Search by title, author, ISBN..." autocomplete="off" aria-label="Search Goodreads shelves">
+            <div id="status" class="status" aria-live="polite"></div>
+        </div>
+
+        <div id="tabs" class="tabs" role="tablist" aria-label="Goodreads shelves"></div>
+
+        <section id="book-entries" aria-live="polite"></section>
+
+        <section class="quotes" aria-label="Saved quotes">
+            <h2>Quotes</h2>
+            <div id="quotes-embed">
+                <p style="color: #888; margin: 0;">Loading quotes widget...</p>
+            </div>
+            <noscript>
+                <p style="color: #888;">JavaScript is required to load the Goodreads quotes widget.</p>
+            </noscript>
+        </section>
+    </div>
+
+    <script src="goodreads-config.js"></script>
+    <script>
+        function getConfig() {
+            const base = window.GOODREADS_SITE_CONFIG || {};
+            const shelves = Array.isArray(base.shelves) && base.shelves.length > 0
+                ? base.shelves.slice()
+                : ['currently-reading', 'to-read', 'read'];
+            const displayNames = base.displayNames || {
+                'currently-reading': 'Currently reading',
+                'to-read': 'Want to read',
+                'read': 'Read'
+            };
+            return {
+                userId: String(base.userId || '').trim(),
+                userSlug: String(base.userSlug || '').trim(),
+                profileSlug: String(base.profileSlug || '').trim(),
+                shelves,
+                displayNames
+            };
+        }
+
+        function normalizeText(raw) {
+            return String(raw || '').trim().toLowerCase();
+        }
+
+        function buildSearchText(item) {
+            const parts = [
+                item && item.title ? item.title : '',
+                item && item.author_name ? item.author_name : '',
+                item && item.isbn ? item.isbn : '',
+                item && item.book_id ? item.book_id : ''
+            ];
+            return parts.join(' ').toLowerCase();
+        }
+
+        function authorKey(item) {
+            const author = normalizeText(item && item.author_name ? item.author_name : '');
+            return author || '~';
+        }
+
+        function titleKey(item) {
+            const title = normalizeText(item && item.title ? item.title : '');
+            return title || '~';
+        }
+
+        function sortByAuthorThenTitle(items) {
+            return items.slice().sort((a, b) => {
+                const a1 = authorKey(a);
+                const b1 = authorKey(b);
+                if (a1 !== b1) {
+                    return a1.localeCompare(b1);
+                }
+                const a2 = titleKey(a);
+                const b2 = titleKey(b);
+                if (a2 !== b2) {
+                    return a2.localeCompare(b2);
+                }
+                return normalizeText(a && a.book_id ? a.book_id : '').localeCompare(normalizeText(b && b.book_id ? b.book_id : ''));
+            });
+        }
+
+        const shelfCache = new Map();
+        let activeShelf = null;
+        let activeEls = [];
+
+        async function fetchShelf(shelf) {
+            if (shelfCache.has(shelf)) {
+                return shelfCache.get(shelf);
+            }
+            const response = await fetch(`goodreads/shelves/${encodeURIComponent(shelf)}.json`, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`Fetch failed (${response.status})`);
+            }
+            const data = await response.json();
+            if (!data || !Array.isArray(data.items)) {
+                throw new Error('Invalid shelf data');
+            }
+            shelfCache.set(shelf, data);
+            return data;
+        }
+
+        function clearEntries() {
+            const container = document.getElementById('book-entries');
+            container.innerHTML = '';
+            activeEls = [];
+        }
+
+        function renderEmpty(message) {
+            clearEntries();
+            const container = document.getElementById('book-entries');
+            const p = document.createElement('p');
+            p.style.color = '#888';
+            p.textContent = message;
+            container.appendChild(p);
+        }
+
+        function renderStatus(text) {
+            const status = document.getElementById('status');
+            status.textContent = text;
+        }
+
+        function renderBooks(shelfData) {
+            const items = sortByAuthorThenTitle(Array.isArray(shelfData && shelfData.items) ? shelfData.items : []);
+            clearEntries();
+
+            const container = document.getElementById('book-entries');
+            if (items.length === 0) {
+                renderEmpty('No books found in this shelf.');
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            for (const item of items) {
+                const details = document.createElement('details');
+                details.className = 'book';
+                details.dataset.search = buildSearchText(item);
+
+                const summary = document.createElement('summary');
+                summary.className = 'book-summary';
+
+                const cover = document.createElement('div');
+                cover.className = 'book-cover';
+                const imgUrl = item && (item.book_small_image_url || item.book_image_url) ? (item.book_small_image_url || item.book_image_url) : '';
+                if (imgUrl) {
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.alt = '';
+                    img.loading = 'lazy';
+                    cover.appendChild(img);
+                }
+                summary.appendChild(cover);
+
+                const main = document.createElement('div');
+                main.className = 'book-main';
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'book-title';
+                const titleText = item && item.title ? String(item.title) : '(untitled)';
+                const linkHref = item && item.link ? String(item.link) : '';
+                if (linkHref) {
+                    const a = document.createElement('a');
+                    a.href = linkHref;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = titleText;
+                    titleDiv.appendChild(a);
+                } else {
+                    titleDiv.textContent = titleText;
+                }
+                main.appendChild(titleDiv);
+
+                const authorDiv = document.createElement('div');
+                authorDiv.className = 'book-author';
+                authorDiv.textContent = item && item.author_name ? String(item.author_name) : '';
+                main.appendChild(authorDiv);
+
+                summary.appendChild(main);
+                details.appendChild(summary);
+
+                const meta = document.createElement('div');
+                meta.className = 'book-meta';
+
+                const metaParts = [];
+                if (item && item.user_rating && String(item.user_rating) !== '0') {
+                    metaParts.push(`Rating: ${item.user_rating}`);
+                }
+                if (item && item.user_date_added) {
+                    metaParts.push(`Added: ${item.user_date_added}`);
+                }
+                if (item && item.user_read_at) {
+                    metaParts.push(`Read: ${item.user_read_at}`);
+                }
+
+                if (metaParts.length > 0) {
+                    const div = document.createElement('div');
+                    div.textContent = metaParts.join(' · ');
+                    meta.appendChild(div);
+                }
+
+                const links = document.createElement('div');
+                if (linkHref) {
+                    const a = document.createElement('a');
+                    a.href = linkHref;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.textContent = 'Goodreads';
+                    links.appendChild(a);
+                }
+                if (item && item.isbn) {
+                    const span = document.createElement('span');
+                    span.textContent = `ISBN: ${item.isbn}`;
+                    links.appendChild(span);
+                }
+                if (links.childNodes.length > 0) {
+                    meta.appendChild(links);
+                }
+
+                details.appendChild(meta);
+
+                fragment.appendChild(details);
+                activeEls.push(details);
+            }
+
+            container.appendChild(fragment);
+        }
+
+        function applyFilter() {
+            const input = document.getElementById('search');
+            const q = normalizeText(input.value);
+            let shown = 0;
+            for (const el of activeEls) {
+                const text = el.dataset.search || '';
+                const match = !q || text.includes(q);
+                el.style.display = match ? '' : 'none';
+                if (match) {
+                    shown++;
+                }
+            }
+
+            const shelfData = shelfCache.get(activeShelf);
+            const total = shelfData && Array.isArray(shelfData.items) ? shelfData.items.length : 0;
+            const label = q ? `${shown} of ${total} books` : `${total} books`;
+            const generatedAt = shelfData && shelfData.generated_at ? String(shelfData.generated_at) : '';
+            renderStatus(generatedAt && generatedAt !== '1970-01-01T00:00:00Z' ? `${label} · last synced ${generatedAt}` : label);
+        }
+
+        async function setActiveShelf(shelf) {
+            const tabs = document.querySelectorAll('.tab-button');
+            for (const btn of tabs) {
+                btn.setAttribute('aria-selected', btn.dataset.shelf === shelf ? 'true' : 'false');
+            }
+
+            activeShelf = shelf;
+            renderStatus('Loading...');
+            renderEmpty('Loading...');
+
+            try {
+                const data = await fetchShelf(shelf);
+                renderBooks(data);
+                applyFilter();
+            } catch (error) {
+                console.error('Error loading Goodreads shelf:', error);
+                renderStatus('');
+                renderEmpty('Unable to load Goodreads shelf.');
+            }
+        }
+
+        function renderTabs(config) {
+            const tabsEl = document.getElementById('tabs');
+            tabsEl.innerHTML = '';
+            for (const shelf of config.shelves) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'tab-button';
+                btn.dataset.shelf = shelf;
+                btn.setAttribute('role', 'tab');
+                btn.setAttribute('aria-selected', 'false');
+                btn.textContent = config.displayNames[shelf] || shelf;
+                btn.addEventListener('click', () => setActiveShelf(shelf));
+                tabsEl.appendChild(btn);
+            }
+        }
+
+        function embedQuotesWidget(config) {
+            const target = document.getElementById('quotes-embed');
+            if (!config.profileSlug) {
+                target.innerHTML = '<p style="color: #888; margin: 0;">Quotes widget not configured.</p>';
+                return;
+            }
+
+            target.innerHTML = '';
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `https://www.goodreads.com/quotes/widget/${encodeURIComponent(config.profileSlug)}?v=2`;
+            target.appendChild(script);
+        }
+
+        (function init() {
+            const config = getConfig();
+            renderTabs(config);
+
+            const search = document.getElementById('search');
+            search.addEventListener('input', applyFilter);
+
+            const params = new URLSearchParams(window.location.search);
+            const desired = params.get('shelf');
+            const initial = config.shelves.includes(desired) ? desired : config.shelves[0];
+            setActiveShelf(initial);
+
+            embedQuotesWidget(config);
+        })();
+    </script>
+</body>
+</html>
+
