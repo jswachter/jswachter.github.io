@@ -1,6 +1,7 @@
 ---
 title: Autoformalization agents   
 date: 2025-10-02
+collection: Math & Formal Methods
 tags: math, AI, autoformalization 
 ---
 
@@ -37,4 +38,3 @@ The markdown and latex document is then decorated with labels and interrelations
 Then the formalization starts. Definitions and assumptions are recorded, the appropriate math libraries in Lean are imported, potential gaps are pointed out. The statements and their proofs are formalized with reference to other statements. Compilation of the Lean code is checked between each major change. Whenever there is a problem, a subagent is launched to find a remedy and the main agent determines whether the proposed change is admissible or not. Most likely the main agent is actually many parallel agents communicating, sharing their scratchwork. 
 
 Implementation details: Some multi-agent orchestration, or perhaps multiple instances of Codex or Claude Code in appropriately crafted sandboxes. MCP server to create integration into your favorite chatbot of choice. Just like the latest iteration of terminal-based coding agents wiped out endless copy pasting and hopeless iterations back and forth for coding, this could make a big difference for the process of math research, especially the formalization step.  
-

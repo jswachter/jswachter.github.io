@@ -7,6 +7,6 @@ notebooks/drafts/
 # Claude Code dump folder
 claude_dump/
 
-# Python cache files (used by scripts/)
+# Python cache
 __pycache__/
 *.pyc
