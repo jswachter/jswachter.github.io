@@ -33,7 +33,7 @@
         }
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 18px;
         }
         header h1 {
             margin-bottom: 5px;
@@ -43,7 +43,7 @@
             color: #666;
         }
         .back-link {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
         .back-link a {
             color: #0077cc;
@@ -53,7 +53,7 @@
             text-decoration: underline;
         }
         .controls {
-            margin: 20px 0 18px;
+            margin: 14px 0 0;
         }
         .controls input[type="search"] {
             width: 100%;
@@ -68,30 +68,43 @@
             box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
         }
         .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 14px 0 10px;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 10px;
+            margin: 14px 0 18px;
         }
         .tab-button {
             appearance: none;
-            border: 1px solid #ddd;
-            background: #fff;
-            color: #333;
-            padding: 8px 12px;
-            border-radius: 999px;
+            border: none;
+            background: transparent;
+            color: #888;
+            padding: 0;
             font-size: 14px;
             cursor: pointer;
         }
+        .tab-button:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+            border-radius: 6px;
+        }
         .tab-button[aria-selected="true"] {
-            border-color: #0077cc;
-            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
+            color: #333;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .tab-button + .tab-button::before {
+            content: " / ";
+            color: #bbb;
+            margin-right: 10px;
         }
         .status {
-            margin-top: 10px;
+            margin: 8px 0 18px;
             color: #888;
             font-size: 14px;
             min-height: 18px;
+        }
+        .status.is-empty {
+            visibility: hidden;
         }
         details.book {
             padding: 12px 0;
@@ -339,7 +352,9 @@
 
         function renderStatus(text) {
             const status = document.getElementById('status');
-            status.textContent = text;
+            const next = String(text || '');
+            status.textContent = next;
+            status.classList.toggle('is-empty', next.trim().length === 0);
         }
 
         function renderBooks(shelfData) {
