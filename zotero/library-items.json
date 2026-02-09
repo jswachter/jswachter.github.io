@@ -1,10 +1,367 @@
 {
-    "updated_at": "",
+    "updated_at": "2026-02-09T03:19:48Z",
     "source": {
-        "group_id": "",
-        "collection_key": "",
-        "style": "",
+        "group_id": "6417244",
+        "collection_key": "Z3EV2T4P",
+        "style": "apa",
         "endpoint": "https://api.zotero.org/groups/{group_id}/collections/{collection_key}/items/top"
     },
-    "items": []
+    "items": [
+        {
+            "key": "5PEIZD9S",
+            "data": {
+                "DOI": "10.1016/j.econmod.2025.107221",
+                "date": "12/2025",
+                "title": "Artificial intelligence as self-learning capital",
+                "tags": [],
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Hans",
+                        "lastName": "Gersbach"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Evgenij",
+                        "lastName": "Komarov"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Richard",
+                        "lastName": "Von Maydell"
+                    }
+                ]
+            },
+            "version": 5,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/5PEIZD9S",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/5PEIZD9S",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "NCCA7SIS",
+            "data": {
+                "DOI": "10.48550/arXiv.2601.03220",
+                "date": "2026-01-06",
+                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Machine Learning",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Statistics - Machine Learning",
+                        "type": 1
+                    }
+                ],
+                "url": "http://arxiv.org/abs/2601.03220",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Marc",
+                        "lastName": "Finzi"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Shikai",
+                        "lastName": "Qiu"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Yiding",
+                        "lastName": "Jiang"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Pavel",
+                        "lastName": "Izmailov"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "J. Zico",
+                        "lastName": "Kolter"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Andrew Gordon",
+                        "lastName": "Wilson"
+                    }
+                ]
+            },
+            "version": 4,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Finzi, M., Qiu, S., Jiang, Y., Izmailov, P., Kolter, J. Z., &amp; Wilson, A. G. (2026). <i>From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence</i> (arXiv:2601.03220). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2601.03220\">https://doi.org/10.48550/arXiv.2601.03220</a></div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/NCCA7SIS",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/NCCA7SIS",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "NP4LAX3I",
+            "data": {
+                "DOI": "",
+                "date": "",
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                "tags": [],
+                "url": "",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Alexus A",
+                        "lastName": "Smith"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Edmund L",
+                        "lastName": "Wong"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Ronan C",
+                        "lastName": "Donovan"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Brad A",
+                        "lastName": "Chapman"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Ryan",
+                        "lastName": "Harry"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Pooyan",
+                        "lastName": "Tirandazi"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Paulina",
+                        "lastName": "Kanigowska"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Elizabeth A",
+                        "lastName": "Gendreau"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Robert H",
+                        "lastName": "Dahl"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Jose E",
+                        "lastName": "Cortez"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Christopher J",
+                        "lastName": "Bremner"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "José C Morales",
+                        "lastName": "Hemuda"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "James",
+                        "lastName": "Dooner"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Ian",
+                        "lastName": "Graves"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Rahul",
+                        "lastName": "Karandikar"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Christopher",
+                        "lastName": "Lionetti"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Kevin",
+                        "lastName": "Christopher"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Alyssa",
+                        "lastName": "Tran"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "William",
+                        "lastName": "McCusker"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Duy X",
+                        "lastName": "Nguyen"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Alvaro R",
+                        "lastName": "Bautista-Ayala"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Monica P",
+                        "lastName": "McNerney"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Sean",
+                        "lastName": "Atkins"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Michael",
+                        "lastName": "McDuﬃe"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Bradley P",
+                        "lastName": "Barber"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Trinh",
+                        "lastName": "Thanongsinh"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Andrew",
+                        "lastName": "Nesson"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Bibek",
+                        "lastName": "Lama"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Cameron",
+                        "lastName": "LaFrance"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Tenzing",
+                        "lastName": "Nyima"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Alicia",
+                        "lastName": "Byrn"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Rashard",
+                        "lastName": "Thornhill"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Bryan",
+                        "lastName": "Cai"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Lizvette",
+                        "lastName": "Ayala-Valdez"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Alycia",
+                        "lastName": "Wong"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Austin J",
+                        "lastName": "Che"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Walter",
+                        "lastName": "Thavarajah"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Daniel",
+                        "lastName": "Smith"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Thomas F",
+                        "lastName": "Knight"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "David W",
+                        "lastName": "Borhani"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Jerry",
+                        "lastName": "Tworek"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Mostafa",
+                        "lastName": "Rohaninejad"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Nathan C",
+                        "lastName": "Tedford"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Tejal",
+                        "lastName": "Patwardhan"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Yunxin Joy",
+                        "lastName": "Jiao"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Reshma P",
+                        "lastName": "Shetty"
+                    }
+                ]
+            },
+            "version": 3,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/NP4LAX3I",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/NP4LAX3I",
+                    "type": "text/html"
+                }
+            }
+        }
+    ]
 }
