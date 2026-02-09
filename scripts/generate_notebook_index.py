@@ -224,9 +224,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     tags_lower = ",".join([t.lower() for t in tags])
 
     meta_parts: list[str] = []
-    if date_str:
-        meta_parts.append(escape(date_str))
-
     meta_parts.append(
         f'<a href="notebooks.html?collection={url_quote(collection)}">{escape(collection)}</a>'
     )
@@ -236,7 +233,10 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     return (
         f'<div class="entry" data-title="{escape(title)}" data-date="{escape(date_str)}" '
         f'data-collection="{escape(collection)}" data-tags="{escape(tags_lower)}">\n'
-        f'    <h3 class="entry-title"><a href="notebook-viewer.html?entry={url_quote(path)}">{escape(title)}</a></h3>\n'
+        f'    <div class="entry-row">\n'
+        f'        <span class="entry-date-inline">{escape(date_str)}</span>\n'
+        f'        <h3 class="entry-title"><a href="notebook-viewer.html?entry={url_quote(path)}">{escape(title)}</a></h3>\n'
+        f'    </div>\n'
         f'    <p class="entry-meta">{meta_html}</p>\n'
         f"</div>"
     )
