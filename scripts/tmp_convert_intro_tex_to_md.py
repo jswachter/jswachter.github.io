@@ -198,6 +198,8 @@ def replace_refs_outside_display_math(tex: str, theorem_labels: dict[str, int]) 
     # Render equation refs via MathJax; render theorem refs as plain Markdown links.
     out_lines: list[str] = []
     in_display_math = False
+    chapter_labels: dict[str, int] = {}
+    next_chapter = [1]
 
     for line in tex.splitlines(keepends=True):
         if line.strip() == "$$":
@@ -214,15 +216,20 @@ def replace_refs_outside_display_math(tex: str, theorem_labels: dict[str, int]) 
         updated = EQREF_RE.sub(r"$\\eqref{\1}$", updated)
 
         # Only resolve theorem refs if we saw the label in this document.
-        def theorem_ref_repl(match: re.Match[str]) -> str:
+        def ref_repl(match: re.Match[str]) -> str:
             key = match.group(1)
             if key in theorem_labels:
                 num = theorem_labels[key]
                 return f"[Theorem {num}](#{key})"
+            if key.lower().startswith(("ch:", "chg:")):
+                if key not in chapter_labels:
+                    chapter_labels[key] = next_chapter[0]
+                    next_chapter[0] += 1
+                return f"Chapter {chapter_labels[key]}"
             return f"`{key}`"
 
-        updated = REF_RE.sub(theorem_ref_repl, updated)
-        updated = CREF_RE.sub(theorem_ref_repl, updated)
+        updated = REF_RE.sub(ref_repl, updated)
+        updated = CREF_RE.sub(ref_repl, updated)
 
         out_lines.append(updated)
 

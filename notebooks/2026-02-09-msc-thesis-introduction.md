@@ -5,7 +5,6 @@ collection: Thesis
 tags: thesis, msc
 summary: Introduction from my MSc thesis.
 ---
-
 # MSc thesis introduction
 
 ## Introduction
@@ -157,12 +156,28 @@ The main idea to get from the variational formula $\eqref{eq:variational_formula
 
 
 ### Outline
-We begin in `ch:preliminaries` with the details on Loewner's equation, the Loewner transform and how this allows for the definition of Loewner energy of chords and loops as sketched in the above opening paragraphs.  
+We begin in Chapter 1 with the details on Loewner's equation, the Loewner transform and how this allows for the definition of Loewner energy of chords and loops as sketched in the above opening paragraphs.  
 
-In `ch:useful_background` we recap some conformal geometry, the Schwarzian derivative and some important Riemann maps that are directly used in proving the simple pole structure and extendability results in [Theorem 1](#thm:intro_curve_schw) and [Theorem 2](#thm:intro_welding_schw). The class of conformal mappings are best understood as a subset of the quasiconformal maps and since quasiconformal deformation is the main ingredient in the new proof strategy for the main results, we devote them special attention. To unify the perspectives on curves and weldings, as well as use strong results on variation of Loewner energy, we also establish some Teichmüller theory. 
+In Chapter 2 we recap some conformal geometry, the Schwarzian derivative and some important Riemann maps that are directly used in proving the simple pole structure and extendability results in [Theorem 1](#thm:intro_curve_schw) and [Theorem 2](#thm:intro_welding_schw). The class of conformal mappings are best understood as a subset of the quasiconformal maps and since quasiconformal deformation is the main ingredient in the new proof strategy for the main results, we devote them special attention. To unify the perspectives on curves and weldings, as well as use strong results on variation of Loewner energy, we also establish some Teichmüller theory. 
 
-In `ch:quasiconformal_deformation` this bears fruit, as we get to use a theorem on first variation of the universal Liouville action, a functional with close ties to the Loewner energy, to understand how infinitesimal quasiconformal deformation of curves and weldings affects their Loewner energy. This is a key step to extend the proof strategy to cover the main welding result. 
+In Chapter 3 this bears fruit, as we get to use a theorem on first variation of the universal Liouville action, a functional with close ties to the Loewner energy, to understand how infinitesimal quasiconformal deformation of curves and weldings affects their Loewner energy. This is a key step to extend the proof strategy to cover the main welding result. 
 
-Then in `ch:two_optimization_problems_of_the_loewner_energy` we present the two optimization problems presented briefly above and discuss existence and uniqueness. 
+Then in Chapter 4 we present the two optimization problems presented briefly above and discuss existence and uniqueness. 
 
-Finally in `ch:residue_formulas` we put everything together and carry out the proofs of the results [Theorem 1](#thm:intro_curve_schw) and [Theorem 2](#thm:intro_welding_schw) using the quasiconformal deformation technique.
+Finally in Chapter 5 we put everything together and carry out the proofs of the results [Theorem 1](#thm:intro_curve_schw) and [Theorem 2](#thm:intro_welding_schw) using the quasiconformal deformation technique.
+
+<!-- BEGIN AUTO-GENERATED REFERENCES -->
+
+## References
+
+1. Löwner, Karl (1923). *Untersuchungen {\"u}ber schlichte konforme Abbildungen des Einheitskreises. I*. Mathematische Annalen. DOI: `10.1007/BF01448091`. URL: `https://doi.org/10.1007/BF01448091`. Key: `Loewner1923`.
+2. Peter K. Friz and Atul Shekhar (2015). *On the existence of SLE trace: finite energy drivers and non-constant $\kappa$*. URL: `https://arxiv.org/abs/1511.02670`. Key: `friz2015existencesletracefinite`.
+3. Wang, Yilin (2019). *The energy of a deterministic Loewner chain: Reversibility and interpretation via SLE$_{0+}$*. Journal of the European Mathematical Society. DOI: `10.4171/jems/876`. URL: `http://dx.doi.org/10.4171/JEMS/876`. Key: `Wang_2019_deterministicloewnerchain`.
+4. Rohde, Steffen and Wang, Yilin (2019). *The Loewner Energy of Loops and Regularity of Driving Functions*. International Mathematics Research Notices. DOI: `10.1093/imrn/rnz071`. URL: `http://dx.doi.org/10.1093/imrn/rnz071`. Key: `Rohde_2019`.
+5. Donald Marshall and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves I: weldings, explicit computations, and Schwarzian derivatives*. URL: `https://arxiv.org/abs/2202.01967`. Key: `marshall2025piecewisegeodesicjordancurves`.
+6. Mario Bonk and Janne Junnila and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves II: Loewner energy, projective structures, and accessory parameters*. URL: `https://arxiv.org/abs/2410.22275`. Key: `bonk2025piecewisegeodesicjordancurves`.
+7. Yilin Wang (2025). *Two optimization problems for the Loewner energy*. URL: `https://arxiv.org/abs/2402.10054`. Key: `wang2025optimizationproblemsloewnerenergy`.
+8. Jinwoo Sung and Yilin Wang (2024). *Quasiconformal deformation of the chordal Loewner driving function and first variation of the Loewner energy*. Mathematische Annalen. DOI: `10.1007/s00208-024-02866-0`. URL: `https://doi.org/10.1007/s00208-024-02866-0`. Key: `Sung2024`.
+9. Leon A. Takhtajan and Lee-Peng Teo (2004). *Weil-Petersson metric on the universal Teichmuller space I: Curvature properties and Chern forms*. URL: `https://arxiv.org/abs/math/0312172`. Key: `takhtajan2004weilpeterssonmetricuniversalteichmuller`.
+
+<!-- END AUTO-GENERATED REFERENCES -->
