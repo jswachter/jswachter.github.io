@@ -374,6 +374,31 @@
             return /^\d+$/.test(String(config.groupId || '')) && /^[A-Za-z0-9]{8}$/.test(String(config.collectionKey || ''));
         }
 
+        function zoteroSnapshotMatchesConfig(snapshot, config) {
+            if (!snapshot || typeof snapshot !== 'object') {
+                return false;
+            }
+            const source = snapshot.source && typeof snapshot.source === 'object' ? snapshot.source : null;
+            if (!source) {
+                return false;
+            }
+            return String(source.group_id || '') === String(config.groupId || '')
+                && String(source.collection_key || '') === String(config.collectionKey || '')
+                && String(source.style || '') === String(config.style || '');
+        }
+
+        async function fetchZoteroSnapshot(config) {
+            const response = await fetch('zotero/library-items.json', { cache: 'no-store' });
+            if (!response.ok) {
+                return null;
+            }
+            const snapshot = await response.json();
+            if (!zoteroSnapshotMatchesConfig(snapshot, config)) {
+                return null;
+            }
+            return Array.isArray(snapshot.items) ? snapshot.items : [];
+        }
+
         async function fetchZoteroItems(config) {
             const items = [];
             const pageSize = 100;
@@ -480,7 +505,15 @@
 
             if (isZoteroConfigured(config)) {
                 try {
-                    const items = await fetchZoteroItems(config);
+                    let items = null;
+                    try {
+                        items = await fetchZoteroSnapshot(config);
+                    } catch (error) {
+                        items = null;
+                    }
+                    if (!items) {
+                        items = await fetchZoteroItems(config);
+                    }
                     for (const item of items) {
                         if (!item) {
                             continue;
