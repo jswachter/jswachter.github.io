@@ -222,8 +222,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     collection = str(entry.get("collection") or "General").strip() or "General"
 
     tags_lower = ",".join([t.lower() for t in tags])
-    summary = str(entry.get("summary") or "").strip()
-    search_text = " ".join([title, date_str, collection, " ".join(tags), summary]).strip()
 
     meta_parts: list[str] = []
     if date_str:
@@ -239,8 +237,7 @@ def build_entry_html(entry: dict[str, Any]) -> str:
 
     return (
         f'<div class="entry" data-title="{escape(title)}" data-date="{escape(date_str)}" '
-        f'data-collection="{escape(collection)}" data-tags="{escape(tags_lower)}" '
-        f'data-search="{escape(safe_data_attr(search_text))}">\n'
+        f'data-collection="{escape(collection)}" data-tags="{escape(tags_lower)}">\n'
         f'    <h3 class="entry-title"><a href="notebook-viewer.html?entry={url_quote(path)}">{escape(title)}</a></h3>\n'
         f'    <p class="entry-meta">{meta_html}</p>\n'
         f"</div>"
