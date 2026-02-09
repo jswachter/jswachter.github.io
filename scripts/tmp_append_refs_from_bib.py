@@ -5,6 +5,10 @@ Temporary helper: append a "References" section to a notebook Markdown file by
 matching \\cite{...} keys to entries in a BibTeX file.
 
 Idempotent: overwrites the block between BEGIN/END markers.
+
+Also rewrites inline citations like \\cite{Key} in the notebook body to
+Markdown links that jump to the corresponding entry in the auto-generated
+References list.
 """
 
 from __future__ import annotations
@@ -55,6 +59,32 @@ def extract_cite_keys(text: str) -> list[str]:
             seen.add(k)
             keys.append(k)
     return keys
+
+
+def _slugify_id(value: str) -> str:
+    # HTML id must be unique; keep it stable + readable.
+    s = value.strip().lower()
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    s = s.strip("-")
+    return s or "ref"
+
+
+def rewrite_cites_as_links(text: str, key_to_num: dict[str, int], key_to_anchor: dict[str, str]) -> str:
+    def repl(match: re.Match[str]) -> str:
+        raw = match.group(1)
+        keys = [k.strip() for k in raw.split(",") if k.strip()]
+        parts: list[str] = []
+        for k in keys:
+            num = key_to_num.get(k)
+            anchor = key_to_anchor.get(k)
+            if not num or not anchor:
+                # If we can't resolve it, keep the original cite for visibility.
+                parts.append(f"\\cite{{{k}}}")
+                continue
+            parts.append(f"[{num}](#{anchor})")
+        return ", ".join(parts)
+
+    return CITE_RE.sub(repl, text)
 
 
 def _read_balanced_value(s: str, i: int) -> tuple[str, int]:
@@ -193,7 +223,11 @@ def format_reference(key: str, fields: dict[str, str]) -> str:
     return " ".join(parts)
 
 
-def build_references_block(cite_keys: list[str], entries: dict[str, dict[str, str]]) -> str:
+def build_references_block(
+    cite_keys: list[str],
+    entries: dict[str, dict[str, str]],
+    key_to_anchor: dict[str, str],
+) -> str:
     lines: list[str] = []
     lines.append(BEGIN)
     lines.append("")
@@ -209,11 +243,13 @@ def build_references_block(cite_keys: list[str], entries: dict[str, dict[str, st
     missing: list[str] = []
     for i, key in enumerate(cite_keys, start=1):
         fields = entries.get(key)
+        anchor = key_to_anchor.get(key, "")
+        anchor_html = f'<a id="{anchor}"></a> ' if anchor else ""
         if not fields:
             missing.append(key)
-            lines.append(f"{i}. Missing BibTeX entry for `{key}`.")
+            lines.append(f"{i}. {anchor_html}Missing BibTeX entry for `{key}`.")
             continue
-        lines.append(f"{i}. {format_reference(key, fields)}")
+        lines.append(f"{i}. {anchor_html}{format_reference(key, fields)}")
 
     if missing:
         lines.append("")
@@ -254,8 +290,12 @@ def main() -> int:
     bib_text = bib_path.read_text(encoding="utf-8", errors="replace")
     bib_entries = parse_bibtex_entries(bib_text)
 
-    block = build_references_block(cite_keys, bib_entries)
-    new_body = body_no_block.rstrip() + "\n\n" + block
+    key_to_num = {k: i for i, k in enumerate(cite_keys, start=1)}
+    key_to_anchor = {k: f"ref-{_slugify_id(k)}" for k in cite_keys}
+    linked_body = rewrite_cites_as_links(body_no_block, key_to_num, key_to_anchor)
+
+    block = build_references_block(cite_keys, bib_entries, key_to_anchor)
+    new_body = linked_body.rstrip() + "\n\n" + block
     # Preserve the notebook's conventional single blank line after frontmatter.
     # (Other notes in this repo use: frontmatter, blank line, then H1.)
     nb_path.write_text(fm + new_body, encoding="utf-8")

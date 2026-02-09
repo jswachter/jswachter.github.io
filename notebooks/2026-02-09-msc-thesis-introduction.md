@@ -11,9 +11,9 @@ summary: Introduction from my MSc thesis.
 
 Consider a Jordan curve $\gamma:[0,1] \to \hat{\mathbb{C}}$ in the extended complex plane, tracing out a simple loop, i.e. starting and ending at the same point, $\gamma(0) = \gamma(1)$. One concrete visual example is the equator on the two-dimensional sphere. There are of course many other loops without self-crossing and in this thesis we study in detail some problems related to the Loewner energy of such curves, denoted $I^{L}(\gamma)$, a functional that measures roughly the deviation of such a loop from being a circle.  
 
-Before we go into further detail regarding the specific tasks that lie ahead, it seems prudent to take a step back and examine what exactly we are measuring with Loewner energy and in what sense it is an energy. In 1923, Loewner examined families of conformal maps related to slit domains of the unit disk. \cite{Loewner1923} Translating to the conformally equivalent setting of the upper halfplane, we consider a curve $\gamma$ starting at zero and growing towards infinity. At any given point in time, it carves out a simply connected domain $H_{t} = \mathbb{H} \backslash \gamma[0, t]$ and then from the Riemann mapping theorem and a suitable normalization, we get a choice of conformal map $g_{t}:H_{t} \to \mathbb{H}$, with the expansion $g_{t}(z) = z + \frac{2t}{z} + O(|z|^{-2})$ at infinity. 
+Before we go into further detail regarding the specific tasks that lie ahead, it seems prudent to take a step back and examine what exactly we are measuring with Loewner energy and in what sense it is an energy. In 1923, Loewner examined families of conformal maps related to slit domains of the unit disk. [1](#ref-loewner1923) Translating to the conformally equivalent setting of the upper halfplane, we consider a curve $\gamma$ starting at zero and growing towards infinity. At any given point in time, it carves out a simply connected domain $H_{t} = \mathbb{H} \backslash \gamma[0, t]$ and then from the Riemann mapping theorem and a suitable normalization, we get a choice of conformal map $g_{t}:H_{t} \to \mathbb{H}$, with the expansion $g_{t}(z) = z + \frac{2t}{z} + O(|z|^{-2})$ at infinity. 
 
-This yields a family of maps $(g_{t})_{t}$ and remarkably, these so-called mapping-out functions satisfy, for each $z$, an ODE of the form $\partial_{t} g_{t}(z) = \frac{2}{g_{t}(z) - \xi_{t}}$, a description of how the individual $z$ flow across time as the curve continues its growth towards infinity. What is more, the curve $\gamma$ is encoded by $\xi$ in the above ODE, called the Loewner driving function. In two papers from 2015 and 2016 Friz-Shekhar \cite{friz2015existencesletracefinite} and then independently Wang \cite{Wang_2019_deterministicloewnerchain} used this representation to define the chordal Loewner energy of $\gamma$ as the Dirichlet energy of the Loewner driving function, namely 
+This yields a family of maps $(g_{t})_{t}$ and remarkably, these so-called mapping-out functions satisfy, for each $z$, an ODE of the form $\partial_{t} g_{t}(z) = \frac{2}{g_{t}(z) - \xi_{t}}$, a description of how the individual $z$ flow across time as the curve continues its growth towards infinity. What is more, the curve $\gamma$ is encoded by $\xi$ in the above ODE, called the Loewner driving function. In two papers from 2015 and 2016 Friz-Shekhar [2](#ref-friz2015existencesletracefinite) and then independently Wang [3](#ref-wang-2019-deterministicloewnerchain) used this representation to define the chordal Loewner energy of $\gamma$ as the Dirichlet energy of the Loewner driving function, namely 
 
 
 \begin{align}
@@ -21,7 +21,7 @@ I_{\mathbb{H}; 0, \infty}^{C}(\gamma) := \frac{1}{2}\int_{0}^{\infty} (\frac{d \
 \end{align}
 
 
-To get from this chordal setting to loops, one exploits that for a Jordan curve $\gamma$, the segment $\gamma[\epsilon, 1]$ is a chord in the simply connected domain $\hat{\mathbb{C}} \backslash \gamma[0, \epsilon]$ and then by using a limiting procedure it is possible to define the loop Loewner energy \cite{Rohde_2019}
+To get from this chordal setting to loops, one exploits that for a Jordan curve $\gamma$, the segment $\gamma[\epsilon, 1]$ is a chord in the simply connected domain $\hat{\mathbb{C}} \backslash \gamma[0, \epsilon]$ and then by using a limiting procedure it is possible to define the loop Loewner energy [4](#ref-rohde-2019)
 
 
 \begin{align}
@@ -35,9 +35,9 @@ For a chord in the upper halfplane to have zero Loewner energy, we must set the 
 
 A very natural next step is to start putting some constraints on the set of curves or weldings being considered in the minimization. 
 
-A problem in this vein was considered in detail by Wang and collaborators in \cite{marshall2025piecewisegeodesicjordancurves} \cite{bonk2025piecewisegeodesicjordancurves}. Let $z_{1}, \ldots, z_{n} \in \hat{\mathbb{C}}$ be $n$ distinct points and consider the set of Jordan curves passing through these points in that order. Insist furthermore that the curves are all homotopic relative to these $n$ points, denoting this class by $\mathcal{L}(z, \tau) = \mathcal{L}(z_{1}, \ldots, z_{n}, \tau)$, where $\tau$ is a representative curve within the homotopy class. As soon as $n \geq 4$, it is not assured that the points all lie on some circle, and thus we have in general that the Loewner energy of the minimizing curve, if it exists, is strictly positive. 
+A problem in this vein was considered in detail by Wang and collaborators in [5](#ref-marshall2025piecewisegeodesicjordancurves) [6](#ref-bonk2025piecewisegeodesicjordancurves). Let $z_{1}, \ldots, z_{n} \in \hat{\mathbb{C}}$ be $n$ distinct points and consider the set of Jordan curves passing through these points in that order. Insist furthermore that the curves are all homotopic relative to these $n$ points, denoting this class by $\mathcal{L}(z, \tau) = \mathcal{L}(z_{1}, \ldots, z_{n}, \tau)$, where $\tau$ is a representative curve within the homotopy class. As soon as $n \geq 4$, it is not assured that the points all lie on some circle, and thus we have in general that the Loewner energy of the minimizing curve, if it exists, is strictly positive. 
 
-After establishing existence, uniqueness and some interesting geometric properties of the solution to the curve problem, Wang in 2025 \cite{wang2025optimizationproblemsloewnerenergy} considered a similar setup for weldings. Let $x_{1}, y_{1}, \ldots x_{n}, y_{n} \in \hat{\mathbb{R}}$ be $n$ pairs for which $x_{i} \neq x_{j}$, $y_{i} \neq y_{j}$ for $i \neq j$ and insist now that the welding map $h=g^{-1} \circ f |_{\mathbb{R}}$ satisfies $h(x_{k}) = y_{k}$, denoting this class by $\Phi_{x, y}$. In the same paper it is suggested that a solution should exist and be unique, but not proved. 
+After establishing existence, uniqueness and some interesting geometric properties of the solution to the curve problem, Wang in 2025 [7](#ref-wang2025optimizationproblemsloewnerenergy) considered a similar setup for weldings. Let $x_{1}, y_{1}, \ldots x_{n}, y_{n} \in \hat{\mathbb{R}}$ be $n$ pairs for which $x_{i} \neq x_{j}$, $y_{i} \neq y_{j}$ for $i \neq j$ and insist now that the welding map $h=g^{-1} \circ f |_{\mathbb{R}}$ satisfies $h(x_{k}) = y_{k}$, denoting this class by $\Phi_{x, y}$. In the same paper it is suggested that a solution should exist and be unique, but not proved. 
 
 Some interesting comments regarding the geometry of the solution, particularly the representative curve $\gamma_{h}$ are made. There are also some hints regarding the structure of the Schwarzians $\mathcal{S}[f]$ and $\mathcal{S}[g]$ and how these should exhibit properties similar to $\mathcal{S}[f^{-1}]$ and $\mathcal{S}[g^{-1}]$ from the optimal solution to the curve problem. 
 
@@ -77,7 +77,7 @@ Similarly, for the welding, it will turn out that $\mathcal{S}[f]$ and $\mathcal
 \end{align}
 
 
-The main contribution of this thesis is to the understanding of the residues $\text{Res}(\mathcal{S}[F], z_{k})$, $\text{Res}(\mathcal{S}[f], x_{k})$ and $\text{Res}(\mathcal{S}[g], y_{k})$. We have the following results, the first of which was previously derived in \cite{bonk2025piecewisegeodesicjordancurves}. 
+The main contribution of this thesis is to the understanding of the residues $\text{Res}(\mathcal{S}[F], z_{k})$, $\text{Res}(\mathcal{S}[f], x_{k})$ and $\text{Res}(\mathcal{S}[g], y_{k})$. We have the following results, the first of which was previously derived in [6](#ref-bonk2025piecewisegeodesicjordancurves). 
 
 <a id="thm:intro_curve_schw"></a>
 
@@ -120,7 +120,7 @@ Let $f$ and $g$ be the functions associated to the solution $h^{*}$. Assuming th
 \text{Res}(\mathcal{S}[g], y_{k}) = \frac{1}{2} \partial_{y_{k}} I^{L}(x, y).
 \end{align}
 
-To carry out the proofs we adapt a technique from Sung and Wang's work on quasiconformal deformations and how it relates to Loewner energy \cite{Sung2024}. There it is shown that the infinitesimal change of the Loewner energy of a Jordan curve exposed to application of a quasiconformal map $\omega^{t \mu}$ with Beltrami differential $\| t \mu \|_{\infty} < 1$ can be related to an integral of the Schwarzians in the following way 
+To carry out the proofs we adapt a technique from Sung and Wang's work on quasiconformal deformations and how it relates to Loewner energy [8](#ref-sung2024). There it is shown that the infinitesimal change of the Loewner energy of a Jordan curve exposed to application of a quasiconformal map $\omega^{t \mu}$ with Beltrami differential $\| t \mu \|_{\infty} < 1$ can be related to an integral of the Schwarzians in the following way 
 
 
 \begin{align}
@@ -129,7 +129,7 @@ To carry out the proofs we adapt a technique from Sung and Wang's work on quasic
 \end{align}
 
 
-a result that concretizes work by Takhtajan-Teo on variations of the universal Lioville action $S_{1}$, set in the context of universal Teichmüller space. \cite{takhtajan2004weilpeterssonmetricuniversalteichmuller}
+a result that concretizes work by Takhtajan-Teo on variations of the universal Lioville action $S_{1}$, set in the context of universal Teichmüller space. [9](#ref-takhtajan2004weilpeterssonmetricuniversalteichmuller)
 
 The main idea to get from the variational formula $\eqref{eq:variational_formula}$ to the results on residues [Theorem 1](#thm:intro_curve_schw) [Theorem 2](#thm:intro_welding_schw) is to pick a simplifying quasiconformal deformation that allows one to analyze one residue at a time. On a general level, this is facilitated by a map that moves only the point associated with that one particular residue.  
 
@@ -149,14 +149,14 @@ Finally in Chapter 5 we put everything together and carry out the proofs of the 
 
 ## References
 
-1. Löwner, Karl (1923). *Untersuchungen {\"u}ber schlichte konforme Abbildungen des Einheitskreises. I*. Mathematische Annalen. DOI: `10.1007/BF01448091`. URL: `https://doi.org/10.1007/BF01448091`. Key: `Loewner1923`.
-2. Peter K. Friz and Atul Shekhar (2015). *On the existence of SLE trace: finite energy drivers and non-constant $\kappa$*. URL: `https://arxiv.org/abs/1511.02670`. Key: `friz2015existencesletracefinite`.
-3. Wang, Yilin (2019). *The energy of a deterministic Loewner chain: Reversibility and interpretation via SLE$_{0+}$*. Journal of the European Mathematical Society. DOI: `10.4171/jems/876`. URL: `http://dx.doi.org/10.4171/JEMS/876`. Key: `Wang_2019_deterministicloewnerchain`.
-4. Rohde, Steffen and Wang, Yilin (2019). *The Loewner Energy of Loops and Regularity of Driving Functions*. International Mathematics Research Notices. DOI: `10.1093/imrn/rnz071`. URL: `http://dx.doi.org/10.1093/imrn/rnz071`. Key: `Rohde_2019`.
-5. Donald Marshall and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves I: weldings, explicit computations, and Schwarzian derivatives*. URL: `https://arxiv.org/abs/2202.01967`. Key: `marshall2025piecewisegeodesicjordancurves`.
-6. Mario Bonk and Janne Junnila and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves II: Loewner energy, projective structures, and accessory parameters*. URL: `https://arxiv.org/abs/2410.22275`. Key: `bonk2025piecewisegeodesicjordancurves`.
-7. Yilin Wang (2025). *Two optimization problems for the Loewner energy*. URL: `https://arxiv.org/abs/2402.10054`. Key: `wang2025optimizationproblemsloewnerenergy`.
-8. Jinwoo Sung and Yilin Wang (2024). *Quasiconformal deformation of the chordal Loewner driving function and first variation of the Loewner energy*. Mathematische Annalen. DOI: `10.1007/s00208-024-02866-0`. URL: `https://doi.org/10.1007/s00208-024-02866-0`. Key: `Sung2024`.
-9. Leon A. Takhtajan and Lee-Peng Teo (2004). *Weil-Petersson metric on the universal Teichmuller space I: Curvature properties and Chern forms*. URL: `https://arxiv.org/abs/math/0312172`. Key: `takhtajan2004weilpeterssonmetricuniversalteichmuller`.
+1. <a id="ref-loewner1923"></a> Löwner, Karl (1923). *Untersuchungen {\"u}ber schlichte konforme Abbildungen des Einheitskreises. I*. Mathematische Annalen. DOI: `10.1007/BF01448091`. URL: `https://doi.org/10.1007/BF01448091`. Key: `Loewner1923`.
+2. <a id="ref-friz2015existencesletracefinite"></a> Peter K. Friz and Atul Shekhar (2015). *On the existence of SLE trace: finite energy drivers and non-constant $\kappa$*. URL: `https://arxiv.org/abs/1511.02670`. Key: `friz2015existencesletracefinite`.
+3. <a id="ref-wang-2019-deterministicloewnerchain"></a> Wang, Yilin (2019). *The energy of a deterministic Loewner chain: Reversibility and interpretation via SLE$_{0+}$*. Journal of the European Mathematical Society. DOI: `10.4171/jems/876`. URL: `http://dx.doi.org/10.4171/JEMS/876`. Key: `Wang_2019_deterministicloewnerchain`.
+4. <a id="ref-rohde-2019"></a> Rohde, Steffen and Wang, Yilin (2019). *The Loewner Energy of Loops and Regularity of Driving Functions*. International Mathematics Research Notices. DOI: `10.1093/imrn/rnz071`. URL: `http://dx.doi.org/10.1093/imrn/rnz071`. Key: `Rohde_2019`.
+5. <a id="ref-marshall2025piecewisegeodesicjordancurves"></a> Donald Marshall and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves I: weldings, explicit computations, and Schwarzian derivatives*. URL: `https://arxiv.org/abs/2202.01967`. Key: `marshall2025piecewisegeodesicjordancurves`.
+6. <a id="ref-bonk2025piecewisegeodesicjordancurves"></a> Mario Bonk and Janne Junnila and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves II: Loewner energy, projective structures, and accessory parameters*. URL: `https://arxiv.org/abs/2410.22275`. Key: `bonk2025piecewisegeodesicjordancurves`.
+7. <a id="ref-wang2025optimizationproblemsloewnerenergy"></a> Yilin Wang (2025). *Two optimization problems for the Loewner energy*. URL: `https://arxiv.org/abs/2402.10054`. Key: `wang2025optimizationproblemsloewnerenergy`.
+8. <a id="ref-sung2024"></a> Jinwoo Sung and Yilin Wang (2024). *Quasiconformal deformation of the chordal Loewner driving function and first variation of the Loewner energy*. Mathematische Annalen. DOI: `10.1007/s00208-024-02866-0`. URL: `https://doi.org/10.1007/s00208-024-02866-0`. Key: `Sung2024`.
+9. <a id="ref-takhtajan2004weilpeterssonmetricuniversalteichmuller"></a> Leon A. Takhtajan and Lee-Peng Teo (2004). *Weil-Petersson metric on the universal Teichmuller space I: Curvature properties and Chern forms*. URL: `https://arxiv.org/abs/math/0312172`. Key: `takhtajan2004weilpeterssonmetricuniversalteichmuller`.
 
 <!-- END AUTO-GENERATED REFERENCES -->
