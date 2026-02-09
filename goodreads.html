@@ -602,14 +602,50 @@
             }
         }
 
+        function getQueryParam(name) {
+            const raw = window.location.search || '';
+            if (!raw || raw.length < 2) {
+                return null;
+            }
+
+            const pairs = raw.substring(1).split('&');
+            for (const pair of pairs) {
+                if (!pair) {
+                    continue;
+                }
+
+                const idx = pair.indexOf('=');
+                const key = idx >= 0 ? pair.slice(0, idx) : pair;
+                const value = idx >= 0 ? pair.slice(idx + 1) : '';
+
+                if (decodeURIComponent(key) === name) {
+                    return decodeURIComponent(value.replace(/\+/g, ' '));
+                }
+            }
+
+            return null;
+        }
+
+        function pickInitialShelf(config) {
+            const shelves = config && Array.isArray(config.shelves) ? config.shelves : [];
+            const fallback = shelves.length > 0 ? shelves[0] : 'currently-reading';
+            const desired = getQueryParam('shelf');
+            if (!desired) {
+                return fallback;
+            }
+            return shelves.indexOf(desired) >= 0 ? desired : fallback;
+        }
+
         (function init() {
             const config = getConfig();
             renderTabs(config);
 
-            const params = new URLSearchParams(window.location.search);
-            const desired = params.get('shelf');
-            const initial = config.shelves.includes(desired) ? desired : config.shelves[0];
-            setActiveShelf(initial);
+            try {
+                setActiveShelf(pickInitialShelf(config));
+            } catch (error) {
+                console.error('Error selecting initial Goodreads shelf:', error);
+                setActiveShelf('currently-reading');
+            }
 
             loadQuotes(config);
         })();
