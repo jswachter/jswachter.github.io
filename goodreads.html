@@ -52,26 +52,11 @@
         .back-link a:hover {
             text-decoration: underline;
         }
-        .controls {
-            margin: 14px 0 0;
-        }
-        .controls input[type="search"] {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
-            outline: none;
-        }
-        .controls input[type="search"]:focus {
-            border-color: #0077cc;
-            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.12);
-        }
         .tabs {
             display: inline-flex;
             align-items: baseline;
             gap: 10px;
-            margin: 14px 0 18px;
+            margin: 14px 0 0;
         }
         .tab-button {
             appearance: none;
@@ -233,12 +218,8 @@
             <p class="subtitle">My shelves and saved quotes.</p>
         </header>
 
-        <div class="controls">
-            <input id="search" type="search" placeholder="Search by title, author, ISBN..." autocomplete="off" aria-label="Search Goodreads shelves">
-            <div id="status" class="status" aria-live="polite"></div>
-        </div>
-
         <div id="tabs" class="tabs" role="tablist" aria-label="Goodreads shelves"></div>
+        <div id="status" class="status is-empty" aria-live="polite"></div>
 
         <section id="book-entries" aria-live="polite"></section>
 
@@ -277,16 +258,6 @@
 
         function normalizeText(raw) {
             return String(raw || '').trim().toLowerCase();
-        }
-
-        function buildSearchText(item) {
-            const parts = [
-                item && item.title ? item.title : '',
-                item && item.author_name ? item.author_name : '',
-                item && item.isbn ? item.isbn : '',
-                item && item.book_id ? item.book_id : ''
-            ];
-            return parts.join(' ').toLowerCase();
         }
 
         function authorKey(item) {
@@ -357,6 +328,13 @@
             status.classList.toggle('is-empty', next.trim().length === 0);
         }
 
+        function renderShelfStatus(shelfData) {
+            const total = shelfData && Array.isArray(shelfData.items) ? shelfData.items.length : 0;
+            const label = `${total} books`;
+            const generatedAt = shelfData && shelfData.generated_at ? String(shelfData.generated_at) : '';
+            renderStatus(generatedAt && generatedAt !== '1970-01-01T00:00:00Z' ? `${label} · last synced ${generatedAt}` : label);
+        }
+
         function renderBooks(shelfData) {
             const items = sortByAuthorThenTitle(Array.isArray(shelfData && shelfData.items) ? shelfData.items : []);
             clearEntries();
@@ -371,7 +349,6 @@
             for (const item of items) {
                 const details = document.createElement('details');
                 details.className = 'book';
-                details.dataset.search = buildSearchText(item);
 
                 const summary = document.createElement('summary');
                 summary.className = 'book-summary';
@@ -462,26 +439,6 @@
             container.appendChild(fragment);
         }
 
-        function applyFilter() {
-            const input = document.getElementById('search');
-            const q = normalizeText(input.value);
-            let shown = 0;
-            for (const el of activeEls) {
-                const text = el.dataset.search || '';
-                const match = !q || text.includes(q);
-                el.style.display = match ? '' : 'none';
-                if (match) {
-                    shown++;
-                }
-            }
-
-            const shelfData = shelfCache.get(activeShelf);
-            const total = shelfData && Array.isArray(shelfData.items) ? shelfData.items.length : 0;
-            const label = q ? `${shown} of ${total} books` : `${total} books`;
-            const generatedAt = shelfData && shelfData.generated_at ? String(shelfData.generated_at) : '';
-            renderStatus(generatedAt && generatedAt !== '1970-01-01T00:00:00Z' ? `${label} · last synced ${generatedAt}` : label);
-        }
-
         async function setActiveShelf(shelf) {
             const tabs = document.querySelectorAll('.tab-button');
             for (const btn of tabs) {
@@ -495,7 +452,7 @@
             try {
                 const data = await fetchShelf(shelf);
                 renderBooks(data);
-                applyFilter();
+                renderShelfStatus(data);
             } catch (error) {
                 console.error('Error loading Goodreads shelf:', error);
                 renderStatus('');
@@ -518,6 +475,10 @@
                 tabsEl.appendChild(btn);
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStatus('');
+        });
 
         function quotesUrl(config) {
             if (config && config.profileSlug) {
