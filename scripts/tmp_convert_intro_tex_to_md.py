@@ -46,6 +46,10 @@ THEOREM_BLOCK_RE = re.compile(
 )
 
 LABEL_CMD_RE = re.compile(r"\\label\{[^}]*\}")
+COMMENT_ENV_RE = re.compile(
+    r"\\begin\s*\{comment\}.*?\\end\s*\{comment\}",
+    re.DOTALL | re.IGNORECASE,
+)
 
 
 def split_frontmatter(text: str) -> tuple[str, str]:
@@ -71,6 +75,12 @@ def strip_tex_comments(text: str) -> str:
             continue
         out_lines.append(line)
     return "\n".join(out_lines) + ("\n" if text.endswith("\n") else "")
+
+
+def strip_comment_environments(text: str) -> str:
+    # Remove blocks guarded by the comment environment (from the comment package).
+    # Important: these blocks should not appear in the generated notebook.
+    return COMMENT_ENV_RE.sub("", text)
 
 
 def convert_display_math_envs(tex: str) -> str:
@@ -144,6 +154,7 @@ def normalize_whitespace(tex: str) -> str:
 
 def convert_tex_to_markdown(tex: str) -> str:
     tex = strip_tex_comments(tex)
+    tex = strip_comment_environments(tex)
     tex = convert_display_math_envs(tex)
     tex = convert_theorems(tex)
     tex = convert_headings(tex)
