@@ -225,12 +225,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     summary = str(entry.get("summary") or "").strip()
     search_text = " ".join([title, date_str, collection, " ".join(tags), summary]).strip()
 
-    tag_links = ""
-    if tags:
-        tag_links = ", ".join(
-            [f'<a href="notebooks.html?tag={url_quote(t)}">{escape(t)}</a>' for t in tags]
-        )
-
     meta_parts: list[str] = []
     if date_str:
         meta_parts.append(escape(date_str))
@@ -238,9 +232,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
     meta_parts.append(
         f'<a href="notebooks.html?collection={url_quote(collection)}">{escape(collection)}</a>'
     )
-
-    if tag_links:
-        meta_parts.append(tag_links)
 
     meta_parts.append(f'<a href="{escape(path)}">md</a>')
 
