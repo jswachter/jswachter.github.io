@@ -135,6 +135,36 @@
         #content li {
             margin: 8px 0;
         }
+        .references {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+        }
+        .references h2 {
+            margin: 0 0 14px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .references ol {
+            margin: 0;
+            padding-left: 22px;
+        }
+        .references li {
+            margin: 10px 0;
+        }
+        .references .ref-links {
+            margin-top: 6px;
+            font-size: 14px;
+            color: #666;
+        }
+        .references .ref-links a {
+            color: #0077cc;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .references .ref-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -728,7 +758,8 @@
 
         async function loadEntry() {
             const params = new URLSearchParams(window.location.search);
-            const entryPath = params.get('entry');
+            // Back-compat: older links (and some tooling) used ?path=...
+            const entryPath = params.get('entry') || params.get('path');
 
             if (!entryPath) {
                 document.getElementById('content').innerHTML = '<p style="color: #888;">No entry specified.</p>';
