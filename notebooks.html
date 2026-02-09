@@ -123,13 +123,47 @@
             font-weight: 500;
             color: #333;
         }
+        .collection {
+            margin: 0 0 12px;
+            padding: 0;
+            border: 0;
+        }
+        .collection-summary {
+            list-style: none;
+            cursor: pointer;
+            user-select: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 0;
+        }
+        .collection-summary::-webkit-details-marker {
+            display: none;
+        }
+        .collection-summary::before {
+            content: "▸";
+            display: inline-block;
+            width: 16px;
+            color: #aaa;
+            margin-right: 6px;
+            transform-origin: 50% 55%;
+        }
+        details[open] > .collection-summary::before {
+            transform: rotate(90deg);
+        }
+        .collection-count {
+            color: #999;
+            font-weight: 400;
+            font-size: 13px;
+            margin-left: 6px;
+        }
+        .collection-entries {
+            margin: 0 0 10px;
+            padding-left: 22px;
+        }
         body[data-view="collections"] .entry-collection,
         body[data-view="collections"] .entry-sep {
             display: none;
-        }
-        body[data-view="collections"] .collection-heading {
-            margin: 18px 0 8px;
-            font-size: 16px;
         }
         body[data-view="collections"] .entry {
             margin-bottom: 10px;
@@ -272,15 +306,29 @@
                 const nodes = [];
 
                 for (const collection of collections) {
-                    const heading = document.createElement('h2');
-                    heading.className = 'collection-heading';
-                    heading.textContent = collection;
-                    nodes.push(heading);
+                    const details = document.createElement('details');
+                    details.className = 'collection';
+
+                    const summary = document.createElement('summary');
+                    summary.className = 'collection-summary';
+                    summary.appendChild(document.createTextNode(collection));
+
+                    const count = document.createElement('span');
+                    count.className = 'collection-count';
+                    count.textContent = `(${byCollection.get(collection).length})`;
+                    summary.appendChild(count);
+
+                    details.appendChild(summary);
 
                     const groupEntries = byCollection.get(collection).slice().sort(sortChronological);
+                    const entriesWrap = document.createElement('div');
+                    entriesWrap.className = 'collection-entries';
                     for (const entry of groupEntries) {
-                        nodes.push(entry.el);
+                        entriesWrap.appendChild(entry.el);
                     }
+
+                    details.appendChild(entriesWrap);
+                    nodes.push(details);
                 }
 
                 entriesContainer.replaceChildren(...nodes);
