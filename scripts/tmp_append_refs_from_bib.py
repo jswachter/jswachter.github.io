@@ -256,10 +256,11 @@ def main() -> int:
 
     block = build_references_block(cite_keys, bib_entries)
     new_body = body_no_block.rstrip() + "\n\n" + block
-    nb_path.write_text(fm + new_body.lstrip("\n"), encoding="utf-8")
+    # Preserve the notebook's conventional single blank line after frontmatter.
+    # (Other notes in this repo use: frontmatter, blank line, then H1.)
+    nb_path.write_text(fm + new_body, encoding="utf-8")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
