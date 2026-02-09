@@ -1,6 +1,17 @@
 {
-    "generated": "2025-10-30",
+    "generated": "2026-02-09",
     "entries": [
+        {
+            "title": "MSc thesis introduction",
+            "date": "2026-02-09",
+            "path": "notebooks/2026-02-09-msc-thesis-introduction.md",
+            "summary": "Introduction from my MSc thesis.",
+            "tags": [
+                "thesis",
+                "msc"
+            ],
+            "collection": "Thesis"
+        },
         {
             "title": "Confluence of browsers, agents and apps",
             "date": "2025-10-30",
