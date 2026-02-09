@@ -6,6 +6,8 @@
     <title>Notebook Entry</title>
     <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="zotero-config.js"></script>
     <style>
         html {
@@ -102,6 +104,15 @@
             border-radius: 5px;
             overflow-x: auto;
         }
+        #content .math-display,
+        #content .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.4em 0;
+        }
+        #content .katex {
+            font-size: 1.02em;
+        }
         #content blockquote {
             border-left: 4px solid #ddd;
             margin-left: 0;
@@ -171,6 +182,121 @@
     </div>
 
     <script>
+        function escapeHtml(value) {
+            return String(value || '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+        }
+
+        function setupMarkedMath() {
+            if (!window.marked || typeof window.marked.use !== 'function') {
+                return;
+            }
+
+            function isProbablyInlineMath(text) {
+                const t = String(text || '');
+                if (!t) {
+                    return false;
+                }
+                if (/^[0-9][0-9,.\s]*$/.test(t)) {
+                    // Avoid turning $100 into math.
+                    return false;
+                }
+                if (/\\|_|\\^|\\{|\\}|\\\\/.test(t)) {
+                    return true;
+                }
+                if (/^[A-Za-z]$/.test(t)) {
+                    return true;
+                }
+                // Equations/expressions.
+                if (/[A-Za-z]/.test(t) && /[=<>+\-*/]/.test(t)) {
+                    return true;
+                }
+                return false;
+            }
+
+            marked.use({
+                extensions: [
+                    {
+                        name: 'mathBlock',
+                        level: 'block',
+                        start(src) {
+                            return src.indexOf('$$');
+                        },
+                        tokenizer(src) {
+                            const match = src.match(/^\$\$\s*\n([\s\S]*?)\n\$\$\s*(?:\n|$)/);
+                            if (!match) {
+                                return;
+                            }
+                            return {
+                                type: 'mathBlock',
+                                raw: match[0],
+                                text: match[1]
+                            };
+                        },
+                        renderer(token) {
+                            return `<div class="math-display">${escapeHtml(token.text)}</div>\n`;
+                        }
+                    },
+                    {
+                        name: 'mathInline',
+                        level: 'inline',
+                        start(src) {
+                            return src.indexOf('$');
+                        },
+                        tokenizer(src) {
+                            if (!src || src[0] !== '$' || src.startsWith('$$')) {
+                                return;
+                            }
+                            const match = src.match(/^\$([^\n$]+?)\$/);
+                            if (!match) {
+                                return;
+                            }
+                            const text = match[1];
+                            if (!isProbablyInlineMath(text)) {
+                                return;
+                            }
+                            return {
+                                type: 'mathInline',
+                                raw: match[0],
+                                text
+                            };
+                        },
+                        renderer(token) {
+                            return `<span class="math-inline">${escapeHtml(token.text)}</span>`;
+                        }
+                    }
+                ]
+            });
+        }
+
+        function renderKatexMath(rootEl) {
+            if (!rootEl || !window.katex || typeof window.katex.render !== 'function') {
+                return;
+            }
+            const nodes = rootEl.querySelectorAll('.math-display, .math-inline');
+            for (const node of nodes) {
+                const tex = String(node.textContent || '').trim();
+                if (!tex) {
+                    continue;
+                }
+                const displayMode = node.classList.contains('math-display');
+                try {
+                    window.katex.render(tex, node, {
+                        displayMode,
+                        throwOnError: false
+                    });
+                } catch (error) {
+                    console.warn('KaTeX render failed:', error);
+                }
+            }
+        }
+
+        setupMarkedMath();
+
         function normalizeDoi(raw) {
             const trimmed = String(raw || '').trim();
             if (!trimmed) {
@@ -683,6 +809,8 @@
                 const htmlContent = marked.parse(markdownContent);
                 const contentEl = document.getElementById('content');
                 contentEl.innerHTML = htmlContent;
+
+                renderKatexMath(contentEl);
 
                 const citations = extractCitationsAndRewriteLinks(contentEl);
                 renderReferences(citations);
