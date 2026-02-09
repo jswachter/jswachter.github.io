@@ -239,6 +239,7 @@
             const initialView = String(params.get('view') || '').trim().toLowerCase();
             const initialTag = String(params.get('tag') || '').trim();
             const initialCollection = String(params.get('collection') || '').trim();
+            const openCollection = String(params.get('open') || '').trim();
 
             const entryEls = Array.from(entriesContainer.querySelectorAll('.entry'));
             const entries = entryEls.map((el) => {
@@ -308,6 +309,13 @@
                 for (const collection of collections) {
                     const details = document.createElement('details');
                     details.className = 'collection';
+                    if (openCollection) {
+                        if (openCollection.toLowerCase() === 'first' && nodes.length === 0) {
+                            details.open = true;
+                        } else if (collection.toLowerCase() === openCollection.toLowerCase()) {
+                            details.open = true;
+                        }
+                    }
 
                     const summary = document.createElement('summary');
                     summary.className = 'collection-summary';
