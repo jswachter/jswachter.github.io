@@ -231,8 +231,6 @@ def build_entry_html(entry: dict[str, Any]) -> str:
         f'<a href="notebooks.html?collection={url_quote(collection)}">{escape(collection)}</a>'
     )
 
-    meta_parts.append(f'<a href="{escape(path)}">md</a>')
-
     meta_html = " · ".join(meta_parts)
 
     return (
