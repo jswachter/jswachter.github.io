@@ -287,6 +287,35 @@
             return parts.join(' ').toLowerCase();
         }
 
+        function snapshotMatchesConfig(snapshot, config) {
+            if (!snapshot || typeof snapshot !== 'object') {
+                return false;
+            }
+            const source = snapshot.source && typeof snapshot.source === 'object' ? snapshot.source : null;
+            if (!source) {
+                return false;
+            }
+            return String(source.group_id || '') === String(config.groupId || '')
+                && String(source.collection_key || '') === String(config.collectionKey || '')
+                && String(source.style || '') === String(config.style || '');
+        }
+
+        async function fetchZoteroSnapshot(config) {
+            const response = await fetch('zotero/library-items.json', { cache: 'no-store' });
+            if (!response.ok) {
+                return null;
+            }
+            const snapshot = await response.json();
+            if (!snapshotMatchesConfig(snapshot, config)) {
+                return null;
+            }
+            const items = Array.isArray(snapshot.items) ? snapshot.items : [];
+            return {
+                updatedAt: String(snapshot.updated_at || '').trim(),
+                items
+            };
+        }
+
         async function fetchZoteroItems(config) {
             const items = [];
             const pageSize = 100;
@@ -491,7 +520,25 @@
             entriesContainer.innerHTML = '';
 
             try {
-                const items = await fetchZoteroItems(config);
+                let items = null;
+                let loadedFrom = '';
+                let snapshotUpdatedAt = '';
+
+                try {
+                    const snapshot = await fetchZoteroSnapshot(config);
+                    if (snapshot && Array.isArray(snapshot.items)) {
+                        items = snapshot.items;
+                        loadedFrom = 'snapshot';
+                        snapshotUpdatedAt = snapshot.updatedAt;
+                    }
+                } catch (error) {
+                    // Ignore snapshot failures; fall back to live fetching.
+                }
+
+                if (!items) {
+                    items = await fetchZoteroItems(config);
+                    loadedFrom = 'live';
+                }
 
                 items.sort((a, b) => {
                     const yearA = extractYear(a && a.data ? a.data : {});
@@ -510,7 +557,13 @@
                     return;
                 }
 
-                statusEl.textContent = `${items.length} items`;
+                if (loadedFrom === 'snapshot') {
+                    statusEl.textContent = snapshotUpdatedAt
+                        ? `${items.length} items (snapshot, updated ${snapshotUpdatedAt})`
+                        : `${items.length} items (snapshot)`;
+                } else {
+                    statusEl.textContent = `${items.length} items (live)`;
+                }
 
                 const itemEls = [];
                 for (const item of items) {
@@ -521,6 +574,7 @@
                     const title = String(data.title || '(untitled)');
                     const year = extractYear(data);
                     const firstCreator = extractFirstCreator(data);
+                    const bibHtml = typeof item.bib === 'string' ? item.bib.trim() : '';
                     const metaParts = [];
                     if (year) {
                         metaParts.push(year);
@@ -554,11 +608,7 @@
 
                     const bibDiv = document.createElement('div');
                     bibDiv.className = 'item-bib';
-                    if (typeof item.bib === 'string' && item.bib.trim()) {
-                        bibDiv.innerHTML = item.bib;
-                    } else {
-                        bibDiv.textContent = 'No formatted citation available.';
-                    }
+                    bibDiv.textContent = '';
                     body.appendChild(bibDiv);
 
                     const linksDiv = document.createElement('div');
@@ -612,6 +662,14 @@
                     details.addEventListener('toggle', () => {
                         if (!details.open) {
                             return;
+                        }
+                        if (!bibDiv.dataset.loaded) {
+                            if (bibHtml) {
+                                bibDiv.innerHTML = bibHtml;
+                            } else {
+                                bibDiv.textContent = 'No formatted citation available.';
+                            }
+                            bibDiv.dataset.loaded = '1';
                         }
                         // Build the notebook citation index lazily on first open.
                         renderNotebookMentions(mentions, item);

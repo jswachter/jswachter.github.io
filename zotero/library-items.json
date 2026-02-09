@@ -1,0 +1,10 @@
+{
+    "updated_at": "",
+    "source": {
+        "group_id": "",
+        "collection_key": "",
+        "style": "",
+        "endpoint": "https://api.zotero.org/groups/{group_id}/collections/{collection_key}/items/top"
+    },
+    "items": []
+}
