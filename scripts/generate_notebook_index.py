@@ -234,7 +234,7 @@ def build_entry_html(entry: dict[str, Any]) -> str:
         f'<div class="entry" data-title="{escape(title)}" data-date="{escape(date_str)}" '
         f'data-collection="{escape(collection)}" data-tags="{escape(tags_lower)}">\n'
         f'    <h3 class="entry-title"><a href="notebook-viewer.html?entry={url_quote(path)}" data-date="{escape(date_str)}">{escape(title)}</a></h3>\n'
-        f'    <p class="entry-meta"><span class="entry-date">{escape(date_str)}</span> · {meta_html}</p>\n'
+        f'    <p class="entry-meta"><span class="entry-date">{escape(date_str)}</span><span class="entry-sep"> · </span>{meta_html}</p>\n'
         f"</div>"
     )
 
