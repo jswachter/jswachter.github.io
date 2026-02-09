@@ -366,12 +366,14 @@
                 }
 
                 const parts = [];
-                parts.push(`${filtered.length} of ${entries.length}`);
                 if (state.collection) {
                     parts.push(`collection: ${state.collection}`);
                 }
                 if (state.tag) {
                     parts.push(`tag: ${state.tag}`);
+                }
+                if (filtered.length !== entries.length) {
+                    parts.push(`${filtered.length} of ${entries.length}`);
                 }
                 statusEl.textContent = parts.join(' · ');
             }
