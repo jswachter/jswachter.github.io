@@ -11,6 +11,7 @@
             tex: {
                 tags: 'ams',
                 tagSide: 'right',
+                processEnvironments: true,
                 packages: { '[+]': ['ams'] }
             },
             options: {
@@ -228,6 +229,29 @@
 
             marked.use({
                 extensions: [
+                    {
+                        name: 'texEnvBlock',
+                        level: 'block',
+                        start(src) {
+                            const idx = src.indexOf('\\begin{');
+                            return idx >= 0 ? idx : undefined;
+                        },
+                        tokenizer(src) {
+                            const match = src.match(/^\\begin\{(align\*?|equation\*?|gather\*?|multline\*?)\}\s*\n([\s\S]*?)\n\\end\{\1\}\s*(?:\n|$)/);
+                            if (!match) {
+                                return;
+                            }
+                            const full = match[0];
+                            return {
+                                type: 'texEnvBlock',
+                                raw: full,
+                                text: full.trim()
+                            };
+                        },
+                        renderer(token) {
+                            return `<div class="math-display">${escapeHtml(token.text)}</div>\n`;
+                        }
+                    },
                     {
                         name: 'mathBlock',
                         level: 'block',

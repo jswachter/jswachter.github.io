@@ -104,13 +104,16 @@ def convert_display_math_envs(tex: str) -> str:
         body = match.group("body")
         body = textwrap.dedent(body)
         body = "\n".join([line.rstrip() for line in body.splitlines()]).strip("\n")
+        # Important: don't wrap environments like align/equation in $$...$$.
+        # MathJax can process these environments directly, and wrapping can
+        # cause invalid nesting (e.g. align inside $$).
         return (
-            "\n$$\n"
+            "\n\n"
             + f"\\begin{{{env}}}\n"
             + body.strip()
             + "\n"
             + f"\\end{{{env}}}\n"
-            + "$$\n"
+            + "\n\n"
         )
 
     env_alt = "|".join(re.escape(e) for e in envs)
@@ -175,18 +178,45 @@ def normalize_whitespace(tex: str) -> str:
     return tex.strip() + "\n"
 
 
-def strip_labels_outside_display_math(tex: str) -> str:
-    # Keep \\label{...} inside display math for MathJax equation numbering, but
-    # remove labels elsewhere (theorems/chapters/etc).
+def strip_labels_outside_math(tex: str) -> str:
+    # Keep \\label{...} inside math blocks/environments for MathJax numbering,
+    # but remove labels elsewhere (theorems/chapters/etc).
     out_lines: list[str] = []
     in_display_math = False
+    in_tex_env = False
+    current_env = ""
+    env_begin_re = re.compile(r"^\s*\\begin\{([A-Za-z*]+)\}\s*$")
+    env_end_re = re.compile(r"^\s*\\end\{([A-Za-z*]+)\}\s*$")
+    math_envs = {
+        "align",
+        "align*",
+        "equation",
+        "equation*",
+        "gather",
+        "gather*",
+        "multline",
+        "multline*",
+    }
 
     for line in tex.splitlines(keepends=True):
+        begin_m = env_begin_re.match(line)
+        if begin_m and begin_m.group(1) in math_envs:
+            in_tex_env = True
+            current_env = begin_m.group(1)
+            out_lines.append(line)
+            continue
+        end_m = env_end_re.match(line)
+        if end_m and in_tex_env and end_m.group(1) == current_env:
+            in_tex_env = False
+            current_env = ""
+            out_lines.append(line)
+            continue
+
         if line.strip() == "$$":
             in_display_math = not in_display_math
             out_lines.append(line)
             continue
-        if in_display_math:
+        if in_display_math or in_tex_env:
             out_lines.append(line)
             continue
         out_lines.append(LABEL_CMD_RE.sub("", line))
@@ -243,7 +273,7 @@ def convert_tex_to_markdown(tex: str) -> str:
     tex, theorem_labels = convert_theorems(tex)
     tex = convert_headings(tex)
     tex = apply_inline_rules(tex)
-    tex = strip_labels_outside_display_math(tex)
+    tex = strip_labels_outside_math(tex)
     tex = replace_refs_outside_display_math(tex, theorem_labels)
     tex = normalize_whitespace(tex)
     return tex
