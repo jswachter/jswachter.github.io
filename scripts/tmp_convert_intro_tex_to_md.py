@@ -5,10 +5,10 @@ Temporary helper: convert a LaTeX thesis introduction chapter to Markdown and
 write it into an existing notebook file (preserving YAML frontmatter).
 
 Notes:
-- This is a best-effort converter intended for thesis prose + AMS math.
+- Best-effort converter intended for thesis prose + AMS math.
 - Display-math environments (align/equation/...) are converted to $$ blocks.
-- Labels are stripped from math blocks because most Markdown math renderers
-  (e.g. KaTeX) do not support \\label.
+- We keep \\label{...} inside display math so MathJax can number + resolve \\eqref.
+- \\begin{comment}...\\end{comment} blocks are removed.
 """
 
 from __future__ import annotations
@@ -50,6 +50,10 @@ COMMENT_ENV_RE = re.compile(
     r"\\begin\s*\{comment\}.*?\\end\s*\{comment\}",
     re.DOTALL | re.IGNORECASE,
 )
+
+EQREF_RE = re.compile(r"\\eqref\{([^}]+)\}")
+REF_RE = re.compile(r"\\ref\{([^}]+)\}")
+CREF_RE = re.compile(r"\\[cC]ref\{([^}]+)\}")
 
 
 def split_frontmatter(text: str) -> tuple[str, str]:
@@ -99,14 +103,15 @@ def convert_display_math_envs(tex: str) -> str:
         env = match.group("env")
         body = match.group("body")
         body = textwrap.dedent(body)
-        body = LABEL_CMD_RE.sub("", body)
         body = "\n".join([line.rstrip() for line in body.splitlines()]).strip("\n")
-
-        # Prefer aligned for broad renderer support when the source was align.
-        if env in ("align", "align*"):
-            body = "\\begin{aligned}\n" + body.strip() + "\n\\end{aligned}"
-
-        return "\n$$\n" + body.strip() + "\n$$\n"
+        return (
+            "\n$$\n"
+            + f"\\begin{{{env}}}\n"
+            + body.strip()
+            + "\n"
+            + f"\\end{{{env}}}\n"
+            + "$$\n"
+        )
 
     env_alt = "|".join(re.escape(e) for e in envs)
     pattern = re.compile(
@@ -117,17 +122,37 @@ def convert_display_math_envs(tex: str) -> str:
 
 
 def convert_theorems(tex: str) -> str:
+    theorem_counter = 0
+    label_to_number: dict[str, int] = {}
+
     def repl(match: re.Match[str]) -> str:
+        nonlocal theorem_counter
         body = match.group("body")
         body = textwrap.dedent(body).strip()
+        label_match = LABEL_CMD_RE.search(body)
+        label = label_match.group(0) if label_match else ""
+        label_key = ""
+        if label_match:
+            label_key = label_match.group(0)[7:-1]  # strip "\label{" and "}"
+
+        # Strip theorem labels from the visible text; we handle cross refs separately.
         body = LABEL_CMD_RE.sub("", body).strip()
         # LaTeX sources often indent theorem bodies; in Markdown that becomes a code block.
         body = re.sub(r"(?m)^[ \t]+", "", body).strip()
-        if not body:
-            return "**Theorem.**\n"
-        return f"**Theorem.**\n\n{body}\n"
 
-    return THEOREM_BLOCK_RE.sub(repl, tex)
+        theorem_counter += 1
+        if label_key:
+            label_to_number[label_key] = theorem_counter
+            anchor = f'<a id="{label_key}"></a>\n\n'
+        else:
+            anchor = ""
+
+        if not body:
+            return f"{anchor}**Theorem {theorem_counter}.**\n"
+        return f"{anchor}**Theorem {theorem_counter}.**\n\n{body}\n"
+
+    converted = THEOREM_BLOCK_RE.sub(repl, tex)
+    return converted, label_to_number
 
 
 def convert_headings(tex: str) -> str:
@@ -143,8 +168,6 @@ def apply_inline_rules(tex: str) -> str:
 
 
 def normalize_whitespace(tex: str) -> str:
-    # Remove remaining \label commands (outside math too).
-    tex = LABEL_CMD_RE.sub("", tex)
     # Avoid accidental indented-code blocks from LaTeX formatting.
     tex = re.sub(r"(?m)^[ \t]{4,}", "", tex)
     # Collapse excessive blank lines a bit.
@@ -152,13 +175,69 @@ def normalize_whitespace(tex: str) -> str:
     return tex.strip() + "\n"
 
 
+def strip_labels_outside_display_math(tex: str) -> str:
+    # Keep \\label{...} inside display math for MathJax equation numbering, but
+    # remove labels elsewhere (theorems/chapters/etc).
+    out_lines: list[str] = []
+    in_display_math = False
+
+    for line in tex.splitlines(keepends=True):
+        if line.strip() == "$$":
+            in_display_math = not in_display_math
+            out_lines.append(line)
+            continue
+        if in_display_math:
+            out_lines.append(line)
+            continue
+        out_lines.append(LABEL_CMD_RE.sub("", line))
+
+    return "".join(out_lines)
+
+
+def replace_refs_outside_display_math(tex: str, theorem_labels: dict[str, int]) -> str:
+    # Render equation refs via MathJax; render theorem refs as plain Markdown links.
+    out_lines: list[str] = []
+    in_display_math = False
+
+    for line in tex.splitlines(keepends=True):
+        if line.strip() == "$$":
+            in_display_math = not in_display_math
+            out_lines.append(line)
+            continue
+        if in_display_math:
+            out_lines.append(line)
+            continue
+
+        updated = line
+
+        # Equation references: inline math so MathJax resolves numbers.
+        updated = EQREF_RE.sub(r"$\\eqref{\1}$", updated)
+
+        # Only resolve theorem refs if we saw the label in this document.
+        def theorem_ref_repl(match: re.Match[str]) -> str:
+            key = match.group(1)
+            if key in theorem_labels:
+                num = theorem_labels[key]
+                return f"[Theorem {num}](#{key})"
+            return f"`{key}`"
+
+        updated = REF_RE.sub(theorem_ref_repl, updated)
+        updated = CREF_RE.sub(theorem_ref_repl, updated)
+
+        out_lines.append(updated)
+
+    return "".join(out_lines)
+
+
 def convert_tex_to_markdown(tex: str) -> str:
     tex = strip_tex_comments(tex)
     tex = strip_comment_environments(tex)
     tex = convert_display_math_envs(tex)
-    tex = convert_theorems(tex)
+    tex, theorem_labels = convert_theorems(tex)
     tex = convert_headings(tex)
     tex = apply_inline_rules(tex)
+    tex = strip_labels_outside_display_math(tex)
+    tex = replace_refs_outside_display_math(tex, theorem_labels)
     tex = normalize_whitespace(tex)
     return tex
 

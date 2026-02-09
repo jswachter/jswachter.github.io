@@ -6,8 +6,19 @@
     <title>Notebook Entry</title>
     <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                tags: 'ams',
+                tagSide: 'right',
+                packages: { '[+]': ['ams'] }
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <script src="zotero-config.js"></script>
     <style>
         html {
@@ -105,13 +116,10 @@
             overflow-x: auto;
         }
         #content .math-display,
-        #content .katex-display {
+        #content mjx-container[jax="CHTML"][display="true"] {
             overflow-x: auto;
             overflow-y: hidden;
             padding: 0.4em 0;
-        }
-        #content .katex {
-            font-size: 1.02em;
         }
         #content blockquote {
             border-left: 4px solid #ddd;
@@ -239,7 +247,14 @@
                             };
                         },
                         renderer(token) {
-                            return `<div class="math-display">${escapeHtml(token.text)}</div>\n`;
+                            const text = String(token.text || '').trim();
+                            if (!text) {
+                                return '';
+                            }
+                            if (/^\\begin\{[A-Za-z*]+\}/.test(text)) {
+                                return `<div class="math-display">${escapeHtml(text)}</div>\n`;
+                            }
+                            return `<div class="math-display">\\[${escapeHtml(text)}\\]</div>\n`;
                         }
                     },
                     {
@@ -268,32 +283,42 @@
                             };
                         },
                         renderer(token) {
-                            return `<span class="math-inline">${escapeHtml(token.text)}</span>`;
+                            const text = String(token.text || '').trim();
+                            if (!text) {
+                                return '';
+                            }
+                            return `<span class="math-inline">\\(${escapeHtml(text)}\\)</span>`;
                         }
                     }
                 ]
             });
         }
 
-        function renderKatexMath(rootEl) {
-            if (!rootEl || !window.katex || typeof window.katex.render !== 'function') {
+        async function typesetMath(rootEl) {
+            if (!rootEl) {
                 return;
             }
-            const nodes = rootEl.querySelectorAll('.math-display, .math-inline');
-            for (const node of nodes) {
-                const tex = String(node.textContent || '').trim();
-                if (!tex) {
-                    continue;
+
+            // MathJax loads async; wait briefly.
+            const start = Date.now();
+            while (Date.now() - start < 4000) {
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    break;
                 }
-                const displayMode = node.classList.contains('math-display');
-                try {
-                    window.katex.render(tex, node, {
-                        displayMode,
-                        throwOnError: false
-                    });
-                } catch (error) {
-                    console.warn('KaTeX render failed:', error);
+                await new Promise((resolve) => setTimeout(resolve, 50));
+            }
+
+            if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') {
+                return;
+            }
+
+            try {
+                if (window.MathJax.startup && window.MathJax.startup.promise) {
+                    await window.MathJax.startup.promise;
                 }
+                await window.MathJax.typesetPromise([rootEl]);
+            } catch (error) {
+                console.warn('MathJax typeset failed:', error);
             }
         }
 
@@ -812,7 +837,7 @@
                 const contentEl = document.getElementById('content');
                 contentEl.innerHTML = htmlContent;
 
-                renderKatexMath(contentEl);
+                await typesetMath(contentEl);
 
                 const citations = extractCitationsAndRewriteLinks(contentEl);
                 renderReferences(citations);

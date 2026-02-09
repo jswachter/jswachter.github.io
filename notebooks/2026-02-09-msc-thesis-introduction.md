@@ -5,6 +5,7 @@ collection: Thesis
 tags: thesis, msc
 summary: Introduction from my MSc thesis.
 ---
+
 # MSc thesis introduction
 
 ## Introduction
@@ -17,9 +18,9 @@ This yields a family of maps $(g_{t})_{t}$ and remarkably, these so-called mappi
 
 
 $$
-\begin{aligned}
+\begin{align}
 I_{\mathbb{H}; 0, \infty}^{C}(\gamma) := \frac{1}{2}\int_{0}^{\infty} (\frac{d \xi_{t}}{dt})^{2} dt.
-\end{aligned}
+\end{align}
 $$
 
 
@@ -27,9 +28,9 @@ To get from this chordal setting to loops, one exploits that for a Jordan curve 
 
 
 $$
-\begin{aligned}
+\begin{align}
 I^{L}(\gamma) := \lim_{\epsilon \to 0} I_{\hat{\mathbb{C}} \backslash \gamma[0, \epsilon]}^{C}(\gamma[\epsilon, 1]),
-\end{aligned}
+\end{align}
 $$
 
 
@@ -50,9 +51,9 @@ This thesis studies the two optimization problems above, namely
 
 
 $$
-\begin{aligned}
+\begin{align}
 \inf_{\gamma \in \mathcal{L}(z_{1}, \ldots, z_{n}, \tau)} I^{L}(\gamma), \qquad \inf_{h \in \Phi_{x, y}} I^{L}(h),
-\end{aligned}
+\end{align}
 $$
 
 
@@ -60,10 +61,10 @@ the existence and uniqueness of their solutions and the geometric properties the
 
  
 $$
-\begin{aligned}
+\begin{align}
 \mathcal{S}[f](z)
 = \frac{f'''(z)}{f'(z)} - \frac32\left(\frac{f''(z)}{f'(z)}\right)^2.
-\end{aligned}
+\end{align}
 $$
 
 
@@ -71,9 +72,9 @@ Using the geometric properties of the solution curves (or the representative cur
 
 
 $$
-\begin{aligned}
+\begin{align}
 \mathcal{S}[F](z) = \sum_{k=1}^{n} \frac{\text{Res}(\mathcal{S}[F], z_{k})}{z-z_{k}}.
-\end{aligned}
+\end{align}
 $$
 
 
@@ -81,24 +82,26 @@ Similarly, for the welding, it will turn out that $\mathcal{S}[f]$ and $\mathcal
 
 
 $$
-\begin{aligned}
+\begin{align}
 \mathcal{S}[f](z) &= \sum_{k=1}^{n} \frac{\text{Res}(\mathcal{S}[f], x_{k})}{z-x_{k}} \\
 \mathcal{S}[g](z) &= \sum_{k=1}^{n} \frac{\text{Res}(\mathcal{S}[g], y_{k})}{z-y_{k}}.
-\end{aligned}
+\end{align}
 $$
 
 
 The main contribution of this thesis is to the understanding of the residues $\text{Res}(\mathcal{S}[F], z_{k})$, $\text{Res}(\mathcal{S}[f], x_{k})$ and $\text{Res}(\mathcal{S}[g], y_{k})$. We have the following results, the first of which was previously derived in \cite{bonk2025piecewisegeodesicjordancurves}. 
 
-**Theorem.**
+<a id="thm:intro_curve_schw"></a>
+
+**Theorem 1.**
 
 Consider the Loewner energy optimization problems for curves in $\mathcal{L}(z_{1}, ..., z_{n}; \tau)$ giving rise to optimal value and curve
 
 
 $$
-\begin{aligned}
+\begin{align}
 I^{L}(z_{1}, ..., z_{n}) := I^{L}(\gamma^{*}).
-\end{aligned}
+\end{align}
 $$
 
 
@@ -106,22 +109,24 @@ Let $F$ be the function associated to the optimal curve $\gamma^{*}$ as above. A
 
 
 $$
-\begin{aligned}
+\begin{align}
 \text{Res}(\mathcal{S}[F], z_{k}) = \frac{1}{2} \partial_{z_{k}} I^{L}(z_{1}, ..., z_{n})
-\end{aligned}
+\end{align}
 $$
 
 For the welding optimization problem, we obtain: 
 
-**Theorem.**
+<a id="thm:intro_welding_schw"></a>
+
+**Theorem 2.**
 
 Consider the Loewner energy optimization problem for weldings in $\Phi_{x,y}$ with optimum 
 
 
 $$
-\begin{aligned}
+\begin{align}
 I^{L}(x,y) := I^{L}(h^{*})
-\end{aligned}
+\end{align}
 $$
 
 
@@ -129,50 +134,35 @@ Let $f$ and $g$ be the functions associated to the solution $h^{*}$. Assuming th
 
 
 $$
-\begin{aligned}
+\begin{align}
 \text{Res}(\mathcal{S}[f], x_{k}) = \frac{1}{2} \partial_{x_{k}} I^{L}(x, y)  \\
 \text{Res}(\mathcal{S}[g], y_{k}) = \frac{1}{2} \partial_{y_{k}} I^{L}(x, y).
-\end{aligned}
+\end{align}
 $$
 
 To carry out the proofs we adapt a technique from Sung and Wang's work on quasiconformal deformations and how it relates to Loewner energy \cite{Sung2024}. There it is shown that the infinitesimal change of the Loewner energy of a Jordan curve exposed to application of a quasiconformal map $\omega^{t \mu}$ with Beltrami differential $\| t \mu \|_{\infty} < 1$ can be related to an integral of the Schwarzians in the following way 
 
 
 $$
-\begin{aligned}
+\begin{align}
+\label{eq:variational_formula}
 \frac{d}{d t}|_{t = 0} I^{L}(\omega^{t \mu}(\gamma)) = - \frac{4}{\pi} \text{Re} \left [ \int_{\Omega} \mathcal{S}[f^{-1}](z) \mu(z)  d^{2}z + \int_{\Omega^{*}} \mathcal{S}[g^{-1}] \mu(z) d^{2}z \right ],
-\end{aligned}
+\end{align}
 $$
 
 
 a result that concretizes work by Takhtajan-Teo on variations of the universal Lioville action $S_{1}$, set in the context of universal Teichmüller space. \cite{takhtajan2004weilpeterssonmetricuniversalteichmuller}
 
-The main idea to get from the variational formula \eqref{eq:variational_formula} to the results on residues \cref{thm:intro_curve_schw} \cref{thm:intro_welding_schw} is to pick a simplifying quasiconformal deformation that allows one to analyze one residue at a time. On a general level, this is facilitated by a map that moves only the point associated with that one particular residue.  
+The main idea to get from the variational formula $\eqref{eq:variational_formula}$ to the results on residues [Theorem 1](#thm:intro_curve_schw) [Theorem 2](#thm:intro_welding_schw) is to pick a simplifying quasiconformal deformation that allows one to analyze one residue at a time. On a general level, this is facilitated by a map that moves only the point associated with that one particular residue.  
 
 
 ### Outline
-We begin in \cref{ch:preliminaries} with the details on Loewner's equation, the Loewner transform and how this allows for the definition of Loewner energy of chords and loops as sketched in the above opening paragraphs.  
+We begin in `ch:preliminaries` with the details on Loewner's equation, the Loewner transform and how this allows for the definition of Loewner energy of chords and loops as sketched in the above opening paragraphs.  
 
-In \cref{ch:useful_background} we recap some conformal geometry, the Schwarzian derivative and some important Riemann maps that are directly used in proving the simple pole structure and extendability results in \cref{thm:intro_curve_schw} and \cref{thm:intro_welding_schw}. The class of conformal mappings are best understood as a subset of the quasiconformal maps and since quasiconformal deformation is the main ingredient in the new proof strategy for the main results, we devote them special attention. To unify the perspectives on curves and weldings, as well as use strong results on variation of Loewner energy, we also establish some Teichmüller theory. 
+In `ch:useful_background` we recap some conformal geometry, the Schwarzian derivative and some important Riemann maps that are directly used in proving the simple pole structure and extendability results in [Theorem 1](#thm:intro_curve_schw) and [Theorem 2](#thm:intro_welding_schw). The class of conformal mappings are best understood as a subset of the quasiconformal maps and since quasiconformal deformation is the main ingredient in the new proof strategy for the main results, we devote them special attention. To unify the perspectives on curves and weldings, as well as use strong results on variation of Loewner energy, we also establish some Teichmüller theory. 
 
-In \cref{ch:quasiconformal_deformation} this bears fruit, as we get to use a theorem on first variation of the universal Liouville action, a functional with close ties to the Loewner energy, to understand how infinitesimal quasiconformal deformation of curves and weldings affects their Loewner energy. This is a key step to extend the proof strategy to cover the main welding result. 
+In `ch:quasiconformal_deformation` this bears fruit, as we get to use a theorem on first variation of the universal Liouville action, a functional with close ties to the Loewner energy, to understand how infinitesimal quasiconformal deformation of curves and weldings affects their Loewner energy. This is a key step to extend the proof strategy to cover the main welding result. 
 
-Then in \cref{ch:two_optimization_problems_of_the_loewner_energy} we present the two optimization problems presented briefly above and discuss existence and uniqueness. 
+Then in `ch:two_optimization_problems_of_the_loewner_energy` we present the two optimization problems presented briefly above and discuss existence and uniqueness. 
 
-Finally in \cref{ch:residue_formulas} we put everything together and carry out the proofs of the results \cref{thm:intro_curve_schw} and \cref{thm:intro_welding_schw} using the quasiconformal deformation technique.
-
-<!-- BEGIN AUTO-GENERATED REFERENCES -->
-
-## References
-
-1. Löwner, Karl (1923). *Untersuchungen {\"u}ber schlichte konforme Abbildungen des Einheitskreises. I*. Mathematische Annalen. DOI: `10.1007/BF01448091`. URL: `https://doi.org/10.1007/BF01448091`. Key: `Loewner1923`.
-2. Peter K. Friz and Atul Shekhar (2015). *On the existence of SLE trace: finite energy drivers and non-constant $\kappa$*. URL: `https://arxiv.org/abs/1511.02670`. Key: `friz2015existencesletracefinite`.
-3. Wang, Yilin (2019). *The energy of a deterministic Loewner chain: Reversibility and interpretation via SLE$_{0+}$*. Journal of the European Mathematical Society. DOI: `10.4171/jems/876`. URL: `http://dx.doi.org/10.4171/JEMS/876`. Key: `Wang_2019_deterministicloewnerchain`.
-4. Rohde, Steffen and Wang, Yilin (2019). *The Loewner Energy of Loops and Regularity of Driving Functions*. International Mathematics Research Notices. DOI: `10.1093/imrn/rnz071`. URL: `http://dx.doi.org/10.1093/imrn/rnz071`. Key: `Rohde_2019`.
-5. Donald Marshall and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves I: weldings, explicit computations, and Schwarzian derivatives*. URL: `https://arxiv.org/abs/2202.01967`. Key: `marshall2025piecewisegeodesicjordancurves`.
-6. Mario Bonk and Janne Junnila and Steffen Rohde and Yilin Wang (2025). *Piecewise geodesic Jordan curves II: Loewner energy, projective structures, and accessory parameters*. URL: `https://arxiv.org/abs/2410.22275`. Key: `bonk2025piecewisegeodesicjordancurves`.
-7. Yilin Wang (2025). *Two optimization problems for the Loewner energy*. URL: `https://arxiv.org/abs/2402.10054`. Key: `wang2025optimizationproblemsloewnerenergy`.
-8. Jinwoo Sung and Yilin Wang (2024). *Quasiconformal deformation of the chordal Loewner driving function and first variation of the Loewner energy*. Mathematische Annalen. DOI: `10.1007/s00208-024-02866-0`. URL: `https://doi.org/10.1007/s00208-024-02866-0`. Key: `Sung2024`.
-9. Leon A. Takhtajan and Lee-Peng Teo (2004). *Weil-Petersson metric on the universal Teichmuller space I: Curvature properties and Chern forms*. URL: `https://arxiv.org/abs/math/0312172`. Key: `takhtajan2004weilpeterssonmetricuniversalteichmuller`.
-
-<!-- END AUTO-GENERATED REFERENCES -->
+Finally in `ch:residue_formulas` we put everything together and carry out the proofs of the results [Theorem 1](#thm:intro_curve_schw) and [Theorem 2](#thm:intro_welding_schw) using the quasiconformal deformation technique.
