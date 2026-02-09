@@ -34,13 +34,13 @@
         }
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 18px;
         }
         header h1 {
             margin-bottom: 5px;
         }
         .back-link {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
         .back-link a {
             color: #0077cc;
@@ -54,7 +54,7 @@
             gap: 12px;
             align-items: center;
             flex-wrap: wrap;
-            margin: 18px 0 10px;
+            margin: 14px 0 0;
         }
         .toggle {
             display: inline-flex;
@@ -82,9 +82,13 @@
             margin-right: 10px;
         }
         .status {
-            margin: 0 0 22px;
+            margin: 8px 0 18px;
             color: #888;
             font-size: 14px;
+            min-height: 18px;
+        }
+        .status.is-empty {
+            visibility: hidden;
         }
         .status a {
             color: inherit;
@@ -363,6 +367,7 @@
                 if (entries.length === 0) {
                     statusEl.textContent = '';
                     statusEl.hidden = true;
+                    statusEl.classList.add('is-empty');
                     return;
                 }
 
@@ -375,12 +380,14 @@
                 const showCount = filtered.length !== entries.length;
                 const hasFilters = Boolean(state.collection || state.tag);
                 if (!showCount && !hasFilters) {
-                    statusEl.textContent = '';
-                    statusEl.hidden = true;
+                    statusEl.hidden = false;
+                    statusEl.classList.add('is-empty');
+                    statusEl.replaceChildren();
                     return;
                 }
 
                 statusEl.hidden = false;
+                statusEl.classList.remove('is-empty');
                 statusEl.replaceChildren();
 
                 function addSep() {
