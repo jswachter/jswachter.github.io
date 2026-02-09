@@ -135,36 +135,6 @@
         #content li {
             margin: 8px 0;
         }
-        .references {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid #eee;
-        }
-        .references h2 {
-            margin: 0 0 14px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        .references ol {
-            margin: 0;
-            padding-left: 22px;
-        }
-        .references li {
-            margin: 10px 0;
-        }
-        .references .ref-links {
-            margin-top: 6px;
-            font-size: 14px;
-            color: #666;
-        }
-        .references .ref-links a {
-            color: #0077cc;
-            text-decoration: none;
-            margin-right: 12px;
-        }
-        .references .ref-links a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -214,7 +184,7 @@
                     // Avoid turning $100 into math.
                     return false;
                 }
-                if (/\\|_|\\^|\\{|\\}|\\\\/.test(t)) {
+                if (/[\\_^{}]/.test(t)) {
                     return true;
                 }
                 if (/^[A-Za-z]$/.test(t)) {
@@ -250,35 +220,6 @@
                         },
                         renderer(token) {
                             return `<div class="math-display">${escapeHtml(token.text)}</div>\n`;
-                        }
-                    },
-                    {
-                        name: 'mathBlock',
-                        level: 'block',
-                        start(src) {
-                            const idx = src.indexOf('$$');
-                            return idx >= 0 ? idx : undefined;
-                        },
-                        tokenizer(src) {
-                            const match = src.match(/^\$\$\s*\n([\s\S]*?)\n\$\$\s*(?:\n|$)/);
-                            if (!match) {
-                                return;
-                            }
-                            return {
-                                type: 'mathBlock',
-                                raw: match[0],
-                                text: match[1]
-                            };
-                        },
-                        renderer(token) {
-                            const text = String(token.text || '').trim();
-                            if (!text) {
-                                return '';
-                            }
-                            if (/^\\begin\{[A-Za-z*]+\}/.test(text)) {
-                                return `<div class="math-display">${escapeHtml(text)}</div>\n`;
-                            }
-                            return `<div class="math-display">\\[${escapeHtml(text)}\\]</div>\n`;
                         }
                     },
                     {
