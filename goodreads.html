@@ -606,9 +606,6 @@
             const config = getConfig();
             renderTabs(config);
 
-            const search = document.getElementById('search');
-            search.addEventListener('input', applyFilter);
-
             const params = new URLSearchParams(window.location.search);
             const desired = params.get('shelf');
             const initial = config.shelves.includes(desired) ? desired : config.shelves[0];
