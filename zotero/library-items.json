@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-02-22T07:02:25Z",
+    "updated_at": "2026-03-01T07:00:51Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -10,7 +10,6 @@
         {
             "key": "R4EX359T",
             "data": {
-                "date": "2025-12-05",
                 "tags": [
                     {
                         "tag": "Computer Science - Artificial Intelligence",
@@ -21,7 +20,6 @@
                         "type": 1
                     }
                 ],
-                "DOI": "10.48550/arXiv.2512.05343",
                 "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
                 "creators": [
                     {
@@ -55,6 +53,8 @@
                         "lastName": "Guibas"
                     }
                 ],
+                "DOI": "10.48550/arXiv.2512.05343",
+                "date": "2025-12-05",
                 "url": "http://arxiv.org/abs/2512.05343"
             },
             "version": 8,
@@ -73,14 +73,12 @@
         {
             "key": "K8TPHCDN",
             "data": {
-                "date": "2025-10-03",
                 "tags": [
                     {
                         "tag": "Mathematics - History and Overview",
                         "type": 1
                     }
                 ],
-                "DOI": "10.48550/arXiv.2510.15924",
                 "title": "The Shape of Math To Come",
                 "creators": [
                     {
@@ -89,6 +87,8 @@
                         "lastName": "Kontorovich"
                     }
                 ],
+                "DOI": "10.48550/arXiv.2510.15924",
+                "date": "2025-10-03",
                 "url": "http://arxiv.org/abs/2510.15924"
             },
             "version": 7,
@@ -107,11 +107,11 @@
         {
             "key": "5YEIYUMX",
             "data": {
-                "date": "2026-02-04",
                 "tags": [],
-                "DOI": "",
                 "title": "Harness engineering: leveraging Codex in an agent-first world",
                 "creators": [],
+                "DOI": "",
+                "date": "2026-02-04",
                 "url": "https://openai.com/index/harness-engineering/"
             },
             "version": 6,
@@ -130,9 +130,7 @@
         {
             "key": "5PEIZD9S",
             "data": {
-                "date": "12/2025",
                 "tags": [],
-                "DOI": "10.1016/j.econmod.2025.107221",
                 "title": "Artificial intelligence as self-learning capital",
                 "creators": [
                     {
@@ -151,6 +149,8 @@
                         "lastName": "Von Maydell"
                     }
                 ],
+                "DOI": "10.1016/j.econmod.2025.107221",
+                "date": "12/2025",
                 "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160"
             },
             "version": 5,
@@ -169,7 +169,6 @@
         {
             "key": "NCCA7SIS",
             "data": {
-                "date": "2026-01-06",
                 "tags": [
                     {
                         "tag": "Computer Science - Machine Learning",
@@ -180,7 +179,6 @@
                         "type": 1
                     }
                 ],
-                "DOI": "10.48550/arXiv.2601.03220",
                 "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
                 "creators": [
                     {
@@ -214,6 +212,8 @@
                         "lastName": "Wilson"
                     }
                 ],
+                "DOI": "10.48550/arXiv.2601.03220",
+                "date": "2026-01-06",
                 "url": "http://arxiv.org/abs/2601.03220"
             },
             "version": 4,
@@ -232,9 +232,7 @@
         {
             "key": "NP4LAX3I",
             "data": {
-                "date": "",
                 "tags": [],
-                "DOI": "",
                 "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
                 "creators": [
                     {
@@ -468,6 +466,8 @@
                         "lastName": "Shetty"
                     }
                 ],
+                "DOI": "",
+                "date": "",
                 "url": ""
             },
             "version": 3,
