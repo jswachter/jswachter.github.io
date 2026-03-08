@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-03-01T07:00:51Z",
+    "updated_at": "2026-03-08T06:57:48Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -8,19 +8,77 @@
     },
     "items": [
         {
-            "key": "R4EX359T",
+            "key": "BSYM5LX6",
             "data": {
-                "tags": [
+                "DOI": "",
+                "creators": [
                     {
-                        "tag": "Computer Science - Artificial Intelligence",
-                        "type": 1
+                        "creatorType": "author",
+                        "firstName": "Christian",
+                        "lastName": "Catalini"
                     },
                     {
-                        "tag": "Computer Science - Computer Vision and Pattern Recognition",
-                        "type": 1
+                        "creatorType": "author",
+                        "firstName": "Xiang",
+                        "lastName": "Hui"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Jane",
+                        "lastName": "Wu"
                     }
                 ],
-                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
+                "tags": [],
+                "date": "",
+                "title": "Some Simple Economics of AGI",
+                "url": ""
+            },
+            "version": 10,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/BSYM5LX6",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/BSYM5LX6",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "A8HV4TW9",
+            "data": {
+                "DOI": "",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Rickard Brüel",
+                        "lastName": "Gabrielsson"
+                    }
+                ],
+                "tags": [],
+                "date": "",
+                "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions",
+                "url": ""
+            },
+            "version": 9,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gabrielsson, R. B. (n.d.). <i>Large Behavioral Models: A Foundation Model Paradigm for Human Actions</i>.</div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/A8HV4TW9",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/A8HV4TW9",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "R4EX359T",
+            "data": {
+                "DOI": "10.48550/arXiv.2512.05343",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -53,8 +111,18 @@
                         "lastName": "Guibas"
                     }
                 ],
-                "DOI": "10.48550/arXiv.2512.05343",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Artificial Intelligence",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Computer Vision and Pattern Recognition",
+                        "type": 1
+                    }
+                ],
                 "date": "2025-12-05",
+                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
                 "url": "http://arxiv.org/abs/2512.05343"
             },
             "version": 8,
@@ -73,13 +141,7 @@
         {
             "key": "K8TPHCDN",
             "data": {
-                "tags": [
-                    {
-                        "tag": "Mathematics - History and Overview",
-                        "type": 1
-                    }
-                ],
-                "title": "The Shape of Math To Come",
+                "DOI": "10.48550/arXiv.2510.15924",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -87,8 +149,14 @@
                         "lastName": "Kontorovich"
                     }
                 ],
-                "DOI": "10.48550/arXiv.2510.15924",
+                "tags": [
+                    {
+                        "tag": "Mathematics - History and Overview",
+                        "type": 1
+                    }
+                ],
                 "date": "2025-10-03",
+                "title": "The Shape of Math To Come",
                 "url": "http://arxiv.org/abs/2510.15924"
             },
             "version": 7,
@@ -107,11 +175,11 @@
         {
             "key": "5YEIYUMX",
             "data": {
-                "tags": [],
-                "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "creators": [],
                 "DOI": "",
+                "creators": [],
+                "tags": [],
                 "date": "2026-02-04",
+                "title": "Harness engineering: leveraging Codex in an agent-first world",
                 "url": "https://openai.com/index/harness-engineering/"
             },
             "version": 6,
@@ -130,8 +198,7 @@
         {
             "key": "5PEIZD9S",
             "data": {
-                "tags": [],
-                "title": "Artificial intelligence as self-learning capital",
+                "DOI": "10.1016/j.econmod.2025.107221",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -149,8 +216,9 @@
                         "lastName": "Von Maydell"
                     }
                 ],
-                "DOI": "10.1016/j.econmod.2025.107221",
+                "tags": [],
                 "date": "12/2025",
+                "title": "Artificial intelligence as self-learning capital",
                 "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160"
             },
             "version": 5,
@@ -169,17 +237,7 @@
         {
             "key": "NCCA7SIS",
             "data": {
-                "tags": [
-                    {
-                        "tag": "Computer Science - Machine Learning",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Statistics - Machine Learning",
-                        "type": 1
-                    }
-                ],
-                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
+                "DOI": "10.48550/arXiv.2601.03220",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -212,8 +270,18 @@
                         "lastName": "Wilson"
                     }
                 ],
-                "DOI": "10.48550/arXiv.2601.03220",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Machine Learning",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Statistics - Machine Learning",
+                        "type": 1
+                    }
+                ],
                 "date": "2026-01-06",
+                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
                 "url": "http://arxiv.org/abs/2601.03220"
             },
             "version": 4,
@@ -232,8 +300,7 @@
         {
             "key": "NP4LAX3I",
             "data": {
-                "tags": [],
-                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                "DOI": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -466,8 +533,9 @@
                         "lastName": "Shetty"
                     }
                 ],
-                "DOI": "",
+                "tags": [],
                 "date": "",
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
                 "url": ""
             },
             "version": 3,
