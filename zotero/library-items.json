@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-03-08T06:57:48Z",
+    "updated_at": "2026-03-15T07:11:19Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -10,7 +10,9 @@
         {
             "key": "BSYM5LX6",
             "data": {
+                "url": "",
                 "DOI": "",
+                "date": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -29,9 +31,7 @@
                     }
                 ],
                 "tags": [],
-                "date": "",
-                "title": "Some Simple Economics of AGI",
-                "url": ""
+                "title": "Some Simple Economics of AGI"
             },
             "version": 10,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
@@ -49,7 +49,9 @@
         {
             "key": "A8HV4TW9",
             "data": {
+                "url": "",
                 "DOI": "",
+                "date": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -58,9 +60,7 @@
                     }
                 ],
                 "tags": [],
-                "date": "",
-                "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions",
-                "url": ""
+                "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions"
             },
             "version": 9,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gabrielsson, R. B. (n.d.). <i>Large Behavioral Models: A Foundation Model Paradigm for Human Actions</i>.</div>\n</div>",
@@ -78,7 +78,9 @@
         {
             "key": "R4EX359T",
             "data": {
+                "url": "http://arxiv.org/abs/2512.05343",
                 "DOI": "10.48550/arXiv.2512.05343",
+                "date": "2025-12-05",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -121,9 +123,7 @@
                         "type": 1
                     }
                 ],
-                "date": "2025-12-05",
-                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
-                "url": "http://arxiv.org/abs/2512.05343"
+                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling"
             },
             "version": 8,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Fedele, E., Engelmann, F., Huang, I., Litany, O., Pollefeys, M., &amp; Guibas, L. (2025). <i>SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling</i> (arXiv:2512.05343). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2512.05343\">https://doi.org/10.48550/arXiv.2512.05343</a></div>\n</div>",
@@ -141,7 +141,9 @@
         {
             "key": "K8TPHCDN",
             "data": {
+                "url": "http://arxiv.org/abs/2510.15924",
                 "DOI": "10.48550/arXiv.2510.15924",
+                "date": "2025-10-03",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -155,9 +157,7 @@
                         "type": 1
                     }
                 ],
-                "date": "2025-10-03",
-                "title": "The Shape of Math To Come",
-                "url": "http://arxiv.org/abs/2510.15924"
+                "title": "The Shape of Math To Come"
             },
             "version": 7,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
@@ -175,12 +175,12 @@
         {
             "key": "5YEIYUMX",
             "data": {
+                "url": "https://openai.com/index/harness-engineering/",
                 "DOI": "",
+                "date": "2026-02-04",
                 "creators": [],
                 "tags": [],
-                "date": "2026-02-04",
-                "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "url": "https://openai.com/index/harness-engineering/"
+                "title": "Harness engineering: leveraging Codex in an agent-first world"
             },
             "version": 6,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\"><i>Harness engineering: leveraging Codex in an agent-first world</i>. (2026, February 4). <a href=\"https://openai.com/index/harness-engineering/\">https://openai.com/index/harness-engineering/</a></div>\n</div>",
@@ -198,7 +198,9 @@
         {
             "key": "5PEIZD9S",
             "data": {
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
                 "DOI": "10.1016/j.econmod.2025.107221",
+                "date": "12/2025",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -217,9 +219,7 @@
                     }
                 ],
                 "tags": [],
-                "date": "12/2025",
-                "title": "Artificial intelligence as self-learning capital",
-                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160"
+                "title": "Artificial intelligence as self-learning capital"
             },
             "version": 5,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
@@ -237,7 +237,9 @@
         {
             "key": "NCCA7SIS",
             "data": {
+                "url": "http://arxiv.org/abs/2601.03220",
                 "DOI": "10.48550/arXiv.2601.03220",
+                "date": "2026-01-06",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -280,9 +282,7 @@
                         "type": 1
                     }
                 ],
-                "date": "2026-01-06",
-                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
-                "url": "http://arxiv.org/abs/2601.03220"
+                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence"
             },
             "version": 4,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Finzi, M., Qiu, S., Jiang, Y., Izmailov, P., Kolter, J. Z., &amp; Wilson, A. G. (2026). <i>From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence</i> (arXiv:2601.03220). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2601.03220\">https://doi.org/10.48550/arXiv.2601.03220</a></div>\n</div>",
@@ -300,7 +300,9 @@
         {
             "key": "NP4LAX3I",
             "data": {
+                "url": "",
                 "DOI": "",
+                "date": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -534,9 +536,7 @@
                     }
                 ],
                 "tags": [],
-                "date": "",
-                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
-                "url": ""
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost"
             },
             "version": 3,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
