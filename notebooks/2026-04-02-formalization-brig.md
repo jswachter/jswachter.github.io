@@ -73,8 +73,8 @@ This report gives an account of the topics discussed during the workshop, summar
 
 #### Formalizing the sphere packing problem in dimension 8
 *Speaker:* Maryna Viazovska.
-- The talk placed the project against the longer history of sphere packing: the sphere packing constant $\Delta_d$, the Cohn--Elkies linear-programming bounds, and the fact that exact optimality is known only in dimensions $1$, $2$, $8$, and $24$.
-- The dimension-$8$ and dimension-$24$ cases stand out because the Cohn-Elkies upper bounds and the best known packings nearly coincide, marking them as strong candidates. The $E_8$ and Leech lattices were then proved to be optimal.
+- The talk placed the project against the longer history of sphere packing: the sphere packing constant $\Delta_d$, the Cohn--Elkies linear-programming bounds, and the fact that exact optimality is known only in dimensions 1, 2, 8, and 24.
+- The dimension-8 and dimension-24 cases stand out because the Cohn-Elkies upper bounds and the best known packings nearly coincide, marking them as strong candidates. The $E_8$ and Leech lattices were then proved to be optimal.
 - Viazovska's breakthrough rests on the construction of a special auxiliary function, together with its Fourier transform, built from deep modular and quasimodular structure and now often described as the "magic function".
 - The path to formalization was presented as a serious mathematical project in its own right: Kevin Buzzard encouraged the effort, work began with Sidharth Hariharan, and further collaborators were recruited.
 - The blueprint for the project created a big dependency graph of results and supporting theory needed.
@@ -96,7 +96,7 @@ This report gives an account of the topics discussed during the workshop, summar
 *Speaker:* Auguste Poiroux.
 - The strong Prime Number Theorem appeared as one milestone inside a much broader chronology of recent autoformalization: de Bruijn's abc theorem, the strong Prime Number Theorem, Erdős conjectures, sphere packing, and more recent Frontier Math / Ramsey hypergraph results.
 - Autoformalization was framed as translation from natural-language mathematics into proof-assistant code, but not as a fully hands-off process. Human mathematicians still matter through problem selection, scaffolding, review, and the surrounding formal foundations.
-- The sphere-packing case illustrated the current scale jump: dimension $8$ in five days (80k lines of code), dimension $24$ in two weeks (500k lines of code), followed by a large compression phase that removed dead code, merged duplicate declarations, improved project structure, and 'golfed' proofs toward something more reusable.
+- The sphere-packing case illustrated the current scale jump: dimension 8 in five days (80k lines of code), dimension 24 in two weeks (500k lines of code), followed by a large compression phase that removed dead code, merged duplicate declarations, improved project structure, and 'golfed' proofs toward something more reusable.
 - Quality rules, linters, declaration-level cleanup, and modernization of Lean itself are part of turning machine-generated proof code into a workable tool.
 - OpenGauss was presented as the open-source side of this story: parallel runs, interactive and inspectable. Much closer to general coding-agent workflows than to the sealed long-running system that autoformalized sphere packing with no user intervention. Having a human in the loop seems like a promising approach to make sure the review phase after a formal proof has been generated can be reduced.
 
