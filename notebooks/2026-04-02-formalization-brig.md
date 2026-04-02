@@ -6,4 +6,3 @@ tags: formalization, workshop, brig
 ---
 
 # Formalization workshop, Brig 2026
-
