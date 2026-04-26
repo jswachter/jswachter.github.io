@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-04-19T07:43:12Z",
+    "updated_at": "2026-04-26T07:51:36Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -10,8 +10,7 @@
         {
             "key": "YELL4K3S",
             "data": {
-                "date": "2026-03-20",
-                "url": "http://arxiv.org/abs/2603.20396",
+                "DOI": "10.48550/arXiv.2603.20396",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -35,7 +34,8 @@
                     }
                 ],
                 "title": "Compression is all you need: Modeling Mathematics",
-                "DOI": "10.48550/arXiv.2603.20396",
+                "url": "http://arxiv.org/abs/2603.20396",
+                "date": "2026-03-20",
                 "tags": [
                     {
                         "tag": "Computer Science - Artificial Intelligence"
@@ -61,8 +61,7 @@
         {
             "key": "6BA2PLHF",
             "data": {
-                "date": "2021-10-13",
-                "url": "http://arxiv.org/abs/2102.03044",
+                "DOI": "10.48550/arXiv.2102.03044",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -91,7 +90,8 @@
                     }
                 ],
                 "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
-                "DOI": "10.48550/arXiv.2102.03044",
+                "url": "http://arxiv.org/abs/2102.03044",
+                "date": "2021-10-13",
                 "tags": [
                     {
                         "tag": "Computer Science - Computation and Language",
@@ -127,8 +127,7 @@
         {
             "key": "BSYM5LX6",
             "data": {
-                "date": "",
-                "url": "",
+                "DOI": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -147,7 +146,8 @@
                     }
                 ],
                 "title": "Some Simple Economics of AGI",
-                "DOI": "",
+                "url": "",
+                "date": "",
                 "tags": []
             },
             "version": 10,
@@ -166,8 +166,7 @@
         {
             "key": "A8HV4TW9",
             "data": {
-                "date": "",
-                "url": "",
+                "DOI": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -176,7 +175,8 @@
                     }
                 ],
                 "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions",
-                "DOI": "",
+                "url": "",
+                "date": "",
                 "tags": []
             },
             "version": 9,
@@ -195,8 +195,7 @@
         {
             "key": "R4EX359T",
             "data": {
-                "date": "2025-12-05",
-                "url": "http://arxiv.org/abs/2512.05343",
+                "DOI": "10.48550/arXiv.2512.05343",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -230,7 +229,8 @@
                     }
                 ],
                 "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
-                "DOI": "10.48550/arXiv.2512.05343",
+                "url": "http://arxiv.org/abs/2512.05343",
+                "date": "2025-12-05",
                 "tags": [
                     {
                         "tag": "Computer Science - Artificial Intelligence",
@@ -258,8 +258,7 @@
         {
             "key": "K8TPHCDN",
             "data": {
-                "date": "2025-10-03",
-                "url": "http://arxiv.org/abs/2510.15924",
+                "DOI": "10.48550/arXiv.2510.15924",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -268,7 +267,8 @@
                     }
                 ],
                 "title": "The Shape of Math To Come",
-                "DOI": "10.48550/arXiv.2510.15924",
+                "url": "http://arxiv.org/abs/2510.15924",
+                "date": "2025-10-03",
                 "tags": [
                     {
                         "tag": "Mathematics - History and Overview",
@@ -292,11 +292,11 @@
         {
             "key": "5YEIYUMX",
             "data": {
-                "date": "2026-02-04",
-                "url": "https://openai.com/index/harness-engineering/",
+                "DOI": "",
                 "creators": [],
                 "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "DOI": "",
+                "url": "https://openai.com/index/harness-engineering/",
+                "date": "2026-02-04",
                 "tags": []
             },
             "version": 6,
@@ -315,8 +315,7 @@
         {
             "key": "5PEIZD9S",
             "data": {
-                "date": "12/2025",
-                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "DOI": "10.1016/j.econmod.2025.107221",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -335,7 +334,8 @@
                     }
                 ],
                 "title": "Artificial intelligence as self-learning capital",
-                "DOI": "10.1016/j.econmod.2025.107221",
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "date": "12/2025",
                 "tags": []
             },
             "version": 5,
@@ -354,8 +354,7 @@
         {
             "key": "NCCA7SIS",
             "data": {
-                "date": "2026-01-06",
-                "url": "http://arxiv.org/abs/2601.03220",
+                "DOI": "10.48550/arXiv.2601.03220",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -389,7 +388,8 @@
                     }
                 ],
                 "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
-                "DOI": "10.48550/arXiv.2601.03220",
+                "url": "http://arxiv.org/abs/2601.03220",
+                "date": "2026-01-06",
                 "tags": [
                     {
                         "tag": "Computer Science - Machine Learning",
@@ -417,8 +417,7 @@
         {
             "key": "NP4LAX3I",
             "data": {
-                "date": "",
-                "url": "",
+                "DOI": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -652,7 +651,8 @@
                     }
                 ],
                 "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
-                "DOI": "",
+                "url": "",
+                "date": "",
                 "tags": []
             },
             "version": 3,
