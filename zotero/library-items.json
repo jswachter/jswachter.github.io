@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-04-26T07:51:36Z",
+    "updated_at": "2026-05-03T08:11:50Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -10,7 +10,17 @@
         {
             "key": "YELL4K3S",
             "data": {
-                "DOI": "10.48550/arXiv.2603.20396",
+                "date": "2026-03-20",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Artificial Intelligence"
+                    },
+                    {
+                        "tag": "Mathematics - Logic"
+                    }
+                ],
+                "url": "http://arxiv.org/abs/2603.20396",
+                "title": "Compression is all you need: Modeling Mathematics",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -33,17 +43,7 @@
                         "lastName": "Mulligan"
                     }
                 ],
-                "title": "Compression is all you need: Modeling Mathematics",
-                "url": "http://arxiv.org/abs/2603.20396",
-                "date": "2026-03-20",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Artificial Intelligence"
-                    },
-                    {
-                        "tag": "Mathematics - Logic"
-                    }
-                ]
+                "DOI": "10.48550/arXiv.2603.20396"
             },
             "version": 14,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Aksenov, V., Bodnia, E., Freedman, M. H., &amp; Mulligan, M. (2026). <i>Compression is all you need: Modeling Mathematics</i> (arXiv:2603.20396). <a href=\"https://doi.org/10.48550/arXiv.2603.20396\">https://doi.org/10.48550/arXiv.2603.20396</a></div>\n</div>",
@@ -61,7 +61,27 @@
         {
             "key": "6BA2PLHF",
             "data": {
-                "DOI": "10.48550/arXiv.2102.03044",
+                "date": "2021-10-13",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Computation and Language",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Computer Science and Game Theory",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Logic in Computer Science",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Social and Information Networks",
+                        "type": 1
+                    }
+                ],
+                "url": "http://arxiv.org/abs/2102.03044",
+                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -89,27 +109,7 @@
                         "lastName": "Capano"
                     }
                 ],
-                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
-                "url": "http://arxiv.org/abs/2102.03044",
-                "date": "2021-10-13",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Computation and Language",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Computer Science and Game Theory",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Logic in Computer Science",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Social and Information Networks",
-                        "type": 1
-                    }
-                ]
+                "DOI": "10.48550/arXiv.2102.03044"
             },
             "version": 12,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
@@ -127,7 +127,10 @@
         {
             "key": "BSYM5LX6",
             "data": {
-                "DOI": "",
+                "date": "",
+                "tags": [],
+                "url": "",
+                "title": "Some Simple Economics of AGI",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -145,10 +148,7 @@
                         "lastName": "Wu"
                     }
                 ],
-                "title": "Some Simple Economics of AGI",
-                "url": "",
-                "date": "",
-                "tags": []
+                "DOI": ""
             },
             "version": 10,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
@@ -166,7 +166,10 @@
         {
             "key": "A8HV4TW9",
             "data": {
-                "DOI": "",
+                "date": "",
+                "tags": [],
+                "url": "",
+                "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -174,10 +177,7 @@
                         "lastName": "Gabrielsson"
                     }
                 ],
-                "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions",
-                "url": "",
-                "date": "",
-                "tags": []
+                "DOI": ""
             },
             "version": 9,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gabrielsson, R. B. (n.d.). <i>Large Behavioral Models: A Foundation Model Paradigm for Human Actions</i>.</div>\n</div>",
@@ -195,7 +195,19 @@
         {
             "key": "R4EX359T",
             "data": {
-                "DOI": "10.48550/arXiv.2512.05343",
+                "date": "2025-12-05",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Artificial Intelligence",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Computer Vision and Pattern Recognition",
+                        "type": 1
+                    }
+                ],
+                "url": "http://arxiv.org/abs/2512.05343",
+                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -228,19 +240,7 @@
                         "lastName": "Guibas"
                     }
                 ],
-                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
-                "url": "http://arxiv.org/abs/2512.05343",
-                "date": "2025-12-05",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Artificial Intelligence",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Computer Vision and Pattern Recognition",
-                        "type": 1
-                    }
-                ]
+                "DOI": "10.48550/arXiv.2512.05343"
             },
             "version": 8,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Fedele, E., Engelmann, F., Huang, I., Litany, O., Pollefeys, M., &amp; Guibas, L. (2025). <i>SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling</i> (arXiv:2512.05343). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2512.05343\">https://doi.org/10.48550/arXiv.2512.05343</a></div>\n</div>",
@@ -258,7 +258,15 @@
         {
             "key": "K8TPHCDN",
             "data": {
-                "DOI": "10.48550/arXiv.2510.15924",
+                "date": "2025-10-03",
+                "tags": [
+                    {
+                        "tag": "Mathematics - History and Overview",
+                        "type": 1
+                    }
+                ],
+                "url": "http://arxiv.org/abs/2510.15924",
+                "title": "The Shape of Math To Come",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -266,15 +274,7 @@
                         "lastName": "Kontorovich"
                     }
                 ],
-                "title": "The Shape of Math To Come",
-                "url": "http://arxiv.org/abs/2510.15924",
-                "date": "2025-10-03",
-                "tags": [
-                    {
-                        "tag": "Mathematics - History and Overview",
-                        "type": 1
-                    }
-                ]
+                "DOI": "10.48550/arXiv.2510.15924"
             },
             "version": 7,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
@@ -292,12 +292,12 @@
         {
             "key": "5YEIYUMX",
             "data": {
-                "DOI": "",
-                "creators": [],
-                "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "url": "https://openai.com/index/harness-engineering/",
                 "date": "2026-02-04",
-                "tags": []
+                "tags": [],
+                "url": "https://openai.com/index/harness-engineering/",
+                "title": "Harness engineering: leveraging Codex in an agent-first world",
+                "creators": [],
+                "DOI": ""
             },
             "version": 6,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\"><i>Harness engineering: leveraging Codex in an agent-first world</i>. (2026, February 4). <a href=\"https://openai.com/index/harness-engineering/\">https://openai.com/index/harness-engineering/</a></div>\n</div>",
@@ -315,7 +315,10 @@
         {
             "key": "5PEIZD9S",
             "data": {
-                "DOI": "10.1016/j.econmod.2025.107221",
+                "date": "12/2025",
+                "tags": [],
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "title": "Artificial intelligence as self-learning capital",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -333,10 +336,7 @@
                         "lastName": "Von Maydell"
                     }
                 ],
-                "title": "Artificial intelligence as self-learning capital",
-                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                "date": "12/2025",
-                "tags": []
+                "DOI": "10.1016/j.econmod.2025.107221"
             },
             "version": 5,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
@@ -354,7 +354,19 @@
         {
             "key": "NCCA7SIS",
             "data": {
-                "DOI": "10.48550/arXiv.2601.03220",
+                "date": "2026-01-06",
+                "tags": [
+                    {
+                        "tag": "Computer Science - Machine Learning",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Statistics - Machine Learning",
+                        "type": 1
+                    }
+                ],
+                "url": "http://arxiv.org/abs/2601.03220",
+                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -387,19 +399,7 @@
                         "lastName": "Wilson"
                     }
                 ],
-                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
-                "url": "http://arxiv.org/abs/2601.03220",
-                "date": "2026-01-06",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Machine Learning",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Statistics - Machine Learning",
-                        "type": 1
-                    }
-                ]
+                "DOI": "10.48550/arXiv.2601.03220"
             },
             "version": 4,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Finzi, M., Qiu, S., Jiang, Y., Izmailov, P., Kolter, J. Z., &amp; Wilson, A. G. (2026). <i>From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence</i> (arXiv:2601.03220). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2601.03220\">https://doi.org/10.48550/arXiv.2601.03220</a></div>\n</div>",
@@ -417,7 +417,10 @@
         {
             "key": "NP4LAX3I",
             "data": {
-                "DOI": "",
+                "date": "",
+                "tags": [],
+                "url": "",
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -650,10 +653,7 @@
                         "lastName": "Shetty"
                     }
                 ],
-                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
-                "url": "",
-                "date": "",
-                "tags": []
+                "DOI": ""
             },
             "version": 3,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
