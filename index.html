@@ -62,21 +62,21 @@
         .image-row .mountain-left {
             object-position: center 62%;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 600px) and (orientation: portrait) {
             .image-row {
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            .image-row::-webkit-scrollbar {
-                display: none;
+                gap: 0;
             }
             .image-row img {
-                min-width: 80%;
-                flex-shrink: 0;
-                scroll-snap-align: center;
+                display: none;
+                width: 200px;
+                height: 200px;
+            }
+            .image-row img:first-child,
+            .image-row img.is-mobile-selected {
+                display: block;
+            }
+            .image-row.has-random-mobile-image img:first-child:not(.is-mobile-selected) {
+                display: none;
             }
         }
         ul {
@@ -152,5 +152,22 @@
         </section>
 
     </div>
+    <script>
+        (function () {
+            const imageRow = document.querySelector('.image-row');
+            if (!imageRow) {
+                return;
+            }
+
+            const images = Array.from(imageRow.querySelectorAll('img'));
+            if (images.length === 0) {
+                return;
+            }
+
+            const selected = images[Math.floor(Math.random() * images.length)];
+            selected.classList.add('is-mobile-selected');
+            imageRow.classList.add('has-random-mobile-image');
+        })();
+    </script>
 </body>
 </html>
