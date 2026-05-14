@@ -1,137 +1,891 @@
 {
-    "updated_at": "2026-05-10T08:20:18Z",
+    "updated_at": "2026-05-14T11:54:29Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
         "style": "apa",
-        "endpoint": "https://api.zotero.org/groups/{group_id}/collections/{collection_key}/items/top"
+        "endpoint": "https://api.zotero.org/groups/{group_id}/collections/{collection_key}/items/top",
+        "collections_endpoint": "https://api.zotero.org/groups/{group_id}/collections"
+    },
+    "collections": [
+        {
+            "key": "AQ2565P6",
+            "name": "Artificial Intelligence",
+            "parentCollection": "Z3EV2T4P",
+            "numCollections": 0,
+            "numItems": 4
+        },
+        {
+            "key": "EGX5YZQW",
+            "name": "Economics",
+            "parentCollection": "Z3EV2T4P",
+            "numCollections": 4,
+            "numItems": 7
+        },
+        {
+            "key": "YEKNKVSQ",
+            "name": "Mathematics",
+            "parentCollection": "Z3EV2T4P",
+            "numCollections": 0,
+            "numItems": 3
+        }
+    ],
+    "collection_items": {
+        "AQ2565P6": [
+            {
+                "key": "BSYM5LX6",
+                "data": {
+                    "url": "",
+                    "title": "Some Simple Economics of AGI",
+                    "DOI": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
+                    "date": "",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Christian",
+                            "lastName": "Catalini"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Xiang",
+                            "lastName": "Hui"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Jane",
+                            "lastName": "Wu"
+                        }
+                    ]
+                },
+                "version": 29,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/BSYM5LX6",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/BSYM5LX6",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "5YEIYUMX",
+                "data": {
+                    "url": "https://openai.com/index/harness-engineering/",
+                    "title": "Harness engineering: leveraging Codex in an agent-first world",
+                    "DOI": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
+                    "date": "2026-02-04",
+                    "creators": []
+                },
+                "version": 34,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\"><i>Harness engineering: leveraging Codex in an agent-first world</i>. (2026, February 4). <a href=\"https://openai.com/index/harness-engineering/\">https://openai.com/index/harness-engineering/</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/5YEIYUMX",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/5YEIYUMX",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "5PEIZD9S",
+                "data": {
+                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                    "title": "Artificial intelligence as self-learning capital",
+                    "DOI": "10.1016/j.econmod.2025.107221",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
+                    "date": "12/2025",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Hans",
+                            "lastName": "Gersbach"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Evgenij",
+                            "lastName": "Komarov"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Richard",
+                            "lastName": "Von Maydell"
+                        }
+                    ]
+                },
+                "version": 32,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/5PEIZD9S",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/5PEIZD9S",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "NP4LAX3I",
+                "data": {
+                    "url": "",
+                    "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                    "DOI": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
+                    "date": "",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Alexus A",
+                            "lastName": "Smith"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Edmund L",
+                            "lastName": "Wong"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Ronan C",
+                            "lastName": "Donovan"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Brad A",
+                            "lastName": "Chapman"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Ryan",
+                            "lastName": "Harry"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Pooyan",
+                            "lastName": "Tirandazi"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Paulina",
+                            "lastName": "Kanigowska"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Elizabeth A",
+                            "lastName": "Gendreau"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Robert H",
+                            "lastName": "Dahl"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Jose E",
+                            "lastName": "Cortez"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Christopher J",
+                            "lastName": "Bremner"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "José C Morales",
+                            "lastName": "Hemuda"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "James",
+                            "lastName": "Dooner"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Ian",
+                            "lastName": "Graves"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Rahul",
+                            "lastName": "Karandikar"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Christopher",
+                            "lastName": "Lionetti"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Kevin",
+                            "lastName": "Christopher"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Alyssa",
+                            "lastName": "Tran"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "William",
+                            "lastName": "McCusker"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Duy X",
+                            "lastName": "Nguyen"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Alvaro R",
+                            "lastName": "Bautista-Ayala"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Monica P",
+                            "lastName": "McNerney"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Sean",
+                            "lastName": "Atkins"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Michael",
+                            "lastName": "McDuﬃe"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Bradley P",
+                            "lastName": "Barber"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Trinh",
+                            "lastName": "Thanongsinh"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Andrew",
+                            "lastName": "Nesson"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Bibek",
+                            "lastName": "Lama"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Cameron",
+                            "lastName": "LaFrance"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Tenzing",
+                            "lastName": "Nyima"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Alicia",
+                            "lastName": "Byrn"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Rashard",
+                            "lastName": "Thornhill"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Bryan",
+                            "lastName": "Cai"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Lizvette",
+                            "lastName": "Ayala-Valdez"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Alycia",
+                            "lastName": "Wong"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Austin J",
+                            "lastName": "Che"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Walter",
+                            "lastName": "Thavarajah"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Daniel",
+                            "lastName": "Smith"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Thomas F",
+                            "lastName": "Knight"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "David W",
+                            "lastName": "Borhani"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Jerry",
+                            "lastName": "Tworek"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Mostafa",
+                            "lastName": "Rohaninejad"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Nathan C",
+                            "lastName": "Tedford"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Tejal",
+                            "lastName": "Patwardhan"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Yunxin Joy",
+                            "lastName": "Jiao"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Reshma P",
+                            "lastName": "Shetty"
+                        }
+                    ]
+                },
+                "version": 35,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/NP4LAX3I",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/NP4LAX3I",
+                        "type": "text/html"
+                    }
+                }
+            }
+        ],
+        "EGX5YZQW": [
+            {
+                "key": "RBYM4YUH",
+                "data": {
+                    "url": "",
+                    "title": "Microeconomic Theory Lecture Notes",
+                    "DOI": "",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
+                    "date": "",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Todd",
+                            "lastName": "Sarver"
+                        }
+                    ]
+                },
+                "version": 39,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Sarver, T. (n.d.). <i>Microeconomic Theory Lecture Notes</i>.</div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/RBYM4YUH",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/RBYM4YUH",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "HD7689KC",
+                "data": {
+                    "url": "",
+                    "title": "Dilemmas of an Economic Theorist",
+                    "DOI": "",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
+                    "date": "",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Ariel",
+                            "lastName": "Rubinstein"
+                        }
+                    ]
+                },
+                "version": 38,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Rubinstein, A. (n.d.). <i>Dilemmas of an Economic Theorist</i>.</div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/HD7689KC",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/HD7689KC",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "I5AK9BM7",
+                "data": {
+                    "url": "",
+                    "title": "NBER WORKING PAPER SERIES",
+                    "DOI": "",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
+                    "date": "",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Markus K",
+                            "lastName": "Brunnermeier"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Sebastian A",
+                            "lastName": "Merkel"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Yuliy",
+                            "lastName": "Sannikov"
+                        }
+                    ]
+                },
+                "version": 37,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Brunnermeier, M. K., Merkel, S. A., &amp; Sannikov, Y. (n.d.). <i>NBER WORKING PAPER SERIES</i>.</div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/I5AK9BM7",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/I5AK9BM7",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "W4EUPNDS",
+                "data": {
+                    "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
+                    "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
+                    "DOI": "10.1002/9781119203070.ch1",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
+                    "date": "2012-01-02",
+                    "creators": [
+                        {
+                            "creatorType": "editor",
+                            "firstName": "Fischer",
+                            "lastName": "Black"
+                        }
+                    ]
+                },
+                "version": 36,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Black, F. (Ed.). (2012). Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking. In <i>Business Cycles and Equilibrium</i> (1st ed., pp. 1&#x2013;22). Wiley. <a href=\"https://doi.org/10.1002/9781119203070.ch1\">https://doi.org/10.1002/9781119203070.ch1</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/W4EUPNDS",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/W4EUPNDS",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "6BA2PLHF",
+                "data": {
+                    "url": "http://arxiv.org/abs/2102.03044",
+                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                    "DOI": "10.48550/arXiv.2102.03044",
+                    "collections": [
+                        "EGX5YZQW",
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Computation and Language",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Computer Science and Game Theory",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Logic in Computer Science",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Social and Information Networks",
+                            "type": 1
+                        }
+                    ],
+                    "date": "2021-10-13",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Sylvain",
+                            "lastName": "Carré"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Franck",
+                            "lastName": "Gabriel"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Clément",
+                            "lastName": "Hongler"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Gustavo",
+                            "lastName": "Lacerda"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Gloria",
+                            "lastName": "Capano"
+                        }
+                    ]
+                },
+                "version": 27,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/6BA2PLHF",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/6BA2PLHF",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "BSYM5LX6",
+                "data": {
+                    "url": "",
+                    "title": "Some Simple Economics of AGI",
+                    "DOI": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
+                    "date": "",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Christian",
+                            "lastName": "Catalini"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Xiang",
+                            "lastName": "Hui"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Jane",
+                            "lastName": "Wu"
+                        }
+                    ]
+                },
+                "version": 29,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/BSYM5LX6",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/BSYM5LX6",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "5PEIZD9S",
+                "data": {
+                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                    "title": "Artificial intelligence as self-learning capital",
+                    "DOI": "10.1016/j.econmod.2025.107221",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
+                    "date": "12/2025",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Hans",
+                            "lastName": "Gersbach"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Evgenij",
+                            "lastName": "Komarov"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Richard",
+                            "lastName": "Von Maydell"
+                        }
+                    ]
+                },
+                "version": 32,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/5PEIZD9S",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/5PEIZD9S",
+                        "type": "text/html"
+                    }
+                }
+            }
+        ],
+        "YEKNKVSQ": [
+            {
+                "key": "YELL4K3S",
+                "data": {
+                    "url": "http://arxiv.org/abs/2603.20396",
+                    "title": "Compression is all you need: Modeling Mathematics",
+                    "DOI": "10.48550/arXiv.2603.20396",
+                    "collections": [
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Artificial Intelligence"
+                        },
+                        {
+                            "tag": "Mathematics - Logic"
+                        }
+                    ],
+                    "date": "2026-03-20",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Vitaly",
+                            "lastName": "Aksenov"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Eve",
+                            "lastName": "Bodnia"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Michael H.",
+                            "lastName": "Freedman"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Michael",
+                            "lastName": "Mulligan"
+                        }
+                    ]
+                },
+                "version": 30,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Aksenov, V., Bodnia, E., Freedman, M. H., &amp; Mulligan, M. (2026). <i>Compression is all you need: Modeling Mathematics</i> (arXiv:2603.20396). <a href=\"https://doi.org/10.48550/arXiv.2603.20396\">https://doi.org/10.48550/arXiv.2603.20396</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/YELL4K3S",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/YELL4K3S",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "6BA2PLHF",
+                "data": {
+                    "url": "http://arxiv.org/abs/2102.03044",
+                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                    "DOI": "10.48550/arXiv.2102.03044",
+                    "collections": [
+                        "EGX5YZQW",
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Computation and Language",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Computer Science and Game Theory",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Logic in Computer Science",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Social and Information Networks",
+                            "type": 1
+                        }
+                    ],
+                    "date": "2021-10-13",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Sylvain",
+                            "lastName": "Carré"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Franck",
+                            "lastName": "Gabriel"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Clément",
+                            "lastName": "Hongler"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Gustavo",
+                            "lastName": "Lacerda"
+                        },
+                        {
+                            "creatorType": "author",
+                            "firstName": "Gloria",
+                            "lastName": "Capano"
+                        }
+                    ]
+                },
+                "version": 27,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/6BA2PLHF",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/6BA2PLHF",
+                        "type": "text/html"
+                    }
+                }
+            },
+            {
+                "key": "K8TPHCDN",
+                "data": {
+                    "url": "http://arxiv.org/abs/2510.15924",
+                    "title": "The Shape of Math To Come",
+                    "DOI": "10.48550/arXiv.2510.15924",
+                    "collections": [
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Mathematics - History and Overview",
+                            "type": 1
+                        }
+                    ],
+                    "date": "2025-10-03",
+                    "creators": [
+                        {
+                            "creatorType": "author",
+                            "firstName": "Alex",
+                            "lastName": "Kontorovich"
+                        }
+                    ]
+                },
+                "version": 33,
+                "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
+                "links": {
+                    "self": {
+                        "href": "https://api.zotero.org/groups/6417244/items/K8TPHCDN",
+                        "type": "application/json"
+                    },
+                    "alternate": {
+                        "href": "https://www.zotero.org/groups/jonatanpublic/items/K8TPHCDN",
+                        "type": "text/html"
+                    }
+                }
+            }
+        ]
     },
     "items": [
         {
-            "key": "YELL4K3S",
-            "data": {
-                "tags": [
-                    {
-                        "tag": "Computer Science - Artificial Intelligence"
-                    },
-                    {
-                        "tag": "Mathematics - Logic"
-                    }
-                ],
-                "date": "2026-03-20",
-                "DOI": "10.48550/arXiv.2603.20396",
-                "title": "Compression is all you need: Modeling Mathematics",
-                "url": "http://arxiv.org/abs/2603.20396",
-                "creators": [
-                    {
-                        "creatorType": "author",
-                        "firstName": "Vitaly",
-                        "lastName": "Aksenov"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Eve",
-                        "lastName": "Bodnia"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Michael H.",
-                        "lastName": "Freedman"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Michael",
-                        "lastName": "Mulligan"
-                    }
-                ]
-            },
-            "version": 14,
-            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Aksenov, V., Bodnia, E., Freedman, M. H., &amp; Mulligan, M. (2026). <i>Compression is all you need: Modeling Mathematics</i> (arXiv:2603.20396). <a href=\"https://doi.org/10.48550/arXiv.2603.20396\">https://doi.org/10.48550/arXiv.2603.20396</a></div>\n</div>",
-            "links": {
-                "self": {
-                    "href": "https://api.zotero.org/groups/6417244/items/YELL4K3S",
-                    "type": "application/json"
-                },
-                "alternate": {
-                    "href": "https://www.zotero.org/groups/jonatanpublic/items/YELL4K3S",
-                    "type": "text/html"
-                }
-            }
-        },
-        {
-            "key": "6BA2PLHF",
-            "data": {
-                "tags": [
-                    {
-                        "tag": "Computer Science - Computation and Language",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Computer Science and Game Theory",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Logic in Computer Science",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Social and Information Networks",
-                        "type": 1
-                    }
-                ],
-                "date": "2021-10-13",
-                "DOI": "10.48550/arXiv.2102.03044",
-                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
-                "url": "http://arxiv.org/abs/2102.03044",
-                "creators": [
-                    {
-                        "creatorType": "author",
-                        "firstName": "Sylvain",
-                        "lastName": "Carré"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Franck",
-                        "lastName": "Gabriel"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Clément",
-                        "lastName": "Hongler"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Gustavo",
-                        "lastName": "Lacerda"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Gloria",
-                        "lastName": "Capano"
-                    }
-                ]
-            },
-            "version": 12,
-            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
-            "links": {
-                "self": {
-                    "href": "https://api.zotero.org/groups/6417244/items/6BA2PLHF",
-                    "type": "application/json"
-                },
-                "alternate": {
-                    "href": "https://www.zotero.org/groups/jonatanpublic/items/6BA2PLHF",
-                    "type": "text/html"
-                }
-            }
-        },
-        {
             "key": "BSYM5LX6",
             "data": {
+                "url": "",
+                "title": "Some Simple Economics of AGI",
+                "DOI": "",
+                "collections": [
+                    "AQ2565P6",
+                    "EGX5YZQW",
+                    "Z3EV2T4P"
+                ],
                 "tags": [],
                 "date": "",
-                "DOI": "",
-                "title": "Some Simple Economics of AGI",
-                "url": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -150,7 +904,7 @@
                     }
                 ]
             },
-            "version": 10,
+            "version": 29,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
             "links": {
                 "self": {
@@ -164,142 +918,20 @@
             }
         },
         {
-            "key": "A8HV4TW9",
-            "data": {
-                "tags": [],
-                "date": "",
-                "DOI": "",
-                "title": "Large Behavioral Models: A Foundation Model Paradigm for Human Actions",
-                "url": "",
-                "creators": [
-                    {
-                        "creatorType": "author",
-                        "firstName": "Rickard Brüel",
-                        "lastName": "Gabrielsson"
-                    }
-                ]
-            },
-            "version": 9,
-            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gabrielsson, R. B. (n.d.). <i>Large Behavioral Models: A Foundation Model Paradigm for Human Actions</i>.</div>\n</div>",
-            "links": {
-                "self": {
-                    "href": "https://api.zotero.org/groups/6417244/items/A8HV4TW9",
-                    "type": "application/json"
-                },
-                "alternate": {
-                    "href": "https://www.zotero.org/groups/jonatanpublic/items/A8HV4TW9",
-                    "type": "text/html"
-                }
-            }
-        },
-        {
-            "key": "R4EX359T",
-            "data": {
-                "tags": [
-                    {
-                        "tag": "Computer Science - Artificial Intelligence",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Computer Vision and Pattern Recognition",
-                        "type": 1
-                    }
-                ],
-                "date": "2025-12-05",
-                "DOI": "10.48550/arXiv.2512.05343",
-                "title": "SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling",
-                "url": "http://arxiv.org/abs/2512.05343",
-                "creators": [
-                    {
-                        "creatorType": "author",
-                        "firstName": "Elisabetta",
-                        "lastName": "Fedele"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Francis",
-                        "lastName": "Engelmann"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Ian",
-                        "lastName": "Huang"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Or",
-                        "lastName": "Litany"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Marc",
-                        "lastName": "Pollefeys"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Leonidas",
-                        "lastName": "Guibas"
-                    }
-                ]
-            },
-            "version": 8,
-            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Fedele, E., Engelmann, F., Huang, I., Litany, O., Pollefeys, M., &amp; Guibas, L. (2025). <i>SpaceControl: Introducing Test-Time Spatial Control to 3D Generative Modeling</i> (arXiv:2512.05343). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2512.05343\">https://doi.org/10.48550/arXiv.2512.05343</a></div>\n</div>",
-            "links": {
-                "self": {
-                    "href": "https://api.zotero.org/groups/6417244/items/R4EX359T",
-                    "type": "application/json"
-                },
-                "alternate": {
-                    "href": "https://www.zotero.org/groups/jonatanpublic/items/R4EX359T",
-                    "type": "text/html"
-                }
-            }
-        },
-        {
-            "key": "K8TPHCDN",
-            "data": {
-                "tags": [
-                    {
-                        "tag": "Mathematics - History and Overview",
-                        "type": 1
-                    }
-                ],
-                "date": "2025-10-03",
-                "DOI": "10.48550/arXiv.2510.15924",
-                "title": "The Shape of Math To Come",
-                "url": "http://arxiv.org/abs/2510.15924",
-                "creators": [
-                    {
-                        "creatorType": "author",
-                        "firstName": "Alex",
-                        "lastName": "Kontorovich"
-                    }
-                ]
-            },
-            "version": 7,
-            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
-            "links": {
-                "self": {
-                    "href": "https://api.zotero.org/groups/6417244/items/K8TPHCDN",
-                    "type": "application/json"
-                },
-                "alternate": {
-                    "href": "https://www.zotero.org/groups/jonatanpublic/items/K8TPHCDN",
-                    "type": "text/html"
-                }
-            }
-        },
-        {
             "key": "5YEIYUMX",
             "data": {
+                "url": "https://openai.com/index/harness-engineering/",
+                "title": "Harness engineering: leveraging Codex in an agent-first world",
+                "DOI": "",
+                "collections": [
+                    "AQ2565P6",
+                    "Z3EV2T4P"
+                ],
                 "tags": [],
                 "date": "2026-02-04",
-                "DOI": "",
-                "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "url": "https://openai.com/index/harness-engineering/",
                 "creators": []
             },
-            "version": 6,
+            "version": 34,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\"><i>Harness engineering: leveraging Codex in an agent-first world</i>. (2026, February 4). <a href=\"https://openai.com/index/harness-engineering/\">https://openai.com/index/harness-engineering/</a></div>\n</div>",
             "links": {
                 "self": {
@@ -315,11 +947,16 @@
         {
             "key": "5PEIZD9S",
             "data": {
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "title": "Artificial intelligence as self-learning capital",
+                "DOI": "10.1016/j.econmod.2025.107221",
+                "collections": [
+                    "AQ2565P6",
+                    "EGX5YZQW",
+                    "Z3EV2T4P"
+                ],
                 "tags": [],
                 "date": "12/2025",
-                "DOI": "10.1016/j.econmod.2025.107221",
-                "title": "Artificial intelligence as self-learning capital",
-                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -338,7 +975,7 @@
                     }
                 ]
             },
-            "version": 5,
+            "version": 32,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
             "links": {
                 "self": {
@@ -352,76 +989,17 @@
             }
         },
         {
-            "key": "NCCA7SIS",
-            "data": {
-                "tags": [
-                    {
-                        "tag": "Computer Science - Machine Learning",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Statistics - Machine Learning",
-                        "type": 1
-                    }
-                ],
-                "date": "2026-01-06",
-                "DOI": "10.48550/arXiv.2601.03220",
-                "title": "From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence",
-                "url": "http://arxiv.org/abs/2601.03220",
-                "creators": [
-                    {
-                        "creatorType": "author",
-                        "firstName": "Marc",
-                        "lastName": "Finzi"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Shikai",
-                        "lastName": "Qiu"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Yiding",
-                        "lastName": "Jiang"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Pavel",
-                        "lastName": "Izmailov"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "J. Zico",
-                        "lastName": "Kolter"
-                    },
-                    {
-                        "creatorType": "author",
-                        "firstName": "Andrew Gordon",
-                        "lastName": "Wilson"
-                    }
-                ]
-            },
-            "version": 4,
-            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Finzi, M., Qiu, S., Jiang, Y., Izmailov, P., Kolter, J. Z., &amp; Wilson, A. G. (2026). <i>From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence</i> (arXiv:2601.03220). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2601.03220\">https://doi.org/10.48550/arXiv.2601.03220</a></div>\n</div>",
-            "links": {
-                "self": {
-                    "href": "https://api.zotero.org/groups/6417244/items/NCCA7SIS",
-                    "type": "application/json"
-                },
-                "alternate": {
-                    "href": "https://www.zotero.org/groups/jonatanpublic/items/NCCA7SIS",
-                    "type": "text/html"
-                }
-            }
-        },
-        {
             "key": "NP4LAX3I",
             "data": {
+                "url": "",
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                "DOI": "",
+                "collections": [
+                    "AQ2565P6",
+                    "Z3EV2T4P"
+                ],
                 "tags": [],
                 "date": "",
-                "DOI": "",
-                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
-                "url": "",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -655,7 +1233,7 @@
                     }
                 ]
             },
-            "version": 3,
+            "version": 35,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
             "links": {
                 "self": {
@@ -664,6 +1242,308 @@
                 },
                 "alternate": {
                     "href": "https://www.zotero.org/groups/jonatanpublic/items/NP4LAX3I",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "RBYM4YUH",
+            "data": {
+                "url": "",
+                "title": "Microeconomic Theory Lecture Notes",
+                "DOI": "",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
+                "date": "",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Todd",
+                        "lastName": "Sarver"
+                    }
+                ]
+            },
+            "version": 39,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Sarver, T. (n.d.). <i>Microeconomic Theory Lecture Notes</i>.</div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/RBYM4YUH",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/RBYM4YUH",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "HD7689KC",
+            "data": {
+                "url": "",
+                "title": "Dilemmas of an Economic Theorist",
+                "DOI": "",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
+                "date": "",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Ariel",
+                        "lastName": "Rubinstein"
+                    }
+                ]
+            },
+            "version": 38,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Rubinstein, A. (n.d.). <i>Dilemmas of an Economic Theorist</i>.</div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/HD7689KC",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/HD7689KC",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "I5AK9BM7",
+            "data": {
+                "url": "",
+                "title": "NBER WORKING PAPER SERIES",
+                "DOI": "",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
+                "date": "",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Markus K",
+                        "lastName": "Brunnermeier"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Sebastian A",
+                        "lastName": "Merkel"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Yuliy",
+                        "lastName": "Sannikov"
+                    }
+                ]
+            },
+            "version": 37,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Brunnermeier, M. K., Merkel, S. A., &amp; Sannikov, Y. (n.d.). <i>NBER WORKING PAPER SERIES</i>.</div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/I5AK9BM7",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/I5AK9BM7",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "W4EUPNDS",
+            "data": {
+                "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
+                "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
+                "DOI": "10.1002/9781119203070.ch1",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
+                "date": "2012-01-02",
+                "creators": [
+                    {
+                        "creatorType": "editor",
+                        "firstName": "Fischer",
+                        "lastName": "Black"
+                    }
+                ]
+            },
+            "version": 36,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Black, F. (Ed.). (2012). Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking. In <i>Business Cycles and Equilibrium</i> (1st ed., pp. 1&#x2013;22). Wiley. <a href=\"https://doi.org/10.1002/9781119203070.ch1\">https://doi.org/10.1002/9781119203070.ch1</a></div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/W4EUPNDS",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/W4EUPNDS",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "6BA2PLHF",
+            "data": {
+                "url": "http://arxiv.org/abs/2102.03044",
+                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                "DOI": "10.48550/arXiv.2102.03044",
+                "collections": [
+                    "EGX5YZQW",
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "tags": [
+                    {
+                        "tag": "Computer Science - Computation and Language",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Computer Science and Game Theory",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Logic in Computer Science",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Social and Information Networks",
+                        "type": 1
+                    }
+                ],
+                "date": "2021-10-13",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Sylvain",
+                        "lastName": "Carré"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Franck",
+                        "lastName": "Gabriel"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Clément",
+                        "lastName": "Hongler"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Gustavo",
+                        "lastName": "Lacerda"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Gloria",
+                        "lastName": "Capano"
+                    }
+                ]
+            },
+            "version": 27,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/6BA2PLHF",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/6BA2PLHF",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "YELL4K3S",
+            "data": {
+                "url": "http://arxiv.org/abs/2603.20396",
+                "title": "Compression is all you need: Modeling Mathematics",
+                "DOI": "10.48550/arXiv.2603.20396",
+                "collections": [
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "tags": [
+                    {
+                        "tag": "Computer Science - Artificial Intelligence"
+                    },
+                    {
+                        "tag": "Mathematics - Logic"
+                    }
+                ],
+                "date": "2026-03-20",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Vitaly",
+                        "lastName": "Aksenov"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Eve",
+                        "lastName": "Bodnia"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Michael H.",
+                        "lastName": "Freedman"
+                    },
+                    {
+                        "creatorType": "author",
+                        "firstName": "Michael",
+                        "lastName": "Mulligan"
+                    }
+                ]
+            },
+            "version": 30,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Aksenov, V., Bodnia, E., Freedman, M. H., &amp; Mulligan, M. (2026). <i>Compression is all you need: Modeling Mathematics</i> (arXiv:2603.20396). <a href=\"https://doi.org/10.48550/arXiv.2603.20396\">https://doi.org/10.48550/arXiv.2603.20396</a></div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/YELL4K3S",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/YELL4K3S",
+                    "type": "text/html"
+                }
+            }
+        },
+        {
+            "key": "K8TPHCDN",
+            "data": {
+                "url": "http://arxiv.org/abs/2510.15924",
+                "title": "The Shape of Math To Come",
+                "DOI": "10.48550/arXiv.2510.15924",
+                "collections": [
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "tags": [
+                    {
+                        "tag": "Mathematics - History and Overview",
+                        "type": 1
+                    }
+                ],
+                "date": "2025-10-03",
+                "creators": [
+                    {
+                        "creatorType": "author",
+                        "firstName": "Alex",
+                        "lastName": "Kontorovich"
+                    }
+                ]
+            },
+            "version": 33,
+            "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
+            "links": {
+                "self": {
+                    "href": "https://api.zotero.org/groups/6417244/items/K8TPHCDN",
+                    "type": "application/json"
+                },
+                "alternate": {
+                    "href": "https://www.zotero.org/groups/jonatanpublic/items/K8TPHCDN",
                     "type": "text/html"
                 }
             }

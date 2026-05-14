@@ -73,6 +73,21 @@
             font-size: 14px;
             min-height: 18px;
         }
+        .library-collection {
+            margin-top: 34px;
+        }
+        .library-collection:first-child {
+            margin-top: 0;
+        }
+        .library-collection h2 {
+            margin: 0 0 8px;
+            font-size: 24px;
+        }
+        .collection-count {
+            color: #888;
+            font-size: 14px;
+            margin-left: 6px;
+        }
         details.library-item {
             padding: 12px 0;
             border-top: 1px solid #eee;
@@ -176,6 +191,12 @@
 
     <script src="zotero-config.js"></script>
     <script>
+        const COLLECTION_DISPLAY_ORDER = [
+            'Economics',
+            'Artificial Intelligence',
+            'Mathematics'
+        ];
+
         function normalizeDoi(raw) {
             const trimmed = String(raw || '').trim();
             if (!trimmed) {
@@ -287,6 +308,73 @@
             return parts.join(' ').toLowerCase();
         }
 
+        function normalizeCollection(raw) {
+            if (!raw || typeof raw !== 'object') {
+                return null;
+            }
+
+            if (raw.data && typeof raw.data === 'object') {
+                if (raw.data.deleted) {
+                    return null;
+                }
+                return {
+                    key: String(raw.key || raw.data.key || '').trim(),
+                    name: String(raw.data.name || '').trim(),
+                    parentCollection: raw.data.parentCollection || false,
+                    numItems: Number(raw.meta && raw.meta.numItems ? raw.meta.numItems : 0)
+                };
+            }
+
+            return {
+                key: String(raw.key || '').trim(),
+                name: String(raw.name || '').trim(),
+                parentCollection: raw.parentCollection || false,
+                numItems: Number(raw.numItems || 0)
+            };
+        }
+
+        function collectionSortValue(collection) {
+            const name = String(collection && collection.name ? collection.name : '');
+            const orderIndex = COLLECTION_DISPLAY_ORDER.indexOf(name);
+            return orderIndex === -1 ? COLLECTION_DISPLAY_ORDER.length : orderIndex;
+        }
+
+        function sortCollections(collections) {
+            return collections.slice().sort((a, b) => {
+                const orderA = collectionSortValue(a);
+                const orderB = collectionSortValue(b);
+                if (orderA !== orderB) {
+                    return orderA - orderB;
+                }
+                return String(a.name || '').localeCompare(String(b.name || ''));
+            });
+        }
+
+        function sortItems(items) {
+            return items.slice().sort((a, b) => {
+                const yearA = extractYear(a && a.data ? a.data : {});
+                const yearB = extractYear(b && b.data ? b.data : {});
+                if (yearA && yearB && yearA !== yearB) {
+                    return yearB.localeCompare(yearA);
+                }
+                const titleA = String(a && a.data && a.data.title ? a.data.title : '');
+                const titleB = String(b && b.data && b.data.title ? b.data.title : '');
+                return titleA.localeCompare(titleB);
+            });
+        }
+
+        function countUniqueItems(groups) {
+            const keys = new Set();
+            for (const group of groups) {
+                for (const item of group.items || []) {
+                    if (item && item.key) {
+                        keys.add(item.key);
+                    }
+                }
+            }
+            return keys.size;
+        }
+
         function snapshotMatchesConfig(snapshot, config) {
             if (!snapshot || typeof snapshot !== 'object') {
                 return false;
@@ -309,20 +397,72 @@
             if (!snapshotMatchesConfig(snapshot, config)) {
                 return null;
             }
-            const items = Array.isArray(snapshot.items) ? snapshot.items : [];
+            const collections = Array.isArray(snapshot.collections)
+                ? snapshot.collections.map(normalizeCollection).filter(Boolean)
+                : [];
+            const collectionItems = snapshot.collection_items && typeof snapshot.collection_items === 'object'
+                ? snapshot.collection_items
+                : null;
+            if (!collections.length || !collectionItems) {
+                return null;
+            }
+            const groups = sortCollections(collections)
+                .map((collection) => ({
+                    key: collection.key,
+                    name: collection.name,
+                    items: sortItems(Array.isArray(collectionItems[collection.key]) ? collectionItems[collection.key] : [])
+                }))
+                .filter((group) => group.items.length > 0);
             return {
                 updatedAt: String(snapshot.updated_at || '').trim(),
-                items
+                groups
             };
         }
 
-        async function fetchZoteroItems(config) {
+        async function fetchZoteroCollections(config) {
+            const collections = [];
+            const pageSize = 100;
+            let start = 0;
+
+            while (true) {
+                const url = new URL(`https://api.zotero.org/groups/${config.groupId}/collections`);
+                url.search = new URLSearchParams({
+                    v: '3',
+                    format: 'json',
+                    limit: String(pageSize),
+                    start: String(start)
+                }).toString();
+
+                const response = await fetch(url.toString(), { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Zotero API error (${response.status})`);
+                }
+                const batch = await response.json();
+                if (!Array.isArray(batch) || batch.length === 0) {
+                    break;
+                }
+                collections.push(...batch);
+                if (batch.length < pageSize) {
+                    break;
+                }
+                start += batch.length;
+            }
+
+            return sortCollections(collections
+                .map(normalizeCollection)
+                .filter((collection) => collection
+                    && collection.key
+                    && collection.name
+                    && String(collection.parentCollection || '') === String(config.collectionKey || '')));
+        }
+
+        async function fetchZoteroItemsForCollection(config, collectionKey) {
             const items = [];
             const pageSize = 100;
             let start = 0;
 
             while (true) {
-                const url = new URL(`https://api.zotero.org/groups/${config.groupId}/collections/${config.collectionKey}/items/top`);
+                const url = new URL(`https://api.zotero.org/groups/${config.groupId}/collections/${collectionKey}/items/top`);
                 url.search = new URLSearchParams({
                     v: '3',
                     format: 'json',
@@ -348,7 +488,26 @@
                 start += batch.length;
             }
 
-            return items;
+            return sortItems(items);
+        }
+
+        async function fetchZoteroGroups(config) {
+            const collections = await fetchZoteroCollections(config);
+            const groups = [];
+
+            for (const collection of collections) {
+                const items = await fetchZoteroItemsForCollection(config, collection.key);
+                if (items.length === 0) {
+                    continue;
+                }
+                groups.push({
+                    key: collection.key,
+                    name: collection.name,
+                    items
+                });
+            }
+
+            return groups;
         }
 
         function resolveNotebookFetchUrl(entryPath) {
@@ -520,14 +679,14 @@
             entriesContainer.innerHTML = '';
 
             try {
-                let items = null;
+                let groups = null;
                 let loadedFrom = '';
                 let snapshotUpdatedAt = '';
 
                 try {
                     const snapshot = await fetchZoteroSnapshot(config);
-                    if (snapshot && Array.isArray(snapshot.items)) {
-                        items = snapshot.items;
+                    if (snapshot && Array.isArray(snapshot.groups)) {
+                        groups = snapshot.groups;
                         loadedFrom = 'snapshot';
                         snapshotUpdatedAt = snapshot.updatedAt;
                     }
@@ -535,23 +694,23 @@
                     // Ignore snapshot failures; fall back to live fetching.
                 }
 
-                if (!items) {
-                    items = await fetchZoteroItems(config);
+                if (!groups) {
+                    groups = await fetchZoteroGroups(config);
                     loadedFrom = 'live';
                 }
 
-                items.sort((a, b) => {
-                    const yearA = extractYear(a && a.data ? a.data : {});
-                    const yearB = extractYear(b && b.data ? b.data : {});
-                    if (yearA && yearB && yearA !== yearB) {
-                        return yearB.localeCompare(yearA);
-                    }
-                    const titleA = String(a && a.data && a.data.title ? a.data.title : '');
-                    const titleB = String(b && b.data && b.data.title ? b.data.title : '');
-                    return titleA.localeCompare(titleB);
-                });
+                groups = groups
+                    .map((group) => ({
+                        key: group.key,
+                        name: group.name,
+                        items: sortItems(Array.isArray(group.items) ? group.items : [])
+                    }))
+                    .filter((group) => group.items.length > 0);
 
-                if (items.length === 0) {
+                const uniqueItemCount = countUniqueItems(groups);
+                const entryCount = groups.reduce((total, group) => total + group.items.length, 0);
+
+                if (groups.length === 0 || uniqueItemCount === 0) {
                     statusEl.textContent = '';
                     entriesContainer.innerHTML = '<p style="color: #888;">No items found.</p>';
                     return;
@@ -559,138 +718,167 @@
 
                 if (loadedFrom === 'snapshot') {
                     statusEl.textContent = snapshotUpdatedAt
-                        ? `${items.length} items (snapshot, updated ${snapshotUpdatedAt})`
-                        : `${items.length} items (snapshot)`;
+                        ? `${uniqueItemCount} items across ${groups.length} collections (snapshot, updated ${snapshotUpdatedAt})`
+                        : `${uniqueItemCount} items across ${groups.length} collections (snapshot)`;
                 } else {
-                    statusEl.textContent = `${items.length} items (live)`;
+                    statusEl.textContent = `${uniqueItemCount} items across ${groups.length} collections (live)`;
                 }
 
-                const itemEls = [];
-                for (const item of items) {
-                    if (!item || !item.key) {
-                        continue;
-                    }
-                    const data = item.data || {};
-                    const title = String(data.title || '(untitled)');
-                    const year = extractYear(data);
-                    const firstCreator = extractFirstCreator(data);
-                    const bibHtml = typeof item.bib === 'string' ? item.bib.trim() : '';
-                    const metaParts = [];
-                    if (year) {
-                        metaParts.push(year);
-                    }
-                    if (firstCreator) {
-                        metaParts.push(firstCreator);
-                    }
+                const collectionEls = [];
+                const anchoredItemKeys = new Set();
 
-                    const details = document.createElement('details');
-                    details.className = 'library-item';
-                    details.id = `z-${item.key}`;
-                    details.dataset.search = buildSearchText(item);
+                for (const group of groups) {
+                    const section = document.createElement('section');
+                    section.className = 'library-collection';
 
-                    const summary = document.createElement('summary');
-                    summary.className = 'item-summary';
+                    const heading = document.createElement('h2');
+                    heading.textContent = group.name;
 
-                    const titleSpan = document.createElement('span');
-                    titleSpan.className = 'item-title';
-                    titleSpan.textContent = title;
+                    const count = document.createElement('span');
+                    count.className = 'collection-count';
+                    count.textContent = `(${group.items.length})`;
+                    heading.appendChild(count);
+                    section.appendChild(heading);
 
-                    const metaSpan = document.createElement('span');
-                    metaSpan.className = 'item-meta';
-                    metaSpan.textContent = metaParts.join(' - ');
-
-                    summary.appendChild(titleSpan);
-                    summary.appendChild(metaSpan);
-                    details.appendChild(summary);
-
-                    const body = document.createElement('div');
-                    body.className = 'item-body';
-
-                    const bibDiv = document.createElement('div');
-                    bibDiv.className = 'item-bib';
-                    bibDiv.textContent = '';
-                    body.appendChild(bibDiv);
-
-                    const linksDiv = document.createElement('div');
-                    linksDiv.className = 'item-links';
-
-                    const linkA = document.createElement('a');
-                    linkA.href = `#z-${item.key}`;
-                    linkA.textContent = 'Library link';
-                    linksDiv.appendChild(linkA);
-
-                    const zoteroHref = item.links && item.links.alternate && item.links.alternate.href ? item.links.alternate.href : '';
-                    if (zoteroHref) {
-                        const zoteroA = document.createElement('a');
-                        zoteroA.href = zoteroHref;
-                        zoteroA.target = '_blank';
-                        zoteroA.rel = 'noopener noreferrer';
-                        zoteroA.textContent = 'Zotero';
-                        linksDiv.appendChild(zoteroA);
-                    }
-
-                    const externalUrl = normalizeExternalUrl(data.url || '');
-                    const doiUrl = doiToUrl(data.DOI || data.doi || '');
-
-                    if (externalUrl && externalUrl !== doiUrl) {
-                        const urlA = document.createElement('a');
-                        urlA.href = externalUrl;
-                        urlA.target = '_blank';
-                        urlA.rel = 'noopener noreferrer';
-                        urlA.textContent = 'URL';
-                        linksDiv.appendChild(urlA);
-                    }
-
-                    if (doiUrl) {
-                        const doiA = document.createElement('a');
-                        doiA.href = doiUrl;
-                        doiA.target = '_blank';
-                        doiA.rel = 'noopener noreferrer';
-                        doiA.textContent = 'DOI';
-                        linksDiv.appendChild(doiA);
-                    }
-
-                    body.appendChild(linksDiv);
-
-                    const mentions = document.createElement('div');
-                    mentions.className = 'item-mentions';
-                    mentions.textContent = '';
-                    body.appendChild(mentions);
-
-                    details.appendChild(body);
-
-                    details.addEventListener('toggle', () => {
-                        if (!details.open) {
-                            return;
+                    const sectionItemEls = [];
+                    for (const item of group.items) {
+                        if (!item || !item.key) {
+                            continue;
                         }
-                        if (!bibDiv.dataset.loaded) {
-                            if (bibHtml) {
-                                bibDiv.innerHTML = bibHtml;
-                            } else {
-                                bibDiv.textContent = 'No formatted citation available.';
+                        const data = item.data || {};
+                        const title = String(data.title || '(untitled)');
+                        const year = extractYear(data);
+                        const firstCreator = extractFirstCreator(data);
+                        const bibHtml = typeof item.bib === 'string' ? item.bib.trim() : '';
+                        const metaParts = [];
+                        if (year) {
+                            metaParts.push(year);
+                        }
+                        if (firstCreator) {
+                            metaParts.push(firstCreator);
+                        }
+
+                        const details = document.createElement('details');
+                        details.className = 'library-item';
+                        details.id = anchoredItemKeys.has(item.key) ? `z-${group.key}-${item.key}` : `z-${item.key}`;
+                        details.dataset.search = `${buildSearchText(item)} ${group.name}`.toLowerCase();
+                        anchoredItemKeys.add(item.key);
+
+                        const summary = document.createElement('summary');
+                        summary.className = 'item-summary';
+
+                        const titleSpan = document.createElement('span');
+                        titleSpan.className = 'item-title';
+                        titleSpan.textContent = title;
+
+                        const metaSpan = document.createElement('span');
+                        metaSpan.className = 'item-meta';
+                        metaSpan.textContent = metaParts.join(' - ');
+
+                        summary.appendChild(titleSpan);
+                        summary.appendChild(metaSpan);
+                        details.appendChild(summary);
+
+                        const body = document.createElement('div');
+                        body.className = 'item-body';
+
+                        const bibDiv = document.createElement('div');
+                        bibDiv.className = 'item-bib';
+                        bibDiv.textContent = '';
+                        body.appendChild(bibDiv);
+
+                        const linksDiv = document.createElement('div');
+                        linksDiv.className = 'item-links';
+
+                        const linkA = document.createElement('a');
+                        linkA.href = `#${details.id}`;
+                        linkA.textContent = 'Library link';
+                        linksDiv.appendChild(linkA);
+
+                        const zoteroHref = item.links && item.links.alternate && item.links.alternate.href ? item.links.alternate.href : '';
+                        if (zoteroHref) {
+                            const zoteroA = document.createElement('a');
+                            zoteroA.href = zoteroHref;
+                            zoteroA.target = '_blank';
+                            zoteroA.rel = 'noopener noreferrer';
+                            zoteroA.textContent = 'Zotero';
+                            linksDiv.appendChild(zoteroA);
+                        }
+
+                        const externalUrl = normalizeExternalUrl(data.url || '');
+                        const doiUrl = doiToUrl(data.DOI || data.doi || '');
+
+                        if (externalUrl && externalUrl !== doiUrl) {
+                            const urlA = document.createElement('a');
+                            urlA.href = externalUrl;
+                            urlA.target = '_blank';
+                            urlA.rel = 'noopener noreferrer';
+                            urlA.textContent = 'URL';
+                            linksDiv.appendChild(urlA);
+                        }
+
+                        if (doiUrl) {
+                            const doiA = document.createElement('a');
+                            doiA.href = doiUrl;
+                            doiA.target = '_blank';
+                            doiA.rel = 'noopener noreferrer';
+                            doiA.textContent = 'DOI';
+                            linksDiv.appendChild(doiA);
+                        }
+
+                        body.appendChild(linksDiv);
+
+                        const mentions = document.createElement('div');
+                        mentions.className = 'item-mentions';
+                        mentions.textContent = '';
+                        body.appendChild(mentions);
+
+                        details.appendChild(body);
+
+                        details.addEventListener('toggle', () => {
+                            if (!details.open) {
+                                return;
                             }
-                            bibDiv.dataset.loaded = '1';
-                        }
-                        // Build the notebook citation index lazily on first open.
-                        renderNotebookMentions(mentions, item);
-                    });
+                            if (!bibDiv.dataset.loaded) {
+                                if (bibHtml) {
+                                    bibDiv.innerHTML = bibHtml;
+                                } else {
+                                    bibDiv.textContent = 'No formatted citation available.';
+                                }
+                                bibDiv.dataset.loaded = '1';
+                            }
+                            renderNotebookMentions(mentions, item);
+                        });
 
-                    entriesContainer.appendChild(details);
-                    itemEls.push(details);
+                        section.appendChild(details);
+                        sectionItemEls.push(details);
+                    }
+
+                    if (sectionItemEls.length > 0) {
+                        entriesContainer.appendChild(section);
+                        collectionEls.push({ section, itemEls: sectionItemEls });
+                    }
                 }
 
                 function applyFilter() {
                     const q = String(searchInput.value || '').trim().toLowerCase();
                     let shown = 0;
-                    for (const el of itemEls) {
-                        const text = el.dataset.search || '';
-                        const match = !q || text.includes(q);
-                        el.style.display = match ? '' : 'none';
-                        if (match) {
-                            shown++;
+                    for (const groupEl of collectionEls) {
+                        let shownInCollection = 0;
+                        for (const el of groupEl.itemEls) {
+                            const text = el.dataset.search || '';
+                            const match = !q || text.includes(q);
+                            el.style.display = match ? '' : 'none';
+                            if (match) {
+                                shown++;
+                                shownInCollection++;
+                            }
                         }
+                        groupEl.section.style.display = shownInCollection > 0 ? '' : 'none';
                     }
-                    statusEl.textContent = q ? `${shown} of ${items.length} items` : `${items.length} items`;
+                    statusEl.textContent = q
+                        ? `${shown} of ${entryCount} entries`
+                        : `${uniqueItemCount} items across ${groups.length} collections`;
                 }
 
                 searchInput.addEventListener('input', applyFilter);

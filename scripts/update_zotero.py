@@ -58,7 +58,18 @@ def is_valid_collection_key(value: str) -> bool:
     return bool(re.fullmatch(r"[A-Za-z0-9]{8}", (value or "").strip()))
 
 
-def build_url(group_id: str, collection_key: str, style: str, start: int, limit: int) -> str:
+def build_collections_url(group_id: str, start: int, limit: int) -> str:
+    base = f"https://api.zotero.org/groups/{urllib.parse.quote(group_id)}/collections"
+    qs = {
+        "v": "3",
+        "format": "json",
+        "limit": str(limit),
+        "start": str(start),
+    }
+    return f"{base}?{urllib.parse.urlencode(qs)}"
+
+
+def build_collection_items_url(group_id: str, collection_key: str, style: str, start: int, limit: int) -> str:
     base = f"https://api.zotero.org/groups/{urllib.parse.quote(group_id)}/collections/{urllib.parse.quote(collection_key)}/items/top"
     qs = {
         "v": "3",
@@ -93,6 +104,7 @@ KEEP_DATA_FIELDS = {
     "DOI",
     "doi",
     "url",
+    "collections",
 }
 
 
@@ -116,6 +128,42 @@ def compact_item(raw: dict[str, Any]) -> dict[str, Any]:
         out["links"] = raw.get("links")
 
     return out
+
+
+def compact_collection(raw: dict[str, Any]) -> dict[str, Any]:
+    data = raw.get("data") if isinstance(raw.get("data"), dict) else {}
+    meta = raw.get("meta") if isinstance(raw.get("meta"), dict) else {}
+    return {
+        "key": raw.get("key"),
+        "name": data.get("name"),
+        "parentCollection": data.get("parentCollection"),
+        "numCollections": meta.get("numCollections", 0),
+        "numItems": meta.get("numItems", 0),
+    }
+
+
+def fetch_paginated(url_builder: Any, api_key: str, page_size: int = 100) -> list[dict[str, Any]]:
+    results: list[dict[str, Any]] = []
+    start = 0
+
+    while True:
+        url = url_builder(start, page_size)
+        batch = fetch_json(url, api_key=api_key)
+
+        if not isinstance(batch, list) or not batch:
+            break
+
+        for raw in batch:
+            if isinstance(raw, dict):
+                results.append(raw)
+
+        if len(batch) < page_size:
+            break
+
+        start += len(batch)
+        time.sleep(0.25)
+
+    return results
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -151,41 +199,78 @@ def main() -> int:
     if not output_path.is_absolute():
         output_path = (ROOT / output_path).resolve()
 
-    items: list[dict[str, Any]] = []
-    page_size = 100
-    start = 0
-
-    while True:
-        url = build_url(group_id=group_id, collection_key=collection_key, style=style, start=start, limit=page_size)
+    try:
+        raw_collections = fetch_paginated(
+            lambda start, limit: build_collections_url(group_id=group_id, start=start, limit=limit),
+            api_key=api_key,
+        )
+    except urllib.error.HTTPError as exc:
+        detail = ""
         try:
-            batch = fetch_json(url, api_key=api_key)
-        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")
+        except Exception:
             detail = ""
-            try:
-                detail = exc.read().decode("utf-8", errors="replace")
-            except Exception:
-                detail = ""
-            print(f"error: Zotero API error ({exc.code}) {detail}".strip(), file=sys.stderr)
-            return 1
-        except Exception as exc:
-            print(f"error: Zotero API request failed: {exc}", file=sys.stderr)
-            return 1
+        print(f"error: Zotero API error ({exc.code}) {detail}".strip(), file=sys.stderr)
+        return 1
+    except Exception as exc:
+        print(f"error: Zotero API request failed: {exc}", file=sys.stderr)
+        return 1
 
-        if not isinstance(batch, list) or not batch:
-            break
+    child_collections: list[dict[str, Any]] = []
+    for raw in raw_collections:
+        data = raw.get("data") if isinstance(raw.get("data"), dict) else {}
+        if data.get("deleted"):
+            continue
+        if str(data.get("parentCollection") or "") != collection_key:
+            continue
+        if not raw.get("key"):
+            continue
+        child_collections.append(compact_collection(raw))
 
-        for raw in batch:
-            if not isinstance(raw, dict):
+    child_collections.sort(key=lambda c: str(c.get("name") or "").lower())
+
+    collection_items: dict[str, list[dict[str, Any]]] = {}
+    items_by_key: dict[str, dict[str, Any]] = {}
+
+    try:
+        for collection in child_collections:
+            child_key = str(collection.get("key") or "").strip()
+            if not child_key:
                 continue
-            if not raw.get("key"):
-                continue
-            items.append(compact_item(raw))
 
-        if len(batch) < page_size:
-            break
+            raw_items = fetch_paginated(
+                lambda start, limit, key=child_key: build_collection_items_url(
+                    group_id=group_id,
+                    collection_key=key,
+                    style=style,
+                    start=start,
+                    limit=limit,
+                ),
+                api_key=api_key,
+            )
 
-        start += len(batch)
-        time.sleep(0.25)
+            compact_items = []
+            for raw in raw_items:
+                if not raw.get("key"):
+                    continue
+                item = compact_item(raw)
+                compact_items.append(item)
+                items_by_key[str(raw.get("key"))] = item
+
+            collection_items[child_key] = compact_items
+    except urllib.error.HTTPError as exc:
+        detail = ""
+        try:
+            detail = exc.read().decode("utf-8", errors="replace")
+        except Exception:
+            detail = ""
+        print(f"error: Zotero API error ({exc.code}) {detail}".strip(), file=sys.stderr)
+        return 1
+    except Exception as exc:
+        print(f"error: Zotero API request failed: {exc}", file=sys.stderr)
+        return 1
+
+    items = list(items_by_key.values())
 
     payload: dict[str, Any] = {
         "updated_at": utc_now_iso(),
@@ -194,15 +279,17 @@ def main() -> int:
             "collection_key": collection_key,
             "style": style,
             "endpoint": "https://api.zotero.org/groups/{group_id}/collections/{collection_key}/items/top",
+            "collections_endpoint": "https://api.zotero.org/groups/{group_id}/collections",
         },
+        "collections": child_collections,
+        "collection_items": collection_items,
         "items": items,
     }
 
     write_json(output_path, payload)
-    print(f"wrote {output_path} ({len(items)} items)")
+    print(f"wrote {output_path} ({len(items)} items across {len(child_collections)} collections)")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
