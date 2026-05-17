@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-05-14T11:54:29Z",
+    "updated_at": "2026-05-17T08:31:22Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -35,16 +35,8 @@
             {
                 "key": "BSYM5LX6",
                 "data": {
-                    "url": "",
-                    "title": "Some Simple Economics of AGI",
-                    "DOI": "",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
-                    "tags": [],
                     "date": "",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -61,7 +53,15 @@
                             "firstName": "Jane",
                             "lastName": "Wu"
                         }
-                    ]
+                    ],
+                    "url": "",
+                    "title": "Some Simple Economics of AGI",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": ""
                 },
                 "version": 29,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
@@ -79,16 +79,16 @@
             {
                 "key": "5YEIYUMX",
                 "data": {
+                    "date": "2026-02-04",
+                    "tags": [],
+                    "creators": [],
                     "url": "https://openai.com/index/harness-engineering/",
                     "title": "Harness engineering: leveraging Codex in an agent-first world",
-                    "DOI": "",
                     "collections": [
                         "AQ2565P6",
                         "Z3EV2T4P"
                     ],
-                    "tags": [],
-                    "date": "2026-02-04",
-                    "creators": []
+                    "DOI": ""
                 },
                 "version": 34,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\"><i>Harness engineering: leveraging Codex in an agent-first world</i>. (2026, February 4). <a href=\"https://openai.com/index/harness-engineering/\">https://openai.com/index/harness-engineering/</a></div>\n</div>",
@@ -106,16 +106,8 @@
             {
                 "key": "5PEIZD9S",
                 "data": {
-                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                    "title": "Artificial intelligence as self-learning capital",
-                    "DOI": "10.1016/j.econmod.2025.107221",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
-                    "tags": [],
                     "date": "12/2025",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -132,7 +124,15 @@
                             "firstName": "Richard",
                             "lastName": "Von Maydell"
                         }
-                    ]
+                    ],
+                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                    "title": "Artificial intelligence as self-learning capital",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": "10.1016/j.econmod.2025.107221"
                 },
                 "version": 32,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
@@ -150,15 +150,8 @@
             {
                 "key": "NP4LAX3I",
                 "data": {
-                    "url": "",
-                    "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
-                    "DOI": "",
-                    "collections": [
-                        "AQ2565P6",
-                        "Z3EV2T4P"
-                    ],
-                    "tags": [],
                     "date": "",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -390,7 +383,14 @@
                             "firstName": "Reshma P",
                             "lastName": "Shetty"
                         }
-                    ]
+                    ],
+                    "url": "",
+                    "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                    "collections": [
+                        "AQ2565P6",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": ""
                 },
                 "version": 35,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
@@ -410,21 +410,21 @@
             {
                 "key": "RBYM4YUH",
                 "data": {
-                    "url": "",
-                    "title": "Microeconomic Theory Lecture Notes",
-                    "DOI": "",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
-                    "tags": [],
                     "date": "",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
                             "firstName": "Todd",
                             "lastName": "Sarver"
                         }
-                    ]
+                    ],
+                    "url": "",
+                    "title": "Microeconomic Theory Lecture Notes",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "DOI": ""
                 },
                 "version": 39,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Sarver, T. (n.d.). <i>Microeconomic Theory Lecture Notes</i>.</div>\n</div>",
@@ -442,21 +442,21 @@
             {
                 "key": "HD7689KC",
                 "data": {
-                    "url": "",
-                    "title": "Dilemmas of an Economic Theorist",
-                    "DOI": "",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
-                    "tags": [],
                     "date": "",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
                             "firstName": "Ariel",
                             "lastName": "Rubinstein"
                         }
-                    ]
+                    ],
+                    "url": "",
+                    "title": "Dilemmas of an Economic Theorist",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "DOI": ""
                 },
                 "version": 38,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Rubinstein, A. (n.d.). <i>Dilemmas of an Economic Theorist</i>.</div>\n</div>",
@@ -474,14 +474,8 @@
             {
                 "key": "I5AK9BM7",
                 "data": {
-                    "url": "",
-                    "title": "NBER WORKING PAPER SERIES",
-                    "DOI": "",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
-                    "tags": [],
                     "date": "",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -498,7 +492,13 @@
                             "firstName": "Yuliy",
                             "lastName": "Sannikov"
                         }
-                    ]
+                    ],
+                    "url": "",
+                    "title": "NBER WORKING PAPER SERIES",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "DOI": ""
                 },
                 "version": 37,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Brunnermeier, M. K., Merkel, S. A., &amp; Sannikov, Y. (n.d.). <i>NBER WORKING PAPER SERIES</i>.</div>\n</div>",
@@ -516,21 +516,21 @@
             {
                 "key": "W4EUPNDS",
                 "data": {
-                    "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
-                    "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
-                    "DOI": "10.1002/9781119203070.ch1",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
-                    "tags": [],
                     "date": "2012-01-02",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "editor",
                             "firstName": "Fischer",
                             "lastName": "Black"
                         }
-                    ]
+                    ],
+                    "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
+                    "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "DOI": "10.1002/9781119203070.ch1"
                 },
                 "version": 36,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Black, F. (Ed.). (2012). Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking. In <i>Business Cycles and Equilibrium</i> (1st ed., pp. 1&#x2013;22). Wiley. <a href=\"https://doi.org/10.1002/9781119203070.ch1\">https://doi.org/10.1002/9781119203070.ch1</a></div>\n</div>",
@@ -548,14 +548,7 @@
             {
                 "key": "6BA2PLHF",
                 "data": {
-                    "url": "http://arxiv.org/abs/2102.03044",
-                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
-                    "DOI": "10.48550/arXiv.2102.03044",
-                    "collections": [
-                        "EGX5YZQW",
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
+                    "date": "2021-10-13",
                     "tags": [
                         {
                             "tag": "Computer Science - Computation and Language",
@@ -574,7 +567,6 @@
                             "type": 1
                         }
                     ],
-                    "date": "2021-10-13",
                     "creators": [
                         {
                             "creatorType": "author",
@@ -601,7 +593,15 @@
                             "firstName": "Gloria",
                             "lastName": "Capano"
                         }
-                    ]
+                    ],
+                    "url": "http://arxiv.org/abs/2102.03044",
+                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                    "collections": [
+                        "EGX5YZQW",
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": "10.48550/arXiv.2102.03044"
                 },
                 "version": 27,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
@@ -619,16 +619,8 @@
             {
                 "key": "BSYM5LX6",
                 "data": {
-                    "url": "",
-                    "title": "Some Simple Economics of AGI",
-                    "DOI": "",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
-                    "tags": [],
                     "date": "",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -645,7 +637,15 @@
                             "firstName": "Jane",
                             "lastName": "Wu"
                         }
-                    ]
+                    ],
+                    "url": "",
+                    "title": "Some Simple Economics of AGI",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": ""
                 },
                 "version": 29,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
@@ -663,16 +663,8 @@
             {
                 "key": "5PEIZD9S",
                 "data": {
-                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                    "title": "Artificial intelligence as self-learning capital",
-                    "DOI": "10.1016/j.econmod.2025.107221",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
-                    "tags": [],
                     "date": "12/2025",
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -689,7 +681,15 @@
                             "firstName": "Richard",
                             "lastName": "Von Maydell"
                         }
-                    ]
+                    ],
+                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                    "title": "Artificial intelligence as self-learning capital",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": "10.1016/j.econmod.2025.107221"
                 },
                 "version": 32,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
@@ -709,13 +709,7 @@
             {
                 "key": "YELL4K3S",
                 "data": {
-                    "url": "http://arxiv.org/abs/2603.20396",
-                    "title": "Compression is all you need: Modeling Mathematics",
-                    "DOI": "10.48550/arXiv.2603.20396",
-                    "collections": [
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
+                    "date": "2026-03-20",
                     "tags": [
                         {
                             "tag": "Computer Science - Artificial Intelligence"
@@ -724,7 +718,6 @@
                             "tag": "Mathematics - Logic"
                         }
                     ],
-                    "date": "2026-03-20",
                     "creators": [
                         {
                             "creatorType": "author",
@@ -746,7 +739,14 @@
                             "firstName": "Michael",
                             "lastName": "Mulligan"
                         }
-                    ]
+                    ],
+                    "url": "http://arxiv.org/abs/2603.20396",
+                    "title": "Compression is all you need: Modeling Mathematics",
+                    "collections": [
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": "10.48550/arXiv.2603.20396"
                 },
                 "version": 30,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Aksenov, V., Bodnia, E., Freedman, M. H., &amp; Mulligan, M. (2026). <i>Compression is all you need: Modeling Mathematics</i> (arXiv:2603.20396). <a href=\"https://doi.org/10.48550/arXiv.2603.20396\">https://doi.org/10.48550/arXiv.2603.20396</a></div>\n</div>",
@@ -764,14 +764,7 @@
             {
                 "key": "6BA2PLHF",
                 "data": {
-                    "url": "http://arxiv.org/abs/2102.03044",
-                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
-                    "DOI": "10.48550/arXiv.2102.03044",
-                    "collections": [
-                        "EGX5YZQW",
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
+                    "date": "2021-10-13",
                     "tags": [
                         {
                             "tag": "Computer Science - Computation and Language",
@@ -790,7 +783,6 @@
                             "type": 1
                         }
                     ],
-                    "date": "2021-10-13",
                     "creators": [
                         {
                             "creatorType": "author",
@@ -817,7 +809,15 @@
                             "firstName": "Gloria",
                             "lastName": "Capano"
                         }
-                    ]
+                    ],
+                    "url": "http://arxiv.org/abs/2102.03044",
+                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                    "collections": [
+                        "EGX5YZQW",
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": "10.48550/arXiv.2102.03044"
                 },
                 "version": 27,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
@@ -835,27 +835,27 @@
             {
                 "key": "K8TPHCDN",
                 "data": {
-                    "url": "http://arxiv.org/abs/2510.15924",
-                    "title": "The Shape of Math To Come",
-                    "DOI": "10.48550/arXiv.2510.15924",
-                    "collections": [
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
+                    "date": "2025-10-03",
                     "tags": [
                         {
                             "tag": "Mathematics - History and Overview",
                             "type": 1
                         }
                     ],
-                    "date": "2025-10-03",
                     "creators": [
                         {
                             "creatorType": "author",
                             "firstName": "Alex",
                             "lastName": "Kontorovich"
                         }
-                    ]
+                    ],
+                    "url": "http://arxiv.org/abs/2510.15924",
+                    "title": "The Shape of Math To Come",
+                    "collections": [
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "DOI": "10.48550/arXiv.2510.15924"
                 },
                 "version": 33,
                 "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
@@ -876,16 +876,8 @@
         {
             "key": "BSYM5LX6",
             "data": {
-                "url": "",
-                "title": "Some Simple Economics of AGI",
-                "DOI": "",
-                "collections": [
-                    "AQ2565P6",
-                    "EGX5YZQW",
-                    "Z3EV2T4P"
-                ],
-                "tags": [],
                 "date": "",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -902,7 +894,15 @@
                         "firstName": "Jane",
                         "lastName": "Wu"
                     }
-                ]
+                ],
+                "url": "",
+                "title": "Some Simple Economics of AGI",
+                "collections": [
+                    "AQ2565P6",
+                    "EGX5YZQW",
+                    "Z3EV2T4P"
+                ],
+                "DOI": ""
             },
             "version": 29,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Catalini, C., Hui, X., &amp; Wu, J. (n.d.). <i>Some Simple Economics of AGI</i>.</div>\n</div>",
@@ -920,16 +920,16 @@
         {
             "key": "5YEIYUMX",
             "data": {
+                "date": "2026-02-04",
+                "tags": [],
+                "creators": [],
                 "url": "https://openai.com/index/harness-engineering/",
                 "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "DOI": "",
                 "collections": [
                     "AQ2565P6",
                     "Z3EV2T4P"
                 ],
-                "tags": [],
-                "date": "2026-02-04",
-                "creators": []
+                "DOI": ""
             },
             "version": 34,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\"><i>Harness engineering: leveraging Codex in an agent-first world</i>. (2026, February 4). <a href=\"https://openai.com/index/harness-engineering/\">https://openai.com/index/harness-engineering/</a></div>\n</div>",
@@ -947,16 +947,8 @@
         {
             "key": "5PEIZD9S",
             "data": {
-                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                "title": "Artificial intelligence as self-learning capital",
-                "DOI": "10.1016/j.econmod.2025.107221",
-                "collections": [
-                    "AQ2565P6",
-                    "EGX5YZQW",
-                    "Z3EV2T4P"
-                ],
-                "tags": [],
                 "date": "12/2025",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -973,7 +965,15 @@
                         "firstName": "Richard",
                         "lastName": "Von Maydell"
                     }
-                ]
+                ],
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "title": "Artificial intelligence as self-learning capital",
+                "collections": [
+                    "AQ2565P6",
+                    "EGX5YZQW",
+                    "Z3EV2T4P"
+                ],
+                "DOI": "10.1016/j.econmod.2025.107221"
             },
             "version": 32,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Gersbach, H., Komarov, E., &amp; Von Maydell, R. (2025). Artificial intelligence as self-learning capital. <i>Economic Modelling</i>, <i>153</i>, 107221. <a href=\"https://doi.org/10.1016/j.econmod.2025.107221\">https://doi.org/10.1016/j.econmod.2025.107221</a></div>\n</div>",
@@ -991,15 +991,8 @@
         {
             "key": "NP4LAX3I",
             "data": {
-                "url": "",
-                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
-                "DOI": "",
-                "collections": [
-                    "AQ2565P6",
-                    "Z3EV2T4P"
-                ],
-                "tags": [],
                 "date": "",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1231,7 +1224,14 @@
                         "firstName": "Reshma P",
                         "lastName": "Shetty"
                     }
-                ]
+                ],
+                "url": "",
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                "collections": [
+                    "AQ2565P6",
+                    "Z3EV2T4P"
+                ],
+                "DOI": ""
             },
             "version": 35,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Smith, A. A., Wong, E. L., Donovan, R. C., Chapman, B. A., Harry, R., Tirandazi, P., Kanigowska, P., Gendreau, E. A., Dahl, R. H., Cortez, J. E., Bremner, C. J., Hemuda, J. C. M., Dooner, J., Graves, I., Karandikar, R., Lionetti, C., Christopher, K., Tran, A., McCusker, W., &#x2026; Shetty, R. P. (n.d.). <i>Using a GPT-5-driven autonomous lab to optimize the cost</i>.</div>\n</div>",
@@ -1249,21 +1249,21 @@
         {
             "key": "RBYM4YUH",
             "data": {
-                "url": "",
-                "title": "Microeconomic Theory Lecture Notes",
-                "DOI": "",
-                "collections": [
-                    "EGX5YZQW"
-                ],
-                "tags": [],
                 "date": "",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
                         "firstName": "Todd",
                         "lastName": "Sarver"
                     }
-                ]
+                ],
+                "url": "",
+                "title": "Microeconomic Theory Lecture Notes",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "DOI": ""
             },
             "version": 39,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Sarver, T. (n.d.). <i>Microeconomic Theory Lecture Notes</i>.</div>\n</div>",
@@ -1281,21 +1281,21 @@
         {
             "key": "HD7689KC",
             "data": {
-                "url": "",
-                "title": "Dilemmas of an Economic Theorist",
-                "DOI": "",
-                "collections": [
-                    "EGX5YZQW"
-                ],
-                "tags": [],
                 "date": "",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
                         "firstName": "Ariel",
                         "lastName": "Rubinstein"
                     }
-                ]
+                ],
+                "url": "",
+                "title": "Dilemmas of an Economic Theorist",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "DOI": ""
             },
             "version": 38,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Rubinstein, A. (n.d.). <i>Dilemmas of an Economic Theorist</i>.</div>\n</div>",
@@ -1313,14 +1313,8 @@
         {
             "key": "I5AK9BM7",
             "data": {
-                "url": "",
-                "title": "NBER WORKING PAPER SERIES",
-                "DOI": "",
-                "collections": [
-                    "EGX5YZQW"
-                ],
-                "tags": [],
                 "date": "",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1337,7 +1331,13 @@
                         "firstName": "Yuliy",
                         "lastName": "Sannikov"
                     }
-                ]
+                ],
+                "url": "",
+                "title": "NBER WORKING PAPER SERIES",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "DOI": ""
             },
             "version": 37,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Brunnermeier, M. K., Merkel, S. A., &amp; Sannikov, Y. (n.d.). <i>NBER WORKING PAPER SERIES</i>.</div>\n</div>",
@@ -1355,21 +1355,21 @@
         {
             "key": "W4EUPNDS",
             "data": {
-                "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
-                "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
-                "DOI": "10.1002/9781119203070.ch1",
-                "collections": [
-                    "EGX5YZQW"
-                ],
-                "tags": [],
                 "date": "2012-01-02",
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "editor",
                         "firstName": "Fischer",
                         "lastName": "Black"
                     }
-                ]
+                ],
+                "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
+                "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "DOI": "10.1002/9781119203070.ch1"
             },
             "version": 36,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Black, F. (Ed.). (2012). Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking. In <i>Business Cycles and Equilibrium</i> (1st ed., pp. 1&#x2013;22). Wiley. <a href=\"https://doi.org/10.1002/9781119203070.ch1\">https://doi.org/10.1002/9781119203070.ch1</a></div>\n</div>",
@@ -1387,14 +1387,7 @@
         {
             "key": "6BA2PLHF",
             "data": {
-                "url": "http://arxiv.org/abs/2102.03044",
-                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
-                "DOI": "10.48550/arXiv.2102.03044",
-                "collections": [
-                    "EGX5YZQW",
-                    "YEKNKVSQ",
-                    "Z3EV2T4P"
-                ],
+                "date": "2021-10-13",
                 "tags": [
                     {
                         "tag": "Computer Science - Computation and Language",
@@ -1413,7 +1406,6 @@
                         "type": 1
                     }
                 ],
-                "date": "2021-10-13",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1440,7 +1432,15 @@
                         "firstName": "Gloria",
                         "lastName": "Capano"
                     }
-                ]
+                ],
+                "url": "http://arxiv.org/abs/2102.03044",
+                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                "collections": [
+                    "EGX5YZQW",
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "DOI": "10.48550/arXiv.2102.03044"
             },
             "version": 27,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Carr&#xE9;, S., Gabriel, F., Hongler, C., Lacerda, G., &amp; Capano, G. (2021). <i>Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets</i> (arXiv:2102.03044). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2102.03044\">https://doi.org/10.48550/arXiv.2102.03044</a></div>\n</div>",
@@ -1458,13 +1458,7 @@
         {
             "key": "YELL4K3S",
             "data": {
-                "url": "http://arxiv.org/abs/2603.20396",
-                "title": "Compression is all you need: Modeling Mathematics",
-                "DOI": "10.48550/arXiv.2603.20396",
-                "collections": [
-                    "YEKNKVSQ",
-                    "Z3EV2T4P"
-                ],
+                "date": "2026-03-20",
                 "tags": [
                     {
                         "tag": "Computer Science - Artificial Intelligence"
@@ -1473,7 +1467,6 @@
                         "tag": "Mathematics - Logic"
                     }
                 ],
-                "date": "2026-03-20",
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1495,7 +1488,14 @@
                         "firstName": "Michael",
                         "lastName": "Mulligan"
                     }
-                ]
+                ],
+                "url": "http://arxiv.org/abs/2603.20396",
+                "title": "Compression is all you need: Modeling Mathematics",
+                "collections": [
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "DOI": "10.48550/arXiv.2603.20396"
             },
             "version": 30,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Aksenov, V., Bodnia, E., Freedman, M. H., &amp; Mulligan, M. (2026). <i>Compression is all you need: Modeling Mathematics</i> (arXiv:2603.20396). <a href=\"https://doi.org/10.48550/arXiv.2603.20396\">https://doi.org/10.48550/arXiv.2603.20396</a></div>\n</div>",
@@ -1513,27 +1513,27 @@
         {
             "key": "K8TPHCDN",
             "data": {
-                "url": "http://arxiv.org/abs/2510.15924",
-                "title": "The Shape of Math To Come",
-                "DOI": "10.48550/arXiv.2510.15924",
-                "collections": [
-                    "YEKNKVSQ",
-                    "Z3EV2T4P"
-                ],
+                "date": "2025-10-03",
                 "tags": [
                     {
                         "tag": "Mathematics - History and Overview",
                         "type": 1
                     }
                 ],
-                "date": "2025-10-03",
                 "creators": [
                     {
                         "creatorType": "author",
                         "firstName": "Alex",
                         "lastName": "Kontorovich"
                     }
-                ]
+                ],
+                "url": "http://arxiv.org/abs/2510.15924",
+                "title": "The Shape of Math To Come",
+                "collections": [
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "DOI": "10.48550/arXiv.2510.15924"
             },
             "version": 33,
             "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 1em; text-indent:-1em;\">\n  <div class=\"csl-entry\">Kontorovich, A. (2025). <i>The Shape of Math To Come</i> (arXiv:2510.15924). arXiv. <a href=\"https://doi.org/10.48550/arXiv.2510.15924\">https://doi.org/10.48550/arXiv.2510.15924</a></div>\n</div>",
