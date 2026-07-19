@@ -1,5 +1,5 @@
 {
-    "updated_at": "2026-07-12T08:29:18Z",
+    "updated_at": "2026-07-19T08:31:47Z",
     "source": {
         "group_id": "6417244",
         "collection_key": "Z3EV2T4P",
@@ -35,7 +35,11 @@
             {
                 "key": "8SB3V7NQ",
                 "data": {
-                    "title": "NBER WORKING PAPER SERIES",
+                    "url": "",
+                    "collections": [
+                        "AQ2565P6"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -53,12 +57,8 @@
                             "lastName": "Ozdaglar"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "AQ2565P6"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "NBER WORKING PAPER SERIES",
                     "DOI": ""
                 },
                 "version": 41,
@@ -77,7 +77,13 @@
             {
                 "key": "BSYM5LX6",
                 "data": {
-                    "title": "Some Simple Economics of AGI",
+                    "url": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -95,14 +101,8 @@
                             "lastName": "Wu"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "Some Simple Economics of AGI",
                     "DOI": ""
                 },
                 "version": 29,
@@ -121,15 +121,15 @@
             {
                 "key": "5YEIYUMX",
                 "data": {
-                    "title": "Harness engineering: leveraging Codex in an agent-first world",
-                    "creators": [],
                     "url": "https://openai.com/index/harness-engineering/",
                     "collections": [
                         "AQ2565P6",
                         "Z3EV2T4P"
                     ],
-                    "date": "2026-02-04",
                     "tags": [],
+                    "creators": [],
+                    "date": "2026-02-04",
+                    "title": "Harness engineering: leveraging Codex in an agent-first world",
                     "DOI": ""
                 },
                 "version": 34,
@@ -148,7 +148,13 @@
             {
                 "key": "5PEIZD9S",
                 "data": {
-                    "title": "Artificial intelligence as self-learning capital",
+                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -166,14 +172,8 @@
                             "lastName": "Von Maydell"
                         }
                     ],
-                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
                     "date": "12/2025",
-                    "tags": [],
+                    "title": "Artificial intelligence as self-learning capital",
                     "DOI": "10.1016/j.econmod.2025.107221"
                 },
                 "version": 32,
@@ -192,7 +192,12 @@
             {
                 "key": "NP4LAX3I",
                 "data": {
-                    "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                    "url": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -425,13 +430,8 @@
                             "lastName": "Shetty"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "AQ2565P6",
-                        "Z3EV2T4P"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
                     "DOI": ""
                 },
                 "version": 35,
@@ -452,7 +452,11 @@
             {
                 "key": "RBYM4YUH",
                 "data": {
-                    "title": "Microeconomic Theory Lecture Notes",
+                    "url": "",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -460,12 +464,8 @@
                             "lastName": "Sarver"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "Microeconomic Theory Lecture Notes",
                     "DOI": ""
                 },
                 "version": 39,
@@ -484,7 +484,11 @@
             {
                 "key": "HD7689KC",
                 "data": {
-                    "title": "Dilemmas of an Economic Theorist",
+                    "url": "",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -492,12 +496,8 @@
                             "lastName": "Rubinstein"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "Dilemmas of an Economic Theorist",
                     "DOI": ""
                 },
                 "version": 38,
@@ -516,7 +516,11 @@
             {
                 "key": "I5AK9BM7",
                 "data": {
-                    "title": "NBER WORKING PAPER SERIES",
+                    "url": "",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -534,12 +538,8 @@
                             "lastName": "Sannikov"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "NBER WORKING PAPER SERIES",
                     "DOI": ""
                 },
                 "version": 37,
@@ -558,7 +558,11 @@
             {
                 "key": "W4EUPNDS",
                 "data": {
-                    "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
+                    "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
+                    "collections": [
+                        "EGX5YZQW"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "editor",
@@ -566,12 +570,8 @@
                             "lastName": "Black"
                         }
                     ],
-                    "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
-                    "collections": [
-                        "EGX5YZQW"
-                    ],
                     "date": "2012-01-02",
-                    "tags": [],
+                    "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
                     "DOI": "10.1002/9781119203070.ch1"
                 },
                 "version": 36,
@@ -590,7 +590,30 @@
             {
                 "key": "6BA2PLHF",
                 "data": {
-                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                    "url": "http://arxiv.org/abs/2102.03044",
+                    "collections": [
+                        "EGX5YZQW",
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Computation and Language",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Computer Science and Game Theory",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Logic in Computer Science",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Social and Information Networks",
+                            "type": 1
+                        }
+                    ],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -618,31 +641,8 @@
                             "lastName": "Capano"
                         }
                     ],
-                    "url": "http://arxiv.org/abs/2102.03044",
-                    "collections": [
-                        "EGX5YZQW",
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
                     "date": "2021-10-13",
-                    "tags": [
-                        {
-                            "tag": "Computer Science - Computation and Language",
-                            "type": 1
-                        },
-                        {
-                            "tag": "Computer Science - Computer Science and Game Theory",
-                            "type": 1
-                        },
-                        {
-                            "tag": "Computer Science - Logic in Computer Science",
-                            "type": 1
-                        },
-                        {
-                            "tag": "Computer Science - Social and Information Networks",
-                            "type": 1
-                        }
-                    ],
+                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
                     "DOI": "10.48550/arXiv.2102.03044"
                 },
                 "version": 27,
@@ -661,7 +661,13 @@
             {
                 "key": "BSYM5LX6",
                 "data": {
-                    "title": "Some Simple Economics of AGI",
+                    "url": "",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -679,14 +685,8 @@
                             "lastName": "Wu"
                         }
                     ],
-                    "url": "",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
                     "date": "",
-                    "tags": [],
+                    "title": "Some Simple Economics of AGI",
                     "DOI": ""
                 },
                 "version": 29,
@@ -705,7 +705,13 @@
             {
                 "key": "5PEIZD9S",
                 "data": {
-                    "title": "Artificial intelligence as self-learning capital",
+                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                    "collections": [
+                        "AQ2565P6",
+                        "EGX5YZQW",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -723,14 +729,8 @@
                             "lastName": "Von Maydell"
                         }
                     ],
-                    "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                    "collections": [
-                        "AQ2565P6",
-                        "EGX5YZQW",
-                        "Z3EV2T4P"
-                    ],
                     "date": "12/2025",
-                    "tags": [],
+                    "title": "Artificial intelligence as self-learning capital",
                     "DOI": "10.1016/j.econmod.2025.107221"
                 },
                 "version": 32,
@@ -751,7 +751,16 @@
             {
                 "key": "U3KHLDJF",
                 "data": {
-                    "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+                    "url": "http://arxiv.org/abs/2605.22763",
+                    "collections": [
+                        "YEKNKVSQ"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Artificial Intelligence",
+                            "type": 1
+                        }
+                    ],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -854,17 +863,8 @@
                             "lastName": "Chaudhuri"
                         }
                     ],
-                    "url": "http://arxiv.org/abs/2605.22763",
-                    "collections": [
-                        "YEKNKVSQ"
-                    ],
                     "date": "2026-05-21",
-                    "tags": [
-                        {
-                            "tag": "Computer Science - Artificial Intelligence",
-                            "type": 1
-                        }
-                    ],
+                    "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
                     "DOI": "10.48550/arXiv.2605.22763"
                 },
                 "version": 40,
@@ -883,7 +883,19 @@
             {
                 "key": "YELL4K3S",
                 "data": {
-                    "title": "Compression is all you need: Modeling Mathematics",
+                    "url": "http://arxiv.org/abs/2603.20396",
+                    "collections": [
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Artificial Intelligence"
+                        },
+                        {
+                            "tag": "Mathematics - Logic"
+                        }
+                    ],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -906,20 +918,8 @@
                             "lastName": "Mulligan"
                         }
                     ],
-                    "url": "http://arxiv.org/abs/2603.20396",
-                    "collections": [
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
                     "date": "2026-03-20",
-                    "tags": [
-                        {
-                            "tag": "Computer Science - Artificial Intelligence"
-                        },
-                        {
-                            "tag": "Mathematics - Logic"
-                        }
-                    ],
+                    "title": "Compression is all you need: Modeling Mathematics",
                     "DOI": "10.48550/arXiv.2603.20396"
                 },
                 "version": 30,
@@ -938,7 +938,30 @@
             {
                 "key": "6BA2PLHF",
                 "data": {
-                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                    "url": "http://arxiv.org/abs/2102.03044",
+                    "collections": [
+                        "EGX5YZQW",
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Computer Science - Computation and Language",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Computer Science and Game Theory",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Logic in Computer Science",
+                            "type": 1
+                        },
+                        {
+                            "tag": "Computer Science - Social and Information Networks",
+                            "type": 1
+                        }
+                    ],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -966,31 +989,8 @@
                             "lastName": "Capano"
                         }
                     ],
-                    "url": "http://arxiv.org/abs/2102.03044",
-                    "collections": [
-                        "EGX5YZQW",
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
                     "date": "2021-10-13",
-                    "tags": [
-                        {
-                            "tag": "Computer Science - Computation and Language",
-                            "type": 1
-                        },
-                        {
-                            "tag": "Computer Science - Computer Science and Game Theory",
-                            "type": 1
-                        },
-                        {
-                            "tag": "Computer Science - Logic in Computer Science",
-                            "type": 1
-                        },
-                        {
-                            "tag": "Computer Science - Social and Information Networks",
-                            "type": 1
-                        }
-                    ],
+                    "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
                     "DOI": "10.48550/arXiv.2102.03044"
                 },
                 "version": 27,
@@ -1009,7 +1009,17 @@
             {
                 "key": "K8TPHCDN",
                 "data": {
-                    "title": "The Shape of Math To Come",
+                    "url": "http://arxiv.org/abs/2510.15924",
+                    "collections": [
+                        "YEKNKVSQ",
+                        "Z3EV2T4P"
+                    ],
+                    "tags": [
+                        {
+                            "tag": "Mathematics - History and Overview",
+                            "type": 1
+                        }
+                    ],
                     "creators": [
                         {
                             "creatorType": "author",
@@ -1017,18 +1027,8 @@
                             "lastName": "Kontorovich"
                         }
                     ],
-                    "url": "http://arxiv.org/abs/2510.15924",
-                    "collections": [
-                        "YEKNKVSQ",
-                        "Z3EV2T4P"
-                    ],
                     "date": "2025-10-03",
-                    "tags": [
-                        {
-                            "tag": "Mathematics - History and Overview",
-                            "type": 1
-                        }
-                    ],
+                    "title": "The Shape of Math To Come",
                     "DOI": "10.48550/arXiv.2510.15924"
                 },
                 "version": 33,
@@ -1050,7 +1050,11 @@
         {
             "key": "8SB3V7NQ",
             "data": {
-                "title": "NBER WORKING PAPER SERIES",
+                "url": "",
+                "collections": [
+                    "AQ2565P6"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1068,12 +1072,8 @@
                         "lastName": "Ozdaglar"
                     }
                 ],
-                "url": "",
-                "collections": [
-                    "AQ2565P6"
-                ],
                 "date": "",
-                "tags": [],
+                "title": "NBER WORKING PAPER SERIES",
                 "DOI": ""
             },
             "version": 41,
@@ -1092,7 +1092,13 @@
         {
             "key": "BSYM5LX6",
             "data": {
-                "title": "Some Simple Economics of AGI",
+                "url": "",
+                "collections": [
+                    "AQ2565P6",
+                    "EGX5YZQW",
+                    "Z3EV2T4P"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1110,14 +1116,8 @@
                         "lastName": "Wu"
                     }
                 ],
-                "url": "",
-                "collections": [
-                    "AQ2565P6",
-                    "EGX5YZQW",
-                    "Z3EV2T4P"
-                ],
                 "date": "",
-                "tags": [],
+                "title": "Some Simple Economics of AGI",
                 "DOI": ""
             },
             "version": 29,
@@ -1136,15 +1136,15 @@
         {
             "key": "5YEIYUMX",
             "data": {
-                "title": "Harness engineering: leveraging Codex in an agent-first world",
-                "creators": [],
                 "url": "https://openai.com/index/harness-engineering/",
                 "collections": [
                     "AQ2565P6",
                     "Z3EV2T4P"
                 ],
-                "date": "2026-02-04",
                 "tags": [],
+                "creators": [],
+                "date": "2026-02-04",
+                "title": "Harness engineering: leveraging Codex in an agent-first world",
                 "DOI": ""
             },
             "version": 34,
@@ -1163,7 +1163,13 @@
         {
             "key": "5PEIZD9S",
             "data": {
-                "title": "Artificial intelligence as self-learning capital",
+                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
+                "collections": [
+                    "AQ2565P6",
+                    "EGX5YZQW",
+                    "Z3EV2T4P"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1181,14 +1187,8 @@
                         "lastName": "Von Maydell"
                     }
                 ],
-                "url": "https://linkinghub.elsevier.com/retrieve/pii/S0264999325002160",
-                "collections": [
-                    "AQ2565P6",
-                    "EGX5YZQW",
-                    "Z3EV2T4P"
-                ],
                 "date": "12/2025",
-                "tags": [],
+                "title": "Artificial intelligence as self-learning capital",
                 "DOI": "10.1016/j.econmod.2025.107221"
             },
             "version": 32,
@@ -1207,7 +1207,12 @@
         {
             "key": "NP4LAX3I",
             "data": {
-                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
+                "url": "",
+                "collections": [
+                    "AQ2565P6",
+                    "Z3EV2T4P"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1440,13 +1445,8 @@
                         "lastName": "Shetty"
                     }
                 ],
-                "url": "",
-                "collections": [
-                    "AQ2565P6",
-                    "Z3EV2T4P"
-                ],
                 "date": "",
-                "tags": [],
+                "title": "Using a GPT-5-driven autonomous lab to optimize the cost",
                 "DOI": ""
             },
             "version": 35,
@@ -1465,7 +1465,11 @@
         {
             "key": "RBYM4YUH",
             "data": {
-                "title": "Microeconomic Theory Lecture Notes",
+                "url": "",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1473,12 +1477,8 @@
                         "lastName": "Sarver"
                     }
                 ],
-                "url": "",
-                "collections": [
-                    "EGX5YZQW"
-                ],
                 "date": "",
-                "tags": [],
+                "title": "Microeconomic Theory Lecture Notes",
                 "DOI": ""
             },
             "version": 39,
@@ -1497,7 +1497,11 @@
         {
             "key": "HD7689KC",
             "data": {
-                "title": "Dilemmas of an Economic Theorist",
+                "url": "",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1505,12 +1509,8 @@
                         "lastName": "Rubinstein"
                     }
                 ],
-                "url": "",
-                "collections": [
-                    "EGX5YZQW"
-                ],
                 "date": "",
-                "tags": [],
+                "title": "Dilemmas of an Economic Theorist",
                 "DOI": ""
             },
             "version": 38,
@@ -1529,7 +1529,11 @@
         {
             "key": "I5AK9BM7",
             "data": {
-                "title": "NBER WORKING PAPER SERIES",
+                "url": "",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1547,12 +1551,8 @@
                         "lastName": "Sannikov"
                     }
                 ],
-                "url": "",
-                "collections": [
-                    "EGX5YZQW"
-                ],
                 "date": "",
-                "tags": [],
+                "title": "NBER WORKING PAPER SERIES",
                 "DOI": ""
             },
             "version": 37,
@@ -1571,7 +1571,11 @@
         {
             "key": "W4EUPNDS",
             "data": {
-                "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
+                "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
+                "collections": [
+                    "EGX5YZQW"
+                ],
+                "tags": [],
                 "creators": [
                     {
                         "creatorType": "editor",
@@ -1579,12 +1583,8 @@
                         "lastName": "Black"
                     }
                 ],
-                "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781119203070.ch1",
-                "collections": [
-                    "EGX5YZQW"
-                ],
                 "date": "2012-01-02",
-                "tags": [],
+                "title": "Banking and Interest Rates in a World Without Money: The Effects of Uncontrolled Banking",
                 "DOI": "10.1002/9781119203070.ch1"
             },
             "version": 36,
@@ -1603,7 +1603,30 @@
         {
             "key": "6BA2PLHF",
             "data": {
-                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
+                "url": "http://arxiv.org/abs/2102.03044",
+                "collections": [
+                    "EGX5YZQW",
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "tags": [
+                    {
+                        "tag": "Computer Science - Computation and Language",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Computer Science and Game Theory",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Logic in Computer Science",
+                        "type": 1
+                    },
+                    {
+                        "tag": "Computer Science - Social and Information Networks",
+                        "type": 1
+                    }
+                ],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1631,31 +1654,8 @@
                         "lastName": "Capano"
                     }
                 ],
-                "url": "http://arxiv.org/abs/2102.03044",
-                "collections": [
-                    "EGX5YZQW",
-                    "YEKNKVSQ",
-                    "Z3EV2T4P"
-                ],
                 "date": "2021-10-13",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Computation and Language",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Computer Science and Game Theory",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Logic in Computer Science",
-                        "type": 1
-                    },
-                    {
-                        "tag": "Computer Science - Social and Information Networks",
-                        "type": 1
-                    }
-                ],
+                "title": "Smart Proofs via Smart Contracts: Succinct and Informative Mathematical Derivations via Decentralized Markets",
                 "DOI": "10.48550/arXiv.2102.03044"
             },
             "version": 27,
@@ -1674,7 +1674,16 @@
         {
             "key": "U3KHLDJF",
             "data": {
-                "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+                "url": "http://arxiv.org/abs/2605.22763",
+                "collections": [
+                    "YEKNKVSQ"
+                ],
+                "tags": [
+                    {
+                        "tag": "Computer Science - Artificial Intelligence",
+                        "type": 1
+                    }
+                ],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1777,17 +1786,8 @@
                         "lastName": "Chaudhuri"
                     }
                 ],
-                "url": "http://arxiv.org/abs/2605.22763",
-                "collections": [
-                    "YEKNKVSQ"
-                ],
                 "date": "2026-05-21",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Artificial Intelligence",
-                        "type": 1
-                    }
-                ],
+                "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
                 "DOI": "10.48550/arXiv.2605.22763"
             },
             "version": 40,
@@ -1806,7 +1806,19 @@
         {
             "key": "YELL4K3S",
             "data": {
-                "title": "Compression is all you need: Modeling Mathematics",
+                "url": "http://arxiv.org/abs/2603.20396",
+                "collections": [
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "tags": [
+                    {
+                        "tag": "Computer Science - Artificial Intelligence"
+                    },
+                    {
+                        "tag": "Mathematics - Logic"
+                    }
+                ],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1829,20 +1841,8 @@
                         "lastName": "Mulligan"
                     }
                 ],
-                "url": "http://arxiv.org/abs/2603.20396",
-                "collections": [
-                    "YEKNKVSQ",
-                    "Z3EV2T4P"
-                ],
                 "date": "2026-03-20",
-                "tags": [
-                    {
-                        "tag": "Computer Science - Artificial Intelligence"
-                    },
-                    {
-                        "tag": "Mathematics - Logic"
-                    }
-                ],
+                "title": "Compression is all you need: Modeling Mathematics",
                 "DOI": "10.48550/arXiv.2603.20396"
             },
             "version": 30,
@@ -1861,7 +1861,17 @@
         {
             "key": "K8TPHCDN",
             "data": {
-                "title": "The Shape of Math To Come",
+                "url": "http://arxiv.org/abs/2510.15924",
+                "collections": [
+                    "YEKNKVSQ",
+                    "Z3EV2T4P"
+                ],
+                "tags": [
+                    {
+                        "tag": "Mathematics - History and Overview",
+                        "type": 1
+                    }
+                ],
                 "creators": [
                     {
                         "creatorType": "author",
@@ -1869,18 +1879,8 @@
                         "lastName": "Kontorovich"
                     }
                 ],
-                "url": "http://arxiv.org/abs/2510.15924",
-                "collections": [
-                    "YEKNKVSQ",
-                    "Z3EV2T4P"
-                ],
                 "date": "2025-10-03",
-                "tags": [
-                    {
-                        "tag": "Mathematics - History and Overview",
-                        "type": 1
-                    }
-                ],
+                "title": "The Shape of Math To Come",
                 "DOI": "10.48550/arXiv.2510.15924"
             },
             "version": 33,
