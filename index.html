@@ -65,8 +65,11 @@
             margin-bottom: 30px;
         }
         .image-row img {
-            height: 200px;
-            width: 200px;
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 1;
             object-fit: cover;
         }
         @media (max-width: 600px) and (orientation: portrait) {
@@ -102,6 +105,7 @@
         <div class="image-row">
             <img src="images/home-mountain-left-square.png" alt="Mountain lake">
             <img src="images/home-sunset-square.jpeg" alt="Sunset">
+            <img src="images/home-sunset-lake-square.jpeg" alt="Sunset over a mountain lake">
             <img src="images/home-mountain-right-square.png" alt="Mountain lake">
         </div>
         <section class="section bio">
