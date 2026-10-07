@@ -320,16 +320,14 @@
                 return {
                     key: String(raw.key || raw.data.key || '').trim(),
                     name: String(raw.data.name || '').trim(),
-                    parentCollection: raw.data.parentCollection || false,
-                    numItems: Number(raw.meta && raw.meta.numItems ? raw.meta.numItems : 0)
+                    parentCollection: raw.data.parentCollection || false
                 };
             }
 
             return {
                 key: String(raw.key || '').trim(),
                 name: String(raw.name || '').trim(),
-                parentCollection: raw.parentCollection || false,
-                numItems: Number(raw.numItems || 0)
+                parentCollection: raw.parentCollection || false
             };
         }
 
@@ -518,7 +516,6 @@
             return entryPath;
         }
 
-        let notebookCitationIndex = null;
         let notebookCitationIndexPromise = null;
 
         async function buildNotebookCitationIndex() {
@@ -576,19 +573,11 @@
         }
 
         function ensureNotebookCitationIndex() {
-            if (notebookCitationIndex) {
-                return Promise.resolve(notebookCitationIndex);
-            }
             if (!notebookCitationIndexPromise) {
                 notebookCitationIndexPromise = buildNotebookCitationIndex()
-                    .then((index) => {
-                        notebookCitationIndex = index;
-                        return index;
-                    })
                     .catch((error) => {
                         console.warn('Unable to build notebook citation index:', error);
-                        notebookCitationIndex = { byDoi: new Map(), byKey: new Map() };
-                        return notebookCitationIndex;
+                        return { byDoi: new Map(), byKey: new Map() };
                     });
             }
             return notebookCitationIndexPromise;
@@ -784,7 +773,6 @@
 
                         const bibDiv = document.createElement('div');
                         bibDiv.className = 'item-bib';
-                        bibDiv.textContent = '';
                         body.appendChild(bibDiv);
 
                         const linksDiv = document.createElement('div');
@@ -830,7 +818,6 @@
 
                         const mentions = document.createElement('div');
                         mentions.className = 'item-mentions';
-                        mentions.textContent = '';
                         body.appendChild(mentions);
 
                         details.appendChild(body);

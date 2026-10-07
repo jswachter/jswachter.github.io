@@ -55,9 +55,6 @@
             gap: 12px;
             margin-bottom: 14px;
         }
-        .back-link {
-            margin-bottom: 0;
-        }
         .back-link a {
             color: #0077cc;
             text-decoration: none;
@@ -799,7 +796,6 @@
                 const lines = text.split('\n');
                 let title = '';
                 let date = '';
-                let rawDate = '';
                 let contentStart = 0;
 
                 if (lines[0] === '---') {
@@ -808,8 +804,7 @@
                         if (lines[i].startsWith('title:')) {
                             title = lines[i].substring(6).trim();
                         } else if (lines[i].startsWith('date:')) {
-                            rawDate = lines[i].substring(5).trim();
-                            date = formatDateIso(rawDate);
+                            date = formatDateIso(lines[i].substring(5).trim());
                         }
                         i++;
                     }
@@ -838,7 +833,7 @@
                 const citations = extractCitationsAndRewriteLinks(contentEl);
                 renderReferences(citations);
 
-                enhanceNotebookContext(entryPath, date || rawDate);
+                enhanceNotebookContext(entryPath, date);
             } catch (error) {
                 console.error('Error loading entry:', error);
                 document.getElementById('content').innerHTML = '<p style="color: #888;">Unable to load entry.</p>';

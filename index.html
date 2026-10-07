@@ -9,7 +9,6 @@
     <meta property="og:description" content="PhD student in Financial Economics at ETH Zurich, affiliated with the KOF Swiss Economic Institute.">
     <meta property="og:type" content="website">
     <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
-    <link rel="stylesheet" href="styles.css">
     <style>
         html {
             background-color: #ffffff;
@@ -52,10 +51,6 @@
         }
         header h1 {
             margin-bottom: 5px;
-        }
-        header p {
-            margin-top: 0;
-            color: #666;
         }
         .image-row {
             display: flex;
@@ -174,7 +169,7 @@
                 return;
             }
 
-            const images = Array.from(imageRow.querySelectorAll('img'));
+            const images = imageRow.querySelectorAll('img');
             if (images.length === 0) {
                 return;
             }

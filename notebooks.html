@@ -127,12 +127,6 @@
         .entry-date {
             font-variant-numeric: tabular-nums;
         }
-        .collection-heading {
-            margin: 28px 0 12px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #333;
-        }
         .collection {
             margin: 0 0 12px;
             padding: 0;
@@ -304,7 +298,7 @@
                 return a.title.localeCompare(b.title);
             }
 
-            function entryMatches(entry, q) {
+            function entryMatches(entry) {
                 if (state.collection && entry.collectionLower !== state.collection) {
                     return false;
                 }
@@ -321,7 +315,7 @@
             function renderCollections(filtered) {
                 const byCollection = new Map();
                 for (const entry of filtered) {
-                    const key = entry.collection || 'General';
+                    const key = entry.collection;
                     if (!byCollection.has(key)) {
                         byCollection.set(key, []);
                     }
@@ -353,7 +347,7 @@
 
                     details.appendChild(summary);
 
-                    const groupEntries = byCollection.get(collection).slice().sort(sortChronological);
+                    const groupEntries = byCollection.get(collection);
                     const entriesWrap = document.createElement('div');
                     entriesWrap.className = 'collection-entries';
                     for (const entry of groupEntries) {
@@ -377,7 +371,7 @@
             }
 
             function apply() {
-                const filtered = entries.filter((entry) => entryMatches(entry)).slice().sort(sortChronological);
+                const filtered = entries.filter(entryMatches).sort(sortChronological);
 
                 if (entries.length === 0) {
                     statusEl.textContent = '';

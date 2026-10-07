@@ -6,7 +6,7 @@ write it into an existing notebook file (preserving YAML frontmatter).
 
 Notes:
 - Best-effort converter intended for thesis prose + AMS math.
-- Display-math environments (align/equation/...) are converted to $$ blocks.
+- Display-math environments (align/equation/...) are preserved for MathJax.
 - We keep \\label{...} inside display math so MathJax can number + resolve \\eqref.
 - \\begin{comment}...\\end{comment} blocks are removed.
 """
@@ -133,7 +133,6 @@ def convert_theorems(tex: str) -> str:
         body = match.group("body")
         body = textwrap.dedent(body).strip()
         label_match = LABEL_CMD_RE.search(body)
-        label = label_match.group(0) if label_match else ""
         label_key = ""
         if label_match:
             label_key = label_match.group(0)[7:-1]  # strip "\label{" and "}"

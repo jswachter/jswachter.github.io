@@ -146,13 +146,6 @@ def derive_summary(content_lines: list[str]) -> str:
     return summary
 
 
-def safe_data_attr(value: str) -> str:
-    # Keep dataset attrs predictable: lowercase, commas, and spaces.
-    value = re.sub(r"\s+", " ", value).strip().lower()
-    value = value.replace('"', "").replace("'", "")
-    return value
-
-
 def url_quote(value: str) -> str:
     return quote(value, safe="")
 
@@ -192,7 +185,6 @@ def build_index_entries() -> list[dict[str, Any]]:
     def sort_key(e: dict[str, Any]) -> tuple[str, str]:
         date_str = str(e.get("date") or "")
         title = str(e.get("title") or "")
-        # Sort later: we reverse date separately.
         return (date_str, title)
 
     entries.sort(key=sort_key, reverse=True)
@@ -223,12 +215,9 @@ def build_entry_html(entry: dict[str, Any]) -> str:
 
     tags_lower = ",".join([t.lower() for t in tags])
 
-    meta_parts: list[str] = []
-    meta_parts.append(
+    meta_html = (
         f'<a class="entry-collection" href="notebooks.html?collection={url_quote(collection)}">{escape(collection)}</a>'
     )
-
-    meta_html = " · ".join(meta_parts)
 
     return (
         f'<div class="entry" data-title="{escape(title)}" data-date="{escape(date_str)}" '
