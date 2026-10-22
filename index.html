@@ -40,13 +40,17 @@
         .bio a,
         .projects a,
         .presentations a,
+        .notebooks a,
         .Notes a,
-        .contact a { color: #0077cc; text-decoration: none; }
+        .contact a,
+        .photos a { color: #0077cc; text-decoration: none; }
         .bio a:hover,
         .projects a:hover,
         .presentations a:hover,
+        .notebooks a:hover,
         .Notes a:hover,
-        .contact a:hover { text-decoration: underline; }
+        .contact a:hover,
+        .photos a:hover { text-decoration: underline; }
         header {
             text-align: center;
             margin-bottom: 30px;
@@ -54,37 +58,12 @@
         header h1 {
             margin-bottom: 5px;
         }
-        .image-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .image-row img {
-            flex: 1 1 0;
-            min-width: 0;
-            max-width: 200px;
+        .home-photo {
+            display: block;
+            width: 200px;
+            max-width: 100%;
             height: auto;
-            aspect-ratio: 1;
-            object-fit: cover;
-        }
-        @media (max-width: 600px) and (orientation: portrait) {
-            .image-row {
-                gap: 0;
-            }
-            .image-row img {
-                display: none;
-                width: 200px;
-                height: 200px;
-            }
-            .image-row img:first-child,
-            .image-row img.is-mobile-selected {
-                display: block;
-            }
-            .image-row.has-random-mobile-image img:first-child:not(.is-mobile-selected) {
-                display: none;
-            }
+            margin: 0 auto 30px;
         }
         ul {
             padding-left: 20px;
@@ -99,12 +78,7 @@
         <header>
             <h1>Jonatan S. Wächter</h1>
         </header>
-        <div class="image-row">
-            <img src="images/home-mountain-left-square.png" alt="Mountain lake">
-            <img src="images/home-sunset-square.jpeg" alt="Sunset">
-            <img src="images/home-sunset-lake-square.jpeg" alt="Sunset over a mountain lake">
-            <img src="images/home-mountain-right-square.png" alt="Mountain lake">
-        </div>
+        <img class="home-photo" src="images/home-mountain-left-square.png" alt="Snow-covered mountains reflected in a lake" width="800" height="800">
         <section class="section bio">
             <h2>Bio</h2>
             <p>
@@ -142,20 +116,8 @@
                 </li>
             </ul>
         </section>
-        <section class="section interests">
-            <h2>Interests</h2>
-            <ul>
-                <li>Money creation</li>
-                <li>Heterogeneous-agent models</li>
-                <li>Random conformal geometry</li>
-                <li>Formalization of mathematics</li>
-            </ul>
-            <p style="margin-top: 20px; padding-left: 20px;">
-                Since September 2025 I share some random thoughts in <a href="notebooks.html" style="color: #0077cc; text-decoration: none;">notebooks →</a>
-            </p>
-            <p class="contact" style="margin-top: 8px; padding-left: 20px;">
-                <a href="https://github.com/jswachter" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
+        <section class="section notebooks">
+            <h2><a href="notebooks.html">Notebooks →</a></h2>
         </section>
         <section class="Notes">
             <h2>Lecture notes</h2>
@@ -168,25 +130,12 @@
             <h2>Contact</h2>
             <p>waechter at kof.ethz.ch</p>
             <p>Office: <a href="https://kazi.ch/en/eth-zuerich-gebaeude-lee/" target="_blank" rel="noopener noreferrer">LEE</a> F 127</p>
+            <p><a href="https://github.com/jswachter" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </section>
+        <section class="section photos">
+            <h2><a href="photos.html">Photos →</a></h2>
         </section>
 
     </div>
-    <script>
-        (function () {
-            const imageRow = document.querySelector('.image-row');
-            if (!imageRow) {
-                return;
-            }
-
-            const images = imageRow.querySelectorAll('img');
-            if (images.length === 0) {
-                return;
-            }
-
-            const selected = images[Math.floor(Math.random() * images.length)];
-            selected.classList.add('is-mobile-selected');
-            imageRow.classList.add('has-random-mobile-image');
-        })();
-    </script>
 </body>
 </html>
