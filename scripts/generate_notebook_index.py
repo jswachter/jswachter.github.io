@@ -257,7 +257,6 @@ def write_sitemap(entries: list[dict[str, Any]]) -> None:
     urls.append((f"{SITE_BASE_URL}/", ""))
     urls.append((f"{SITE_BASE_URL}/index.html", ""))
     urls.append((f"{SITE_BASE_URL}/notebooks.html", ""))
-    urls.append((f"{SITE_BASE_URL}/library.html", ""))
 
     for entry in entries:
         path = str(entry.get("path") or "").lstrip("/")
