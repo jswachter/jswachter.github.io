@@ -52,3 +52,5 @@ I think it’s quite interesting to reflect on some of these dynamics and revisi
 > I think GitHub for accounting is significantly more defensible than Claude Code for accounting for that reason.
 >
 > At the same time, as I said, I think the consulting track is incredibly important. Our outreach on LinkedIn and by email shows that the market is absolutely not there yet when it comes to AI use... it is incredibly difficult to build GitHub for accounting if no one is using agents yet.
+>
+> […]
