@@ -1,6 +1,19 @@
 {
-    "generated": "2026-10-02",
+    "generated": "2026-11-03",
     "entries": [
+        {
+            "title": "AI startup strategy, nine months later",
+            "date": "2026-11-03",
+            "path": "notebooks/2026-11-03-ai-startup-strategy.md",
+            "summary": "It\u2019s always a somewhat silly exercise to report predictions after many of them have turned out to be right. Of course any such report is prone to have a bias in favor of well-tu...",
+            "tags": [
+                "AI",
+                "agents",
+                "startups",
+                "accounting"
+            ],
+            "collection": "AI & Society"
+        },
         {
             "title": "Principal-AI-agent problems",
             "date": "2026-10-02",
