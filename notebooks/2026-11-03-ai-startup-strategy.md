@@ -1,7 +1,7 @@
 ---
 title: AI startup strategy, nine months later
 date: 2026-11-03
-collection: AI & Society
+collection: AI
 tags: AI, agents, startups, accounting
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Principal-AI-agent problems
 date: 2026-10-02
-collection: AI & Society
+collection: AI
 tags: AI, agents
 ---
 

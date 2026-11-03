@@ -1,7 +1,7 @@
 ---
 title: Confluence of browsers, agents and apps 
 date: 2025-10-30
-collection: AI Systems
+collection: AI
 tags: AI, browsers 
 ---
 

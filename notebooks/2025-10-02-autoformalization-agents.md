@@ -1,7 +1,7 @@
 ---
 title: Autoformalization agents   
 date: 2025-10-02
-collection: Math & Formal Methods
+collection: Mathematics
 tags: math, AI, autoformalization 
 ---
 

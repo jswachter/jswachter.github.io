@@ -12,7 +12,7 @@
                 "startups",
                 "accounting"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
             "title": "Principal-AI-agent problems",
@@ -23,7 +23,7 @@
                 "AI",
                 "agents"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
             "title": "Formalization workshop, Brig 2026",
@@ -35,7 +35,7 @@
                 "workshop",
                 "brig"
             ],
-            "collection": "Math & Formal Methods"
+            "collection": "Mathematics"
         },
         {
             "title": "MSc thesis introduction",
@@ -46,7 +46,7 @@
                 "thesis",
                 "msc"
             ],
-            "collection": "Thesis"
+            "collection": "Mathematics"
         },
         {
             "title": "Confluence of browsers, agents and apps",
@@ -57,7 +57,7 @@
                 "AI",
                 "browsers"
             ],
-            "collection": "AI Systems"
+            "collection": "AI"
         },
         {
             "title": "Autoformalization agents",
@@ -69,7 +69,7 @@
                 "AI",
                 "autoformalization"
             ],
-            "collection": "Math & Formal Methods"
+            "collection": "Mathematics"
         },
         {
             "title": "New tasks and what matters",
@@ -81,7 +81,7 @@
                 "AI",
                 "work"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
             "title": "Stablecoins and new units of account",
@@ -105,10 +105,10 @@
                 "ai",
                 "startups"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
-            "title": "RiskON 2025 design",
+            "title": "Adverse media screening for millions of banking clients",
             "date": "2025-09-07",
             "path": "notebooks/2025-09-07-risk-on.md",
             "summary": "Large financial institutions need to understand the nature of their clients, they need to know their customer.",
@@ -116,7 +116,7 @@
                 "risk",
                 "hackathon"
             ],
-            "collection": "Projects"
+            "collection": "Finance"
         }
     ]
 }

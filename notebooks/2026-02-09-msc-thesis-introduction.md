@@ -1,7 +1,7 @@
 ---
 title: MSc thesis introduction
 date: 2026-02-09
-collection: Thesis
+collection: Mathematics
 tags: thesis, msc
 summary: Introduction from my MSc thesis.
 ---

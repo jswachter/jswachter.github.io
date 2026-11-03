@@ -1,8 +1,9 @@
 ---
 title: Formalization workshop, Brig 2026
 date: 2026-04-02
-collection: Math & Formal Methods
+collection: Mathematics
 tags: formalization, workshop, brig
+summary: Workshop notes for Brig 2026 formalization sessions.
 ---
 
 # Formalization workshop, Brig 2026
