@@ -79,10 +79,11 @@
         .home-photo .home-photo-etching {
             position: absolute;
             inset: 0;
+            opacity: 0;
             transition: opacity 650ms ease;
         }
         .home-photo[aria-pressed="true"] .home-photo-etching {
-            opacity: 0;
+            opacity: 1;
         }
         .home-photo:focus-visible {
             outline: 2px solid #888;
@@ -90,7 +91,7 @@
         }
         @media (hover: hover) and (pointer: fine) {
             .home-photo:hover .home-photo-etching {
-                opacity: 0;
+                opacity: 1;
             }
         }
         @media (prefers-reduced-motion: reduce) {
@@ -111,7 +112,7 @@
         <header>
             <h1>Jonatan S. Wächter</h1>
         </header>
-        <button class="home-photo" type="button" aria-label="Show original photograph of snow-covered mountains reflected in a lake" aria-pressed="false">
+        <button class="home-photo" type="button" aria-label="Show contour print of snow-covered mountains reflected in a lake" aria-pressed="false">
             <img src="images/home-mountain-left-square.png" alt="" width="800" height="800">
             <img class="home-photo-etching" src="images/home-mountain-etching.webp" alt="" width="800" height="800">
         </button>
