@@ -1,6 +1,19 @@
 {
-    "generated": "2026-10-02",
+    "generated": "2026-11-03",
     "entries": [
+        {
+            "title": "AI startup strategy, nine months later",
+            "date": "2026-11-03",
+            "path": "notebooks/2026-11-03-ai-startup-strategy.md",
+            "summary": "It\u2019s always a somewhat silly exercise to report predictions after many of them have turned out to be right. Of course any such report is prone to have a bias in favor of well-tu...",
+            "tags": [
+                "AI",
+                "agents",
+                "startups",
+                "accounting"
+            ],
+            "collection": "AI"
+        },
         {
             "title": "Principal-AI-agent problems",
             "date": "2026-10-02",
@@ -10,7 +23,7 @@
                 "AI",
                 "agents"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
             "title": "Formalization workshop, Brig 2026",
@@ -22,7 +35,7 @@
                 "workshop",
                 "brig"
             ],
-            "collection": "Math & Formal Methods"
+            "collection": "Mathematics"
         },
         {
             "title": "MSc thesis introduction",
@@ -33,7 +46,7 @@
                 "thesis",
                 "msc"
             ],
-            "collection": "Thesis"
+            "collection": "Mathematics"
         },
         {
             "title": "Confluence of browsers, agents and apps",
@@ -44,7 +57,7 @@
                 "AI",
                 "browsers"
             ],
-            "collection": "AI Systems"
+            "collection": "AI"
         },
         {
             "title": "Autoformalization agents",
@@ -56,7 +69,7 @@
                 "AI",
                 "autoformalization"
             ],
-            "collection": "Math & Formal Methods"
+            "collection": "Mathematics"
         },
         {
             "title": "New tasks and what matters",
@@ -68,7 +81,7 @@
                 "AI",
                 "work"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
             "title": "Stablecoins and new units of account",
@@ -92,10 +105,10 @@
                 "ai",
                 "startups"
             ],
-            "collection": "AI & Society"
+            "collection": "AI"
         },
         {
-            "title": "RiskON 2025 design",
+            "title": "Adverse media screening for millions of banking clients",
             "date": "2025-09-07",
             "path": "notebooks/2025-09-07-risk-on.md",
             "summary": "Large financial institutions need to understand the nature of their clients, they need to know their customer.",
@@ -103,7 +116,7 @@
                 "risk",
                 "hackathon"
             ],
-            "collection": "Projects"
+            "collection": "Finance"
         }
     ]
 }

@@ -47,11 +47,7 @@
             margin: 0 auto;
             padding: 48px clamp(20px, 6vw, 40px) 96px;
         }
-        .nav-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 12px;
+        .back-link {
             margin-bottom: 14px;
         }
         .back-link a {
@@ -66,22 +62,49 @@
         .entry-nav {
             display: flex;
             gap: 12px;
-            flex: 0 0 auto;
         }
-        .entry-nav a {
+        .entry-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+        .entry-footer[hidden] {
+            display: none;
+        }
+        .entry-footer a {
             color: #555;
             text-decoration: underline;
             text-decoration-color: #ccc;
             text-underline-offset: 3px;
             font-size: 14px;
         }
-        .entry-nav a:hover {
+        .entry-footer a:hover {
             text-decoration: underline;
         }
-        .entry-date {
+        .entry-header {
+            margin: 30px 0 28px;
+        }
+        .entry-header h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+            line-height: 1.3;
+        }
+        .entry-meta {
             color: #888;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin: 0;
+        }
+        .entry-meta a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .entry-meta a:hover {
+            text-decoration: underline;
         }
         #content {
             font-family: "Iowan Old Style", Georgia, serif;
@@ -104,11 +127,15 @@
             font-size: 18px;
             font-weight: 500;
         }
-        #content a, .entry-date a {
+        #content a {
             color: #555;
             text-decoration: underline;
             text-decoration-color: #ccc;
             text-underline-offset: 3px;
+        }
+        #content img {
+            max-width: 100%;
+            height: auto;
         }
         #content code {
             background-color: #f4f4f4;
@@ -146,19 +173,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="nav-row">
-            <div class="back-link">
-                <a href="notebooks.html">← All notebooks</a>
-            </div>
-            <div class="entry-nav" aria-label="Notebook navigation">
-                <a id="nav-newer" href="notebooks.html" style="display: none;">← Newer</a>
-                <a id="nav-older" href="notebooks.html" style="display: none;">Older →</a>
-            </div>
+        <div class="back-link">
+            <a href="notebooks.html">← All notebooks</a>
         </div>
-        <div id="entry-metadata"></div>
+        <header id="entry-header" class="entry-header" hidden>
+            <h1 id="entry-title"></h1>
+            <div id="entry-metadata"></div>
+        </header>
         <div id="content" aria-live="polite">
             <p style="color: #888;">Loading...</p>
         </div>
+        <footer id="entry-footer" class="entry-footer" hidden>
+            <nav class="entry-nav" aria-label="Notebook navigation">
+                <a id="nav-newer" href="notebooks.html" style="display: none;">← Newer</a>
+                <a id="nav-older" href="notebooks.html" style="display: none;">Older →</a>
+            </nav>
+            <a id="entry-markdown" target="_blank" rel="noopener noreferrer">View Markdown</a>
+        </footer>
         <noscript>
             <section aria-label="Notebook access for non-JavaScript agents" style="margin-top: 24px; color: #555;">
                 <p>JavaScript is required to render the notebook in this viewer. You can still access every entry by opening the Markdown files directly.</p>
@@ -301,10 +332,11 @@
             if (!/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
                 return raw;
             }
-            return new Date(raw).toLocaleDateString('en-US', {
+            return new Date(raw).toLocaleDateString('en-GB', {
                 year: 'numeric',
                 month: 'long',
-                day: 'numeric'
+                day: 'numeric',
+                timeZone: 'UTC'
             });
         }
 
@@ -372,7 +404,7 @@
             el.title = entry.title || '';
         }
 
-        function renderNotebookMetadata(entry, fallbackDateText) {
+        function renderNotebookMetadata(entry) {
             const metadataDiv = document.getElementById('entry-metadata');
             if (!metadataDiv) {
                 return;
@@ -380,15 +412,17 @@
 
             metadataDiv.innerHTML = '';
             const p = document.createElement('p');
-            p.className = 'entry-date';
+            p.className = 'entry-meta';
 
             function addSep() {
                 p.appendChild(document.createTextNode(' · '));
             }
 
-            const dateText = entry && entry.date ? formatDateIso(entry.date) : String(fallbackDateText || '').trim();
-            if (dateText) {
-                p.appendChild(document.createTextNode(dateText));
+            if (entry.date) {
+                const time = document.createElement('time');
+                time.dateTime = entry.date;
+                time.textContent = formatDateIso(entry.date);
+                p.appendChild(time);
             }
 
             if (entry && entry.collection) {
@@ -401,52 +435,19 @@
                 p.appendChild(a);
             }
 
-            if (entry && Array.isArray(entry.tags) && entry.tags.length > 0) {
-                if (p.childNodes.length > 0) {
-                    addSep();
-                }
-                const span = document.createElement('span');
-                for (let i = 0; i < entry.tags.length; i++) {
-                    const tag = String(entry.tags[i] || '').trim();
-                    if (!tag) {
-                        continue;
-                    }
-                    if (span.childNodes.length > 0) {
-                        span.appendChild(document.createTextNode(', '));
-                    }
-                    const a = document.createElement('a');
-                    a.href = `notebooks.html?tag=${encodeURIComponent(tag)}`;
-                    a.textContent = tag;
-                    span.appendChild(a);
-                }
-                p.appendChild(span);
-            }
-
-            if (entry && entry.path) {
-                addSep();
-                const a = document.createElement('a');
-                a.href = entry.path;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-                a.textContent = 'md';
-                p.appendChild(a);
-            }
-
             metadataDiv.appendChild(p);
         }
 
-        function enhanceNotebookContext(entryPath, fallbackDateText) {
+        function enhanceNotebookContext(entryPath) {
             fetchNotebookIndex()
                 .then((entries) => {
                     const idx = findNotebookIndexEntry(entries, entryPath);
                     if (idx === -1) {
                         return;
                     }
-                    const entry = entries[idx];
                     const newer = idx > 0 ? entries[idx - 1] : null;
                     const older = idx + 1 < entries.length ? entries[idx + 1] : null;
 
-                    renderNotebookMetadata(entry, fallbackDateText);
                     setNavLink(document.getElementById('nav-newer'), newer, '← Newer');
                     setNavLink(document.getElementById('nav-older'), older, 'Older →');
                 })
@@ -497,6 +498,7 @@
                 const lines = text.split('\n');
                 let title = '';
                 let date = '';
+                let collection = '';
                 let contentStart = 0;
 
                 if (lines[0] === '---') {
@@ -505,22 +507,13 @@
                         if (lines[i].startsWith('title:')) {
                             title = lines[i].substring(6).trim();
                         } else if (lines[i].startsWith('date:')) {
-                            date = formatDateIso(lines[i].substring(5).trim());
+                            date = lines[i].substring(5).trim();
+                        } else if (lines[i].startsWith('collection:')) {
+                            collection = lines[i].substring(11).trim();
                         }
                         i++;
                     }
                     contentStart = i + 1;
-                }
-
-                // Update page title
-                if (title) {
-                    document.title = title + ' - Notebook';
-                }
-
-                // Show metadata
-                const metadataDiv = document.getElementById('entry-metadata');
-                if (date) {
-                    metadataDiv.innerHTML = `<p class="entry-date">${date}</p>`;
                 }
 
                 // Render markdown content
@@ -529,9 +522,23 @@
                 const contentEl = document.getElementById('content');
                 contentEl.innerHTML = htmlContent;
 
-                await typesetMath(contentEl);
+                // Keep one title above the metadata, including for notes without frontmatter.
+                const heading = contentEl.firstElementChild;
+                if (heading && heading.tagName === 'H1') {
+                    title = title || heading.textContent.trim();
+                    heading.remove();
+                }
+                const titleEl = document.getElementById('entry-title');
+                titleEl.textContent = title || 'Untitled notebook';
+                document.title = titleEl.textContent + ' - Notebook';
+                renderNotebookMetadata({ date, collection });
+                titleEl.parentElement.hidden = false;
 
-                enhanceNotebookContext(entryPath, date);
+                document.getElementById('entry-markdown').href = entryPath;
+                document.getElementById('entry-footer').hidden = false;
+                enhanceNotebookContext(entryPath);
+
+                await typesetMath(contentEl);
             } catch (error) {
                 console.error('Error loading entry:', error);
                 document.getElementById('content').innerHTML = '<p style="color: #888;">Unable to load entry.</p>';
