@@ -66,10 +66,6 @@
             width: 200px;
             max-width: 100%;
             margin: 0 auto 30px;
-            padding: 0;
-            border: 0;
-            background: transparent;
-            cursor: pointer;
         }
         .home-photo img {
             display: block;
@@ -77,19 +73,16 @@
             height: auto;
         }
         .home-photo .home-photo-etching {
+            display: none;
             position: absolute;
             inset: 0;
             opacity: 0;
             transition: opacity 650ms ease;
         }
-        .home-photo[aria-pressed="true"] .home-photo-etching {
-            opacity: 1;
-        }
-        .home-photo:focus-visible {
-            outline: 2px solid #888;
-            outline-offset: 4px;
-        }
-        @media (hover: hover) and (pointer: fine) {
+        @media (min-width: 601px) and (hover: hover) and (pointer: fine) {
+            .home-photo .home-photo-etching {
+                display: block;
+            }
             .home-photo:hover .home-photo-etching {
                 opacity: 1;
             }
@@ -112,10 +105,10 @@
         <header>
             <h1>Jonatan S. Wächter</h1>
         </header>
-        <button class="home-photo" type="button" aria-label="Show contour print of snow-covered mountains reflected in a lake" aria-pressed="false">
-            <img src="images/home-mountain-left-square.png" alt="" width="800" height="800">
+        <div class="home-photo">
+            <img src="images/home-mountain-left-square.png" alt="Snow-covered mountains reflected in a lake" width="800" height="800">
             <img class="home-photo-etching" src="images/home-mountain-etching.webp" alt="" width="800" height="800">
-        </button>
+        </div>
         <section class="section bio">
             <h2>Bio</h2>
             <p>
@@ -173,11 +166,5 @@
             <p><a href="https://github.com/jswachter" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </section>
     </div>
-    <script>
-        const homePhoto = document.querySelector('.home-photo');
-        homePhoto.addEventListener('click', () => {
-            homePhoto.setAttribute('aria-pressed', String(homePhoto.getAttribute('aria-pressed') !== 'true'));
-        });
-    </script>
 </body>
 </html>
