@@ -628,7 +628,6 @@
                 let title = '';
                 let date = '';
                 let collection = '';
-                let showSections = false;
                 let contentStart = 0;
 
                 if (lines[0] === '---') {
@@ -640,8 +639,6 @@
                             date = lines[i].substring(5).trim();
                         } else if (lines[i].startsWith('collection:')) {
                             collection = lines[i].substring(11).trim();
-                        } else if (lines[i].startsWith('toc:')) {
-                            showSections = lines[i].substring(4).trim() === 'true';
                         }
                         i++;
                     }
@@ -671,9 +668,7 @@
                 enhanceNotebookContext(entryPath);
 
                 const layoutSidenotes = setupSidenotes(contentEl);
-                const updateSections = showSections
-                    ? setupSections(contentEl, document.getElementById('entry-sections'))
-                    : null;
+                const updateSections = setupSections(contentEl, document.getElementById('entry-sections'));
                 await typesetMath(contentEl);
                 layoutSidenotes?.();
                 updateSections?.();

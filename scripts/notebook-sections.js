@@ -40,7 +40,8 @@ export function setupSections(content, navigation) {
     let active = -1;
     function update() {
         frame = 0;
-        let current = 0;
+        // An unheaded introduction belongs to none of the listed sections yet.
+        let current = headings[0] === content.firstElementChild ? 0 : -1;
         headings.forEach((heading, index) => {
             if (heading.getBoundingClientRect().top <= 96) {
                 current = index;
