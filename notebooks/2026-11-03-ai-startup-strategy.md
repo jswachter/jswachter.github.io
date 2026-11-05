@@ -15,7 +15,7 @@ I think it’s quite interesting to reflect on some of these dynamics and revisi
 
 > […]
 >
-> Another problem, I would say, is that using AI is a skill that takes time to learn. We can probably be a little blind to how much further ahead we are in using these models than the average person. I have no data on this, but I would not be surprised if we consume 100x the number of tokens over a given period compared with [REDACTED]’s employees... both privately and at work. [REDACTED] is probably not unique in this respect; things surely look at least as bad at many workplaces.
+> Another problem, I would say, is that using AI is a skill that takes time to learn. We can probably be a little blind to how much further ahead we are in using these models than the average person. I have no data on this, but I would not be surprised if we consume 100x the number of tokens over a given period compared with [REDACTED]’s employees...[^token-gap] both privately and at work. [REDACTED] is probably not unique in this respect; things surely look at least as bad at many workplaces.
 >
 > […]
 >
@@ -54,3 +54,5 @@ I think it’s quite interesting to reflect on some of these dynamics and revisi
 > At the same time, as I said, I think the consulting track is incredibly important. Our outreach on LinkedIn and by email shows that the market is absolutely not there yet when it comes to AI use... it is incredibly difficult to build GitHub for accounting if no one is using agents yet.
 >
 > […]
+
+[^token-gap]: Currently, early November 2026, with tens to sometimes hundreds of millions of tokens spent per day this gap has probably increased.

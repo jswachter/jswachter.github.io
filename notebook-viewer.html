@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notebook Entry</title>
     <link rel="alternate" type="application/json" title="Notebook index" href="notebooks/notebook-index.json">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@17.0.5/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked-footnote@1.4.0/dist/index.umd.js"></script>
     <script>
         window.MathJax = {
             tex: {
@@ -107,6 +108,7 @@
             text-decoration: underline;
         }
         #content {
+            position: relative;
             font-family: "Iowan Old Style", Georgia, serif;
             color: #333;
             line-height: 1.8;
@@ -169,6 +171,73 @@
         #content li {
             margin: 8px 0;
         }
+        #content [data-footnote-ref] {
+            padding: 0 0.15em;
+            text-decoration: none;
+        }
+        #content .footnotes {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+        #content .footnotes h2 {
+            margin: 0 0 16px;
+            font-size: 16px;
+        }
+        #content .footnotes > ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        #content .footnotes > ol > li {
+            margin: 0 0 16px;
+        }
+        #content .footnotes p {
+            margin: 0 0 8px;
+        }
+        #content .footnotes > ol > li > :last-child {
+            margin-bottom: 0;
+        }
+        #content [data-footnote-backref] {
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        #content [data-footnote-ref],
+        #content .footnotes > ol > li {
+            scroll-margin-top: 24px;
+        }
+        #content .footnotes > ol > li:target {
+            color: #333;
+        }
+        @media screen and (min-width: 1280px) {
+            #content.has-sidenotes .footnotes {
+                height: var(--footnotes-space, 0px);
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+            #content.has-sidenotes .footnotes h2 {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip-path: inset(50%);
+                white-space: nowrap;
+            }
+            #content.has-sidenotes .footnotes > ol {
+                padding: 0;
+            }
+            #content.has-sidenotes .footnotes > ol > li {
+                position: absolute;
+                top: var(--footnote-top);
+                left: calc(100% + 48px);
+                width: 200px;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -198,7 +267,9 @@
         </noscript>
     </div>
 
-    <script>
+    <script type="module">
+        import { setupFootnotes } from './scripts/notebook-footnotes.js';
+
         function escapeHtml(value) {
             return String(value || '')
                 .replace(/&/g, '&amp;')
@@ -326,6 +397,7 @@
         }
 
         setupMarkedMath();
+        marked.use(markedFootnote({ headingClass: '' }));
 
         function formatDateIso(isoDate) {
             const raw = String(isoDate || '').trim();
@@ -538,6 +610,7 @@
                 document.getElementById('entry-footer').hidden = false;
                 enhanceNotebookContext(entryPath);
 
+                setupFootnotes(contentEl);
                 await typesetMath(contentEl);
             } catch (error) {
                 console.error('Error loading entry:', error);
