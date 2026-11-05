@@ -51,3 +51,17 @@ bibliography on smaller screens and in print. Repeated citations share one entry
 with a return link to each citation. References and footnotes share collision
 handling so they can appear together in the same margin. Other bibliography
 formats keep their existing layout.
+
+## Notebook section navigation
+
+Add `toc: true` to an entry's YAML frontmatter to enable a section navigator.
+It uses the article's level-two and level-three headings, excluding rendered
+footnotes and references, and only appears when there are at least two headings.
+The MSc thesis introduction enables this experiment.
+
+At widths of 1280px and above, section links stay in the left margin while
+scrolling, with the current section marked. Notes use the right margin so
+navigation and citations have their own space. On smaller screens
+and in print, the section navigator is hidden and notes remain at the end.
+`scripts/notebook-sections.js` handles the heading links and current-section state;
+the existing sidenote module continues to handle note placement.

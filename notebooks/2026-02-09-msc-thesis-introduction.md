@@ -4,6 +4,7 @@ date: 2026-02-09
 collection: Mathematics
 tags: thesis, msc
 summary: Introduction from my MSc thesis.
+toc: true
 ---
 # MSc thesis introduction
 
