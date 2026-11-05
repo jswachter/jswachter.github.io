@@ -175,7 +175,7 @@
             padding: 0 0.15em;
             text-decoration: none;
         }
-        #content .footnotes {
+        #content .notebook-notes {
             margin-top: 40px;
             padding-top: 16px;
             border-top: 1px solid #eee;
@@ -184,42 +184,46 @@
             line-height: 1.6;
             overflow-wrap: anywhere;
         }
-        #content .footnotes h2 {
+        #content .notebook-notes h2 {
             margin: 0 0 16px;
             font-size: 16px;
         }
-        #content .footnotes > ol {
+        #content .notebook-notes > ol {
             margin: 0;
             padding-left: 20px;
         }
-        #content .footnotes > ol > li {
+        #content .notebook-notes > ol > li {
             margin: 0 0 16px;
         }
-        #content .footnotes p {
+        #content .notebook-notes p {
             margin: 0 0 8px;
         }
-        #content .footnotes > ol > li > :last-child {
+        #content .notebook-notes > ol > li > :last-child {
             margin-bottom: 0;
         }
-        #content [data-footnote-backref] {
+        #content [data-footnote-backref],
+        #content [data-reference-backref] {
             white-space: nowrap;
             text-decoration: none;
         }
         #content [data-footnote-ref],
-        #content .footnotes > ol > li {
+        #content [data-reference-ref],
+        #content .sidenote {
             scroll-margin-top: 24px;
         }
-        #content .footnotes > ol > li:target {
+        #content .sidenote:target {
             color: #333;
         }
         @media screen and (min-width: 1280px) {
-            #content.has-sidenotes .footnotes {
-                height: var(--footnotes-space, 0px);
+            #content.has-sidenotes {
+                min-height: var(--sidenotes-height, 0px);
+            }
+            #content.has-sidenotes .notebook-notes {
                 margin: 0;
                 padding: 0;
                 border: 0;
             }
-            #content.has-sidenotes .footnotes h2 {
+            #content.has-sidenotes .notebook-notes h2 {
                 position: absolute;
                 width: 1px;
                 height: 1px;
@@ -227,12 +231,12 @@
                 clip-path: inset(50%);
                 white-space: nowrap;
             }
-            #content.has-sidenotes .footnotes > ol {
+            #content.has-sidenotes .notebook-notes > ol {
                 padding: 0;
             }
-            #content.has-sidenotes .footnotes > ol > li {
+            #content.has-sidenotes .sidenote {
                 position: absolute;
-                top: var(--footnote-top);
+                top: var(--sidenote-top);
                 left: calc(100% + 48px);
                 width: 200px;
                 margin: 0;
@@ -268,7 +272,7 @@
     </div>
 
     <script type="module">
-        import { setupFootnotes } from './scripts/notebook-footnotes.js';
+        import { setupSidenotes } from './scripts/notebook-sidenotes.js';
 
         function escapeHtml(value) {
             return String(value || '')
@@ -610,8 +614,17 @@
                 document.getElementById('entry-footer').hidden = false;
                 enhanceNotebookContext(entryPath);
 
-                setupFootnotes(contentEl);
+                const layoutSidenotes = setupSidenotes(contentEl);
                 await typesetMath(contentEl);
+                layoutSidenotes?.();
+
+                // Restore direct citation/equation links after async rendering
+                // and math have settled, when their final positions are known.
+                const target = document.getElementById(window.location.hash.slice(1))
+                    || contentEl.querySelector(':target');
+                if (target && contentEl.contains(target)) {
+                    requestAnimationFrame(() => target.scrollIntoView());
+                }
             } catch (error) {
                 console.error('Error loading entry:', error);
                 document.getElementById('content').innerHTML = '<p style="color: #888;">Unable to load entry.</p>';
